@@ -2,165 +2,161 @@
 
 import React, { useState } from 'react';
 
-// Strict TypeScript interfaces for form state management
-interface FormData {
-  businessName: string;
-  email: string;
+interface AuditFormData {
   website: string;
+  message: string;
 }
 
-export default function AuditForm() {
-  const [formData, setFormData] = useState<FormData>({
-    businessName: '',
-    email: '',
+export default function TerminalAuditForm() {
+  const [formData, setFormData] = useState<AuditFormData>({
     website: '',
+    message: '',
   });
 
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
-  const [validationError, setValidationError] = useState<string | null>(null);
+  const [errorText, setErrorText] = useState<string | null>(null);
 
-  // Smart URL parser: accepts google.com, elevate-search.vercel.app, http/https prefixes, trailing slashes
-  const validateWebsiteUrl = (url: string): boolean => {
-    const cleanUrl = url.trim();
-    if (!cleanUrl) return false;
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (name === 'website') setErrorText(null);
+  };
 
-    let testUrl = cleanUrl;
-    // Safely inject protocol if the client left it out
-    if (!/^https?:\/\//i.test(testUrl)) {
-      testUrl = 'https://' + testUrl;
+  // Smart validation: handles copy-pastes, missing protocols, subdomains, and trailing spaces smoothly
+  const checkValidDomain = (url: string): boolean => {
+    const inputString = url.trim();
+    if (!inputString) return false;
+
+    let targetUrl = inputString;
+    if (!/^https?:\/\//i.test(targetUrl)) {
+      targetUrl = 'https://' + targetUrl;
     }
 
     try {
-      const parsed = new URL(testUrl);
-      // Verify domain has a root and a valid extension length (e.g., .com, .in, .app)
-      const parts = parsed.hostname.split('.');
-      return parts.length >= 2 && parts.pop()!.length >= 2;
+      const urlInstance = new URL(targetUrl);
+      const hostParts = urlInstance.hostname.split('.');
+      return hostParts.length >= 2 && hostParts.pop()!.length >= 2;
     } catch {
       return false;
     }
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    
-    // Clear validation warnings actively while the user is editing the line
-    if (name === 'website') {
-      setValidationError(null);
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setValidationError(null);
+    setErrorText(null);
 
-    // 1. Run the strict structural URL test
-    if (!validateWebsiteUrl(formData.website)) {
-      setValidationError('Please enter a correct website URL (e.g., mysite.com or https://mysite.in)');
+    // Clean up trailing spaces before executing validation checks
+    const cleanedWebsiteValue = formData.website.trim();
+
+    if (!checkValidDomain(cleanedWebsiteValue)) {
+      setErrorText('Please enter a valid website domain link (e.g., site.com or brand.vercel.app)');
       return;
     }
 
     setStatus('submitting');
 
     try {
-      // TODO: Replace this with your actual form submission API route or Webhook if active
-      // For now, we simulate a fast cloud save pipeline
-      await new Promise((resolve) => setTimeout(resolve, 1200));
-      
+      // Package clean data to send to your backend server architecture
+      const submissionPayload = {
+        website: cleanedWebsiteValue,
+        message: formData.message.trim(),
+      };
+
+      // TODO: If you have an active API endpoint or Webhook route, hook it up here:
+      // await fetch('/api/audit', { method: 'POST', body: JSON.stringify(submissionPayload) });
+
+      await new Promise((resolve) => setTimeout(resolve, 1200)); // Simulated pipeline latency
       setStatus('success');
-      setFormData({ businessName: '', email: '', website: '' });
-    } catch (error) {
-      console.error('Submission failed:', error);
+      setFormData({ website: '', message: '' });
+    } catch (err) {
+      console.error(err);
       setStatus('error');
     }
   };
 
   return (
-    <div className="w-full max-w-md mx-auto p-6 bg-[#111111]/80 rounded-2xl border border-white/5 shadow-2xl backdrop-blur-xl">
-      <div className="mb-6">
-        <h3 className="text-xl font-bold text-white tracking-tight">Request Free Visibility Audit</h3>
-        <p className="text-xs text-[#A1A1AA] mt-1">Our system will scan your assets for architectural and indexing defects.</p>
-      </div>
-
+    <div className="w-full max-w-3xl mx-auto space-y-6">
       {status === 'success' ? (
-        <div className="p-4 bg-purple-500/10 border border-purple-500/20 rounded-xl text-center space-y-2 animate-fadeIn">
-          <p className="text-sm font-semibold text-purple-400">⚡ Audit Blueprint Scheduled!</p>
-          <p className="text-xs text-[#A1A1AA] leading-relaxed">
-            We are pulling your indexing frames. Your technical breakdown report will hit your inbox shortly.
-          </p>
+        <div className="p-6 bg-purple-500/10 border border-purple-500/20 rounded-xl text-center space-y-2">
+          <p className="text-base font-bold text-purple-400">⚡ Scanning Pipeline Initialized Successfully</p>
+          <p className="text-xs text-[#A1A1AA]">Our system is currently processing the target node array layers.</p>
           <button
             onClick={() => setStatus('idle')}
-            className="mt-2 text-xs font-bold text-white underline hover:text-purple-400 transition"
+            className="text-xs text-white underline hover:text-purple-400 transition font-medium mt-2"
           >
-            Submit another asset
+            Submit Another Matrix Targeted Asset
           </button>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Business Name Input */}
-          <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-white/70">Business Name</label>
-            <input
-              type="text"
-              name="businessName"
-              required
-              value={formData.businessName}
-              onChange={handleInputChange}
-              placeholder="e.g., Apex Dental Clinic"
-              className="w-full px-4 py-2.5 bg-black/50 border border-white/10 rounded-xl text-sm text-white placeholder-white/20 focus:outline-none focus:border-purple-500 transition"
-            />
-          </div>
-
-          {/* Email Address Input */}
-          <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-white/70">Contact Email</label>
-            <input
-              type="email"
-              name="email"
-              required
-              value={formData.email}
-              onChange={handleInputChange}
-              placeholder="name@company.com"
-              className="w-full px-4 py-2.5 bg-black/50 border border-white/10 rounded-xl text-sm text-white placeholder-white/20 focus:outline-none focus:border-purple-500 transition"
-            />
-          </div>
-
-          {/* Website URL Input - Configured to Text to Bypass Default Browser Breaks */}
-          <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-white/70">Website URL</label>
+        <form onSubmit={handleFormSubmit} className="space-y-6">
+          
+          {/* Website URL Field Configuration - Changed to type="text" to stop browser tooltips */}
+          <div className="space-y-2">
+            <label className="block text-xs font-bold text-[#A1A1AA] tracking-wider uppercase">
+              Current Target Website URL *
+            </label>
             <input
               type="text"
               name="website"
               required
               value={formData.website}
               onChange={handleInputChange}
-              placeholder="e.g., brand.com or brand.vercel.app"
-              className={`w-full px-4 py-2.5 bg-black/50 border rounded-xl text-sm text-white placeholder-white/20 focus:outline-none transition ${
-                validationError ? 'border-red-500/50 focus:border-red-500' : 'border-white/10 focus:border-purple-500'
+              placeholder="https://yourbrand.com"
+              className={`w-full px-4 py-3 bg-black border rounded-xl text-sm text-white focus:outline-none transition ${
+                errorText ? 'border-red-500 focus:border-red-500' : 'border-purple-500/30 focus:border-purple-500'
               }`}
             />
-            {validationError && (
-              <p className="text-[11px] font-medium text-red-400 animate-slideUp">{validationError}</p>
+            {errorText && (
+              <p className="text-xs font-semibold text-red-400 mt-1">{errorText}</p>
             )}
           </div>
 
-          {/* Error Callback Banner */}
+          {/* Operational Message Field Configuration */}
+          <div className="space-y-2">
+            <label className="block text-xs font-bold text-[#A1A1AA] tracking-wider uppercase">
+              Operational Target Message
+            </label>
+            <textarea
+              name="message"
+              rows={4}
+              value={formData.message}
+              onChange={handleInputChange}
+              placeholder="Specify structural or visibility issue parameters..."
+              className="w-full px-4 py-3 bg-black border border-white/5 rounded-xl text-sm text-white placeholder-white/10 focus:outline-none focus:border-purple-500 transition resize-none"
+            />
+          </div>
+
+          {/* Error Warning Banner */}
           {status === 'error' && (
-            <p className="text-xs text-red-400 text-center bg-red-500/10 p-2 rounded-lg border border-red-500/20">
-              Network signal loop drop. Please try again or ping our terminal directly via WhatsApp.
+            <p className="text-xs text-red-400 text-center bg-red-500/10 p-3 rounded-xl border border-red-500/20">
+              Structural channel loss. Please re-submit or contact your platform operator directly.
             </p>
           )}
 
-          {/* Submission Action Anchor */}
+          {/* Form Trigger Submission Action */}
           <button
             type="submit"
             disabled={status === 'submitting'}
-            className="w-full mt-2 py-3 bg-gradient-to-r from-[#A855F7] to-[#7C3AED] hover:opacity-95 text-white font-bold text-xs rounded-xl shadow-lg transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed tracking-wider uppercase"
+            className="w-full py-3.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-95 disabled:opacity-50 text-white font-bold text-xs uppercase tracking-widest rounded-xl transition shadow-xl"
           >
-            {status === 'submitting' ? 'Running Diagnostic Array...' : 'Deploy Optimization Scan'}
+            {status === 'submitting' ? 'Running Structural Diagnostic...' : 'Submit Diagnostic Scan Request'}
           </button>
         </form>
       )}
+
+      {/* Trust Compliance Notice Footer Panel */}
+      <div className="p-4 bg-[#0A0A0A] rounded-xl border border-white/5 flex items-start gap-3">
+        <div className="mt-0.5 text-purple-500">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m0-6h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+          </svg>
+        </div>
+        <p className="text-xs text-[#A1A1AA] leading-relaxed">
+          We respect your information. Data submitted through this portal is used exclusively to generate your custom search optimization framework report. No third-party data sales or tracking loops are active.
+        </p>
+      </div>
     </div>
   );
 }
