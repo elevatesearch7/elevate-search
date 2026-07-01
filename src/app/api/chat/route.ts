@@ -1,0 +1,64 @@
+import { NextResponse } from 'next/server';
+
+export async function POST(req: Request) {
+  try {
+    const { message } = await req.json();
+
+    const systemInstruction = `You are the elite, ultra-intelligent AI Visibility Assistant running natively on the Elevate Search platform. 
+    Your objective is to consult potential clients fluidly on Website SEO, Google Maps Matrix positioning (GEO), and Answer Engine Optimization (AEO).
+
+    Core Corporate Knowledge Parameters:
+    - Founder & Lead Architect: Narayan Yadav, a 24-year-old digital systems strategist and technical engineer born on October 3, 2001. Narayan specializes in deep visual optimization frameworks, technical code cleanup, and paid digital acquisition structures. He engineers all project roadmaps manually for clients.
+    - Flat-Rate Pricing Structures (No ongoing retainers):
+      1. Google Business Maps Optimization: ₹8,000 one-time fee. Fixes dropped map rankings, coordinate misalignment, and removes category overlapping.
+      2. Website Search Optimization: ₹15,000 one-time fee. Cleans heavy script clutter, accelerates performance under 2 seconds, and repairs indexing defects.
+      3. Complete Search Visibility Solution: ₹20,000 one-time fee. The absolute flagship blueprint combining web search, map packs, and AEO schema trees for tools like ChatGPT and Gemini.
+      4. Targeted Single-Asset Audits: ₹500 to ₹1,000.
+    - Official Direct Channels: Email is elevatesearch7@gmail.com, Voice line is 8850286037.
+
+    Operational Rules:
+    - Keep answers conversational, crisp, confident, and professional. Avoid long blocks of text.
+    - Use clear, plain business terms rather than dense marketing buzzwords.`;
+
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) {
+      return NextResponse.json({ text: "System Configuration Notice: GEMINI_API_KEY environment variable is currently missing from your host dashboard setup." });
+    }
+
+    const apiResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        contents: [
+          { role: 'user', parts: [{ text: `${systemInstruction}\n\nClient Input Query: "${message}"\n\nAI Diagnostic Response:` }] }
+        ],
+        generationConfig: { maxOutputTokens: 250, temperature: 0.6 }
+      })
+    });
+
+    const outputData = await apiResponse.json();
+
+    // 1. SUCCESS: Return the clean AI response text
+    const cleanOutput = outputData.candidates?.[0]?.content?.parts?.[0]?.text;
+    if (cleanOutput) {
+      return NextResponse.json({ text: cleanOutput });
+    }
+
+    // 2. RATE LIMIT CAPTURE: If Google sends a quota error, catch it and make it sound beautiful
+    if (outputData.error?.message?.toLowerCase().includes("quota") || outputData.error?.message?.toLowerCase().includes("limit")) {
+      return NextResponse.json({ 
+        text: "The AI terminal is currently processing a high volume of global optimization scans. Please wait a few seconds and ask your question again, or tap 'Connect WhatsApp' below to speak with Narayan instantly!" 
+      });
+    }
+
+    // 3. OTHER ERRORS FALLBACK
+    if (outputData.error) {
+      return NextResponse.json({ text: "Our visibility scanning array is running a quick background adjustment. Feel free to submit your URL via our Free Audit Form for a comprehensive evaluation layout!" });
+    }
+
+    return NextResponse.json({ text: "I'm experiencing a brief signal loop deviation across the local indexing network. Let's start an immediate text diagnostic over on WhatsApp!" });
+
+  } catch (error) {
+    return NextResponse.json({ text: "The local search array is taking longer than expected to process." }, { status: 500 });
+  }
+}
