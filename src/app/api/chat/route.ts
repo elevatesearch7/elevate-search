@@ -1,5 +1,23 @@
 import { NextResponse } from 'next/server';
 
+// Explicitly define the internal data structures to pass strict type lint validation checks
+interface GeminiPart {
+  text?: string;
+}
+
+interface GeminiCandidate {
+  content?: {
+    parts?: GeminiPart[];
+  };
+}
+
+interface GeminiApiResponse {
+  candidates?: GeminiCandidate[];
+  error?: {
+    message?: string;
+  };
+}
+
 export async function POST(req: Request) {
   try {
     const { message } = await req.json();
@@ -25,7 +43,8 @@ export async function POST(req: Request) {
       return NextResponse.json({ text: "System Configuration Notice: GEMINI_API_KEY environment variable is currently missing from your host dashboard setup." });
     }
 
-    const apiResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
+    // Modernized destination mapping targeting the stable active generation core
+    const apiResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${apiKey}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -36,29 +55,30 @@ export async function POST(req: Request) {
       })
     });
 
-    const outputData = await apiResponse.json();
+    const outputData = (await apiResponse.json()) as GeminiApiResponse;
 
-    // 1. SUCCESS: Return the clean AI response text
+    // 1. SUCCESS: Return the clean, processed AI response string
     const cleanOutput = outputData.candidates?.[0]?.content?.parts?.[0]?.text;
     if (cleanOutput) {
       return NextResponse.json({ text: cleanOutput });
     }
 
-    // 2. RATE LIMIT CAPTURE: If Google sends a quota error, catch it and make it sound beautiful
+    // 2. RATE LIMIT CAPTURE: Intercept API rate limits and display a polished direct message
     if (outputData.error?.message?.toLowerCase().includes("quota") || outputData.error?.message?.toLowerCase().includes("limit")) {
       return NextResponse.json({ 
         text: "The AI terminal is currently processing a high volume of global optimization scans. Please wait a few seconds and ask your question again, or tap 'Connect WhatsApp' below to speak with Narayan instantly!" 
       });
     }
 
-    // 3. OTHER ERRORS FALLBACK
+    // 3. DISAGREEMENT FALLBACK: Gracefully redirect clients if backend anomalies surface
     if (outputData.error) {
       return NextResponse.json({ text: "Our visibility scanning array is running a quick background adjustment. Feel free to submit your URL via our Free Audit Form for a comprehensive evaluation layout!" });
     }
 
     return NextResponse.json({ text: "I'm experiencing a brief signal loop deviation across the local indexing network. Let's start an immediate text diagnostic over on WhatsApp!" });
 
-  } catch (error) {
+  } catch {
+    // Parameterless catch block ensures zero unused variable warnings are generated during Vercel's build
     return NextResponse.json({ text: "The local search array is taking longer than expected to process." }, { status: 500 });
   }
 }
