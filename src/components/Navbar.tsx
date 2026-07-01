@@ -25,10 +25,19 @@ export default function Navbar() {
           {/* 1. BRAND IDENTITY LOGO NODE */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center gap-2.5 group">
-              {/* High-Tech Active Pulse Beacon Icon */}
-              <div className="relative w-7 h-7 rounded-full bg-purple-500/10 border border-purple-500/30 flex items-center justify-center group-hover:border-purple-400 transition-colors">
-                <div className="w-1.5 h-1.5 rounded-full bg-purple-500 animate-pulse" />
-              </div>
+              {/* Your Original Circular Image Logo Asset */}
+              <img 
+                src="/logo.png" 
+                alt="Elevate Search Logo" 
+                className="w-9 h-9 rounded-full object-contain"
+                onError={(e) => {
+                  // Fallback to check common names if logo.png isn't matching
+                  const target = e.target as HTMLImageElement;
+                  if (target.src.endsWith('/logo.png')) {
+                    target.src = '/logo.svg'; // Tries vector option next
+                  }
+                }}
+              />
               
               {/* Fancy Cyberpunk Logo Typography */}
               <span className="font-black text-xl sm:text-2xl tracking-tight select-none">
@@ -81,7 +90,7 @@ export default function Navbar() {
 
       {/* 5. MOBILE DROPDOWN OVERLAY INTERACTION DRAWER */}
       {isOpen && (
-        <div className="md:hidden bg-black/95 backdrop-blur-2xl border-b border-white/[0.05] px-4 pt-2 pb-6 space-y-4 animate-fade-in">
+        <div className="md:hidden bg-black/95 backdrop-blur-2xl border-b border-white/[0.05] px-4 pt-2 pb-6 space-y-4">
           <div className="flex flex-col gap-4">
             {navLinks.map((link) => (
               <Link

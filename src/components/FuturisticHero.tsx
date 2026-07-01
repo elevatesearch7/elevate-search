@@ -27,7 +27,8 @@ export default function FuturisticHero() {
   };
 
   return (
-    <div className="relative w-full min-h-screen bg-transparent text-white flex flex-col items-center justify-center py-20 overflow-hidden">
+    /* Changed py-20 to pt-36 pb-20 to introduce a clean vertical layout gap below the fixed navbar */
+    <div className="relative w-full min-h-screen bg-transparent text-white flex flex-col items-center justify-center pt-36 pb-20 overflow-hidden">
       
       <motion.div 
         variants={containerVariants}
