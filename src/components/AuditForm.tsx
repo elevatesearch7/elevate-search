@@ -2,29 +2,34 @@
 
 import React, { useState } from 'react';
 
-interface AuditFormData {
+interface FullAuditFormData {
+  name: string;
+  phone: string;
+  email: string;
   website: string;
   message: string;
 }
 
 export default function TerminalAuditForm() {
-  const [formData, setFormData] = useState<AuditFormData>({
+  const [formData, setFormData] = useState<FullAuditFormData>({
+    name: '',
+    phone: '',
+    email: '',
     website: '',
     message: '',
   });
 
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
-  const [errorText, setErrorText] = useState<string | null>(null);
+  const [validationError, setValidationError] = useState<string | null>(null);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    if (name === 'website') setErrorText(null);
+    if (name === 'website') setValidationError(null);
   };
 
-  // Smart validation: handles copy-pastes, missing protocols, subdomains, and trailing spaces smoothly
   const checkValidDomain = (url: string): boolean => {
     const inputString = url.trim();
     if (!inputString) return false;
@@ -45,31 +50,37 @@ export default function TerminalAuditForm() {
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setErrorText(null);
+    setValidationError(null);
 
-    // Clean up trailing spaces before executing validation checks
-    const cleanedWebsiteValue = formData.website.trim();
+    const cleanedWebsite = formData.website.trim();
 
-    if (!checkValidDomain(cleanedWebsiteValue)) {
-      setErrorText('Please enter a valid website domain link (e.g., site.com or brand.vercel.app)');
+    if (!checkValidDomain(cleanedWebsite)) {
+      setValidationError('Please enter a correct website domain link (e.g., site.com or brand.vercel.app)');
       return;
     }
 
     setStatus('submitting');
 
     try {
-      // Package clean data to send to your backend server architecture
-      const submissionPayload = {
-        website: cleanedWebsiteValue,
-        message: formData.message.trim(),
-      };
+      // Fire the processed dataset directly at our newly created backend API route
+      const apiResponse = await fetch('/api/audit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          phone: formData.phone.trim(),
+          email: formData.email.trim(),
+          website: cleanedWebsite,
+          message: formData.message.trim()
+        }),
+      });
 
-      // TODO: If you have an active API endpoint or Webhook route, hook it up here:
-      // await fetch('/api/audit', { method: 'POST', body: JSON.stringify(submissionPayload) });
-
-      await new Promise((resolve) => setTimeout(resolve, 1200)); // Simulated pipeline latency
-      setStatus('success');
-      setFormData({ website: '', message: '' });
+      if (apiResponse.ok) {
+        setStatus('success');
+        setFormData({ name: '', phone: '', email: '', website: '', message: '' });
+      } else {
+        setStatus('error');
+      }
     } catch (err) {
       console.error(err);
       setStatus('error');
@@ -79,20 +90,70 @@ export default function TerminalAuditForm() {
   return (
     <div className="w-full max-w-3xl mx-auto space-y-6">
       {status === 'success' ? (
-        <div className="p-6 bg-purple-500/10 border border-purple-500/20 rounded-xl text-center space-y-2">
-          <p className="text-base font-bold text-purple-400">⚡ Scanning Pipeline Initialized Successfully</p>
-          <p className="text-xs text-[#A1A1AA]">Our system is currently processing the target node array layers.</p>
+        <div className="p-8 bg-purple-500/10 border border-purple-500/20 rounded-2xl text-center space-y-3">
+          <p className="text-lg font-bold text-purple-400">⚡ Audit Roadmap Request Logged</p>
+          <p className="text-xs text-[#A1A1AA] max-w-md mx-auto leading-relaxed">
+            Excellent! Your site parameters have been compiled. Narayan is mapping your optimization roadmap frames and will drop your report over WhatsApp or Email shortly.
+          </p>
           <button
             onClick={() => setStatus('idle')}
-            className="text-xs text-white underline hover:text-purple-400 transition font-medium mt-2"
+            className="text-xs text-white underline hover:text-purple-400 transition font-semibold mt-2"
           >
-            Submit Another Matrix Targeted Asset
+            Submit Another Matrix Asset
           </button>
         </div>
       ) : (
-        <form onSubmit={handleFormSubmit} className="space-y-6">
+        <form onSubmit={handleFormSubmit} className="space-y-5">
           
-          {/* Website URL Field Configuration - Changed to type="text" to stop browser tooltips */}
+          {/* 1. Client Name Input Panel */}
+          <div className="space-y-2">
+            <label className="block text-xs font-bold text-[#A1A1AA] tracking-wider uppercase">
+              Client Name *
+            </label>
+            <input
+              type="text"
+              name="name"
+              required
+              value={formData.name}
+              onChange={handleInputChange}
+              placeholder="e.g., Ramesh Kumar"
+              className="w-full px-4 py-3 bg-black border border-white/10 focus:border-purple-500 rounded-xl text-sm text-white focus:outline-none transition"
+            />
+          </div>
+
+          {/* 2. Phone / WhatsApp Input Panel */}
+          <div className="space-y-2">
+            <label className="block text-xs font-bold text-[#A1A1AA] tracking-wider uppercase">
+              Phone Number or WhatsApp Number *
+            </label>
+            <input
+              type="tel"
+              name="phone"
+              required
+              value={formData.phone}
+              onChange={handleInputChange}
+              placeholder="e.g., +91 98765 43210 (To receive your report)"
+              className="w-full px-4 py-3 bg-black border border-white/10 focus:border-purple-500 rounded-xl text-sm text-white focus:outline-none transition"
+            />
+          </div>
+
+          {/* 3. Contact Email Input Panel */}
+          <div className="space-y-2">
+            <label className="block text-xs font-bold text-[#A1A1AA] tracking-wider uppercase">
+              Mail ID *
+            </label>
+            <input
+              type="email"
+              name="email"
+              required
+              value={formData.email}
+              onChange={handleInputChange}
+              placeholder="e.g., client@company.com"
+              className="w-full px-4 py-3 bg-black border border-white/10 focus:border-purple-500 rounded-xl text-sm text-white focus:outline-none transition"
+            />
+          </div>
+
+          {/* 4. Current Target Website URL Panel (Fixed to type="text") */}
           <div className="space-y-2">
             <label className="block text-xs font-bold text-[#A1A1AA] tracking-wider uppercase">
               Current Target Website URL *
@@ -105,15 +166,15 @@ export default function TerminalAuditForm() {
               onChange={handleInputChange}
               placeholder="https://yourbrand.com"
               className={`w-full px-4 py-3 bg-black border rounded-xl text-sm text-white focus:outline-none transition ${
-                errorText ? 'border-red-500 focus:border-red-500' : 'border-purple-500/30 focus:border-purple-500'
+                validationError ? 'border-red-500 focus:border-red-500' : 'border-purple-500/30 focus:border-purple-500'
               }`}
             />
-            {errorText && (
-              <p className="text-xs font-semibold text-red-400 mt-1">{errorText}</p>
+            {validationError && (
+              <p className="text-xs font-semibold text-red-400 mt-1">{validationError}</p>
             )}
           </div>
 
-          {/* Operational Message Field Configuration */}
+          {/* 5. Operational Target Message Box Panel */}
           <div className="space-y-2">
             <label className="block text-xs font-bold text-[#A1A1AA] tracking-wider uppercase">
               Operational Target Message
@@ -131,22 +192,22 @@ export default function TerminalAuditForm() {
           {/* Error Warning Banner */}
           {status === 'error' && (
             <p className="text-xs text-red-400 text-center bg-red-500/10 p-3 rounded-xl border border-red-500/20">
-              Structural channel loss. Please re-submit or contact your platform operator directly.
+              Transmission error. Please refresh or contact your platform operator directly over WhatsApp.
             </p>
           )}
 
-          {/* Form Trigger Submission Action */}
+          {/* Form Submit Trigger Button */}
           <button
             type="submit"
             disabled={status === 'submitting'}
-            className="w-full py-3.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-95 disabled:opacity-50 text-white font-bold text-xs uppercase tracking-widest rounded-xl transition shadow-xl"
+            className="w-full py-4 bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-95 disabled:opacity-50 text-white font-bold text-xs uppercase tracking-widest rounded-xl transition shadow-xl"
           >
-            {status === 'submitting' ? 'Running Structural Diagnostic...' : 'Submit Diagnostic Scan Request'}
+            {status === 'submitting' ? 'Deploying Transmission Array...' : 'Submit Diagnostic Scan Request'}
           </button>
         </form>
       )}
 
-      {/* Trust Compliance Notice Footer Panel */}
+      {/* Compliance Footer Shield */}
       <div className="p-4 bg-[#0A0A0A] rounded-xl border border-white/5 flex items-start gap-3">
         <div className="mt-0.5 text-purple-500">
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
