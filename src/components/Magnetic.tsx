@@ -16,11 +16,9 @@ export default function Magnetic({ children }: { children: React.ReactNode }) {
     const centerX = left + width / 2;
     const centerY = top + height / 2;
 
-    // Calculate mouse distance offset from the true center point
     const distanceX = clientX - centerX;
     const distanceY = clientY - centerY;
 
-    // Setting a 35% magnetic drag multiplier limit
     setPosition({ x: distanceX * 0.35, y: distanceY * 0.35 });
   };
 

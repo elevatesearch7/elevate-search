@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { 
-  ArrowUpRight, Search, MapPin, Cpu, MessageSquare, Sparkles, 
+  ArrowUpRight, Search, MapPin, Cpu, MessageSquare, 
   Mic, CheckCircle2, Eye, Compass, Layers, ChevronDown
 } from 'lucide-react';
 import SchemaMarkup from "@/components/SchemaMarkup";
@@ -20,7 +20,7 @@ export default function Home() {
     { title: "Google Maps", icon: MapPin, desc: "Acquire localized grid dominance and map visibility vectors.", highlight: "Local 3-Pack Authority" },
     { title: "AI Overviews", icon: Cpu, desc: "Format entity architecture to safely anchor brand citations in direct AI summaries.", highlight: "LLM Citation Vector" },
     { title: "ChatGPT", icon: MessageSquare, desc: "Influence real-time conversational retrieval indexes and user choice patterns.", highlight: "OpenAI Index Sync" },
-    { title: "Gemini", icon: Sparkles, desc: "Optimize structural knowledge graphs for native multimodal platform feeds.", highlight: "Google Ecosystem Flow" },
+    { title: "Gemini", icon: Cpu, desc: "Optimize structural knowledge graphs for native multimodal platform feeds.", highlight: "Google Ecosystem Flow" },
     { title: "Voice Search", icon: Mic, desc: "Target naturally articulated consumer inquiries and contextual semantic keys.", highlight: "Conversational Query Captures" }
   ];
 
@@ -68,7 +68,6 @@ export default function Home() {
     }))
   };
 
-  // Fluid physics curve for section slide reveals
   const scrollReveal = {
     hidden: { opacity: 0, y: 50 },
     visible: { 
@@ -81,17 +80,19 @@ export default function Home() {
   return (
     <div className="relative w-full min-h-screen overflow-x-hidden selection:bg-purple-500/30 selection:text-white">
       <SchemaMarkup type="FAQPage" data={faqSchemaData} />
+      <style>{`
+        @keyframes sweep { 0% { left: -100%; } 100% { left: 200%; } }
+      `}</style>
 
-      {/* LAYER 1: LIVE INTERACTIVE BACKGROUND CONSTALLATION NET */}
+      {/* Layer 1: Background Constellation Elements */}
       <InteractiveNodes />
 
-      {/* LAYER 2: SCROLL-DRIVEN SLIDING CONTENT CONTAINER PLATES */}
+      {/* Layer 2: Scrolling Front Content Section Containers */}
       <div className="relative z-10 w-full bg-transparent">
         
-        {/* Cinematic Main Entry Screen */}
         <FuturisticHero />
 
-        {/* What Is Search Visibility Card Section */}
+        {/* Operational Scope Strategy Section */}
         <motion.section 
           initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-120px" }} variants={scrollReveal}
           className="py-24 border-t border-white/[0.04] bg-black/40 backdrop-blur-md"
@@ -128,7 +129,7 @@ export default function Home() {
           </div>
         </motion.section>
 
-        {/* The Future of Search Features */}
+        {/* Unified Platforms Grid Section */}
         <motion.section 
           initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-120px" }} variants={scrollReveal}
           className="py-24 border-y border-white/[0.04] bg-black/20 backdrop-blur-sm"
@@ -138,7 +139,6 @@ export default function Home() {
               <h2 className="text-xs font-bold uppercase tracking-widest text-[#A855F7]">Unified Surface Coverage</h2>
               <h3 className="text-3xl sm:text-5xl font-bold text-white tracking-tight">The Future Of Search Is Already Here</h3>
             </div>
-
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {futureCards.map((card, idx) => {
                 const IconComp = card.icon;
@@ -161,7 +161,7 @@ export default function Home() {
           </div>
         </motion.section>
 
-        {/* Solutions & Pricing Grid */}
+        {/* Pricing Matrix Deck Section */}
         <motion.section 
           initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-120px" }} variants={scrollReveal}
           className="py-24 bg-black/40 backdrop-blur-md"
@@ -171,7 +171,6 @@ export default function Home() {
               <h2 className="text-xs font-bold uppercase tracking-widest text-[#8B5CF6]">Tailored Service Modules</h2>
               <h3 className="text-3xl sm:text-5xl font-bold text-white tracking-tight">Our Solutions & Pricing</h3>
             </div>
-
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
               {plans.map((plan, idx) => (
                 <div key={idx} className={`bg-zinc-950/40 backdrop-blur-xl border rounded-2xl p-8 relative flex flex-col justify-between transition-all duration-500 ${plan.recommended ? 'border-[#8B5CF6] bg-zinc-900/50 lg:scale-105 z-10' : 'border-white/10 hover:border-white/20'}`}>
@@ -200,7 +199,7 @@ export default function Home() {
           </div>
         </motion.section>
 
-        {/* Why Choose Elevate Search */}
+        {/* Strategic Values Section */}
         <motion.section 
           initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-120px" }} variants={scrollReveal}
           className="py-24 bg-transparent border-t border-white/[0.04]"
@@ -210,7 +209,6 @@ export default function Home() {
               <h2 className="text-xs font-bold uppercase tracking-widest text-[#A855F7]">The Strategic Difference</h2>
               <h3 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">Why Choose Elevate Search</h3>
             </div>
-
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {valueProps.map((vp, idx) => (
                 <div key={idx} className="bg-zinc-950/40 backdrop-blur-sm border border-white/5 p-6 rounded-xl space-y-2 shadow-lg">
@@ -225,7 +223,7 @@ export default function Home() {
           </div>
         </motion.section>
 
-        {/* Workflow Process */}
+        {/* Phase Workflows Section */}
         <motion.section 
           initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-120px" }} variants={scrollReveal}
           className="py-24 bg-black/40 backdrop-blur-md border-t border-white/[0.04]"
@@ -235,7 +233,6 @@ export default function Home() {
               <h2 className="text-xs font-bold uppercase tracking-widest text-[#8B5CF6]">Execution Workflow</h2>
               <h3 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">How We Work</h3>
             </div>
-
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
               {steps.map((st, idx) => (
                 <div key={idx} className="bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-6 relative overflow-hidden group shadow-xl">
@@ -249,7 +246,7 @@ export default function Home() {
           </div>
         </motion.section>
 
-        {/* FAQ Hub */}
+        {/* FAQ Area Accordion Section */}
         <motion.section 
           initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-120px" }} variants={scrollReveal}
           className="py-24 bg-transparent border-t border-white/[0.04]"
@@ -259,7 +256,6 @@ export default function Home() {
               <h2 className="text-xs font-bold uppercase tracking-widest text-[#A855F7]">Information Hub</h2>
               <h3 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">Frequently Asked Questions</h3>
             </div>
-
             <div className="space-y-4">
               {faqs.map((faq, idx) => {
                 const isSelected = activeFaq === idx;
@@ -279,7 +275,7 @@ export default function Home() {
           </div>
         </motion.section>
 
-        {/* Latest Insights Blog Feed */}
+        {/* Article/Insights Feed Section */}
         <motion.section 
           initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-120px" }} variants={scrollReveal}
           className="py-24 bg-black/40 backdrop-blur-md border-y border-white/[0.04]"
@@ -291,7 +287,6 @@ export default function Home() {
                 <h3 className="text-3xl font-bold text-white tracking-tight">Latest Insights</h3>
               </div>
             </div>
-
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {insights.map((ins, idx) => (
                 <div key={idx} className="bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-6 flex flex-col justify-between group shadow-xl">
@@ -309,15 +304,13 @@ export default function Home() {
           </div>
         </motion.section>
 
-        {/* LAYER 3: FINAL CLOSING CTA USING THE NEW MAGNETIC INTERACTION WRAPPER */}
+        {/* Layer 3: Magnetic Physics Anchor CTA Bridge */}
         <motion.section 
           initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={scrollReveal}
           className="py-32 relative bg-transparent text-center flex flex-col items-center justify-center"
         >
           <div className="max-w-4xl mx-auto px-4 space-y-8 relative z-10 flex flex-col items-center">
             <h3 className="text-2xl font-bold text-white tracking-tight">Ready to Maximize Your Search Real Estate?</h3>
-            
-            {/* Wrapping your core CTA inside the custom magnetic spring field */}
             <Magnetic>
               <Link 
                 href="/contact" 

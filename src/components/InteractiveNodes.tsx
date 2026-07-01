@@ -23,7 +23,6 @@ export default function InteractiveNodes() {
 
     const initParticles = () => {
       particles = [];
-      // Scales particle count dynamically based on screen width
       const particleCount = Math.floor((canvas.width * canvas.height) / 9000);
       for (let i = 0; i < Math.min(particleCount, 120); i++) {
         particles.push({
@@ -39,22 +38,19 @@ export default function InteractiveNodes() {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      // Update and draw data node particles
       particles.forEach((p) => {
         p.x += p.vx;
         p.y += p.vy;
 
-        // Bounce mechanics on boundaries
         if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
         if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(168, 85, 247, 0.4)'; // Subtle purple nodes
+        ctx.fillStyle = 'rgba(168, 85, 247, 0.4)';
         ctx.fill();
       });
 
-      // Construct interactive web link lines
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const p1 = particles[i];
@@ -72,7 +68,6 @@ export default function InteractiveNodes() {
           }
         }
 
-        // Draw links connecting nodes directly to user mouse coordinates
         const mouseDist = Math.hypot(particles[i].x - mouse.x, particles[i].y - mouse.y);
         if (mouseDist < mouse.maxDistance) {
           const alpha = (1 - mouseDist / mouse.maxDistance) * 0.35;
