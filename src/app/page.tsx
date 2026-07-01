@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { 
   ArrowUpRight, Search, MapPin, Cpu, MessageSquare, Sparkles, 
-  Mic, CheckCircle2, Eye, Compass, Layers, ChevronDown, Terminal
+  Mic, CheckCircle2, Eye, Compass, Layers, ChevronDown
 } from 'lucide-react';
 import SchemaMarkup from "@/components/SchemaMarkup";
 import FuturisticHero from '@/components/FuturisticHero';
@@ -90,59 +90,12 @@ export default function Home() {
   return (
     <div className="relative w-full bg-black min-h-screen selection:bg-purple-500/30 selection:text-white">
       <SchemaMarkup type="FAQPage" data={faqSchemaData} />
-      
-      {/* Dynamic Keyframe Shimmer Animations Stylesheet Inject */}
-      <style>{`
-        @keyframes sweep {
-          0% { left: -100%; }
-          100% { left: 200%; }
-        }
-        .animate-shimmer-sweep {
-          animation: sweep 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
-        }
-      `}</style>
 
-      {/* 1. CINEMATIC SCIFI HERO & BENTO GRID DECK */}
+      {/* 1. CINEMATIC HERO & INTERACTIVE BENTO MODAL DECK */}
       <FuturisticHero />
-      
-      {/* 2. HIGH-TECH EYE-CATCHING CTA BRIDGE DECK (Replaces full form layout) */}
-      <section className="py-24 bg-black relative z-10 overflow-hidden border-t border-white/[0.03]">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-purple-600/5 rounded-full filter blur-[100px] pointer-events-none mix-blend-screen animate-pulse" />
-        
-        <div className="max-w-4xl mx-auto px-4 text-center relative z-10 space-y-8">
-          <div className="space-y-3">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
-              Ready to Inspect Your System Assets?
-            </h2>
-            <p className="text-xs sm:text-sm text-zinc-400 max-w-lg mx-auto leading-relaxed">
-              Initialize a complete forensic node evaluation. Map rendering latency, schema parameters, and indexing dropouts across all discovery networks.
-            </p>
-          </div>
-          
-          {/* Futuristic Magnetic Shimmer Button Assembly */}
-          <div className="pt-2">
-            <Link 
-              href="/contact" 
-              className="relative group inline-flex items-center gap-3 px-8 py-4.5 bg-zinc-950 border border-purple-500/30 rounded-xl text-white font-bold text-xs uppercase tracking-widest transition-all duration-500 hover:border-purple-500 hover:shadow-[0_0_35px_rgba(168,85,247,0.25)] overflow-hidden active:scale-[0.98]"
-            >
-              {/* Shimmer Overlay Strip */}
-              <div className="absolute top-0 h-full w-1/3 transform -skew-x-12 bg-gradient-to-r from-transparent via-white/[0.08] to-transparent -left-full group-hover:animate-shimmer-sweep" />
-              
-              {/* Active Online Radar Beacon Indicator */}
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
-              </span>
-              
-              <span className="tracking-[0.15em]">Access Diagnostic Form Matrix</span>
-              <ArrowUpRight className="w-4 h-4 text-purple-400 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
-            </Link>
-          </div>
-        </div>
-      </section>
 
-      {/* 3. WHAT IS SEARCH VISIBILITY? */}
-      <section className="py-24 border-t border-white/5 bg-[#050505] relative">
+      {/* 2. WHAT IS SEARCH VISIBILITY? */}
+      <section className="py-24 border-t border-white/5 bg-[#050505] relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
@@ -183,7 +136,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. THE FUTURE OF SEARCH IS ALREADY HERE */}
+      {/* 3. THE FUTURE OF SEARCH IS ALREADY HERE */}
       <section className="py-24 bg-[#111111]/30 border-y border-white/5 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           <div className="text-center max-w-3xl mx-auto space-y-4">
@@ -217,7 +170,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. SOLUTIONS & PRICING */}
+      {/* 4. SOLUTIONS & PRICING */}
       <section className="py-24 bg-[#050505] relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           <div className="text-center max-w-3xl mx-auto space-y-4">
@@ -282,7 +235,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. WHY CHOOSE ELEVATE SEARCH */}
+      {/* 5. WHY CHOOSE ELEVATE SEARCH */}
       <section className="py-24 bg-[#111111]/20 border-t border-white/5 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           <div className="text-center max-w-2xl mx-auto space-y-4">
@@ -304,7 +257,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. HOW WE WORK (PROCESS) */}
+      {/* 6. HOW WE WORK (PROCESS) */}
       <section className="py-24 bg-[#050505] relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           <div className="text-center max-w-2xl mx-auto space-y-4">
@@ -327,7 +280,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 8. FAQ */}
+      {/* 7. FAQ */}
       <section className="py-24 bg-[#111111]/30 border-t border-white/5 relative">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="text-center space-y-4">
@@ -364,7 +317,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 9. LATEST INSIGHTS */}
+      {/* 8. LATEST INSIGHTS */}
       <section className="py-24 bg-[#050505] relative border-b border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
@@ -396,14 +349,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 10. MINIMAL CONTACT CTA */}
-      <section className="py-20 relative bg-[#050505] text-center">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 9. FINAL CLEAN CLOSING CTA LANDING HUB */}
+      <section className="py-24 relative bg-[#050505] text-center border-t border-white/[0.02]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+          <h3 className="text-2xl font-bold text-white">Ready to Maximize Your Search Real Estate?</h3>
           <Link 
             href="/contact" 
-            className="px-10 py-5 rounded-xl text-sm font-bold purple-gradient text-white shadow-lg shadow-[#8B5CF6]/10 inline-flex items-center gap-2 hover:scale-[1.02] active:scale-[0.98] transition-transform"
+            className="px-10 py-5 rounded-xl text-sm font-bold purple-gradient text-white shadow-lg shadow-[#8B5CF6]/10 inline-flex items-center gap-2 hover:scale-[1.02] active:scale-[0.98] transition-transform uppercase tracking-wider text-xs"
           >
-            Get Free Visibility Audit <ArrowUpRight className="w-4 h-4" />
+            Launch Free Visibility Audit <ArrowUpRight className="w-4 h-4" />
           </Link>
         </div>
       </section>
