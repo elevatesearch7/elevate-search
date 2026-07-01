@@ -7,7 +7,6 @@ import { Menu, X, ArrowUpRight } from 'lucide-react';
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Unified global routing configurations
   const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
@@ -24,20 +23,29 @@ export default function Navbar() {
           
           {/* 1. BRAND IDENTITY LOGO NODE */}
           <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center gap-2.5 group">
-              {/* Your Original Circular Image Logo Asset */}
-              <img 
-                src="/logo.png" 
-                alt="Elevate Search Logo" 
-                className="w-9 h-9 rounded-full object-contain"
-                onError={(e) => {
-                  // Fallback to check common names if logo.png isn't matching
-                  const target = e.target as HTMLImageElement;
-                  if (target.src.endsWith('/logo.png')) {
-                    target.src = '/logo.svg'; // Tries vector option next
-                  }
-                }}
-              />
+            <Link href="/" className="flex items-center gap-3 group">
+              
+              {/* Resilient Premium Inline SVG Icon Framework */}
+              <div className="relative w-9 h-9 rounded-full bg-zinc-950 border border-white/10 flex items-center justify-center overflow-hidden shadow-[0_0_15px_rgba(168,85,247,0.1)] group-hover:border-purple-500/40 group-hover:shadow-[0_0_20px_rgba(168,85,247,0.25)] transition-all duration-300">
+                <svg 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  className="w-5 h-5 text-cyan-400 group-hover:text-purple-400 transition-colors duration-300"
+                  stroke="currentColor" 
+                  strokeWidth="2.5" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                >
+                  {/* Search Optimization Circle Loop */}
+                  <circle cx="11" cy="11" r="5" className="stroke-purple-400 group-hover:stroke-cyan-400 transition-colors duration-300" />
+                  {/* Lens Node Shaft handle */}
+                  <path d="M15 15l5.5 5.5" />
+                  {/* Integrated Ascending Arrowhead */}
+                  <path d="M14 7h3v3" />
+                  <path d="M11 13l6-6" />
+                </svg>
+                <div className="absolute inset-0 rounded-full border border-white/[0.03] pointer-events-none" />
+              </div>
               
               {/* Fancy Cyberpunk Logo Typography */}
               <span className="font-black text-xl sm:text-2xl tracking-tight select-none">
@@ -61,7 +69,7 @@ export default function Navbar() {
               >
                 {link.name}
               </Link>
-            ))}
+                ))}
           </div>
 
           {/* 3. DESKTOP ACTION CTA BUTTON GRID */}
