@@ -114,7 +114,7 @@ export default function PricingPage() {
             {transparentItems.map((item, idx) => (
               <div key={idx} className="bg-[#111111]/50 p-5 rounded-xl border border-white/5 space-y-2">
                 <h4 className="text-xs font-bold text-white flex items-start gap-1.5"><HelpCircle className="w-3.5 h-3.5 text-[#A855F7] flex-shrink-0 mt-0.5" /> {item.q}</h4>
-                <p className="text-xs text-[#A1A1AA] leading-relaxed">{item.a}</p>
+                <p className="text-xs text-[#A1A1AA] leading-relaxed">{ item.a}</p>
               </div>
             ))}
           </div>
