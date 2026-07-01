@@ -2,20 +2,18 @@ import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
   try {
-    // 1. Safely parse incoming data packages
     const data = await req.json().catch(() => null);
     if (!data) {
       return NextResponse.json({ success: false, error: "Empty payload body" }, { status: 400 });
     }
 
-    // 2. Destructure data properties with safe fallbacks
     const name = data.name || "New Lead";
     const phone = data.phone || "Not provided";
     const email = data.email || "Not provided";
     const website = data.website || "Not provided";
     const message = data.message || "No message left.";
 
-    // 3. Directly transmit clean payload arrays straight to Web3Forms
+    // Securely forwarding clean arrays to Web3Forms using your active key
     const externalResponse = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: {
@@ -23,7 +21,7 @@ export async function POST(req: Request) {
         'Accept': 'application/json'
       },
       body: JSON.stringify({
-        access_key: "YOUR_ACTUAL_WEB3FORMS_KEY_HERE", // <-- Ensure your active key is pasted here!
+        access_key: "00935dde-ee3f-4ed7-bdf7-168303be0ff9", 
         subject: `🚨 New Elevate Search Lead: ${name}`,
         from_name: "Elevate AI Terminal",
         
