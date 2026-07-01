@@ -7,13 +7,14 @@ export async function POST(req: Request) {
       return NextResponse.json({ success: false, error: "Empty payload body" }, { status: 400 });
     }
 
+    // Extract the raw clean data fields from the frontend
     const name = data.name || "New Lead";
     const phone = data.phone || "Not provided";
     const email = data.email || "Not provided";
     const website = data.website || "Not provided";
     const message = data.message || "No message left.";
 
-    // Securely forwarding clean arrays to Web3Forms using your active key
+    // Hyper-standardized payload layout matching Web3Forms specifications exactly
     const externalResponse = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: {
@@ -24,12 +25,11 @@ export async function POST(req: Request) {
         access_key: "00935dde-ee3f-4ed7-bdf7-168303be0ff9", 
         subject: `🚨 New Elevate Search Lead: ${name}`,
         from_name: "Elevate AI Terminal",
-        
-        "Client Name": name,
-        "Phone / WhatsApp": phone,
-        "Email Address": email,
-        "Target Website Link": website,
-        "Operational Message": message
+        name: name,
+        email: email,
+        phone: phone,
+        website: website,
+        message: message
       })
     });
 
