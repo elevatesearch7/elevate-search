@@ -62,19 +62,28 @@ export default function TerminalAuditForm() {
     setStatus('submitting');
 
     try {
-      const apiResponse = await fetch('/api/audit', {
+      // Direct browser-to-API link passing native origin headers
+      const apiResponse = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
         body: JSON.stringify({
+          access_key: "00935dde-ee3f-4ed7-bdf7-168303be0ff9",
+          subject: `🚨 New Elevate Search Lead: ${formData.name.trim()}`,
+          from_name: "Elevate AI Terminal",
           name: formData.name.trim(),
-          phone: formData.phone.trim(),
           email: formData.email.trim(),
+          phone: formData.phone.trim(),
           website: cleanedWebsite,
           message: formData.message.trim()
         }),
       });
 
-      if (apiResponse.ok) {
+      const resultData = await apiResponse.json();
+
+      if (apiResponse.ok && resultData.success) {
         setStatus('success');
         setFormData({ name: '', phone: '', email: '', website: '', message: '' });
       } else {
@@ -192,7 +201,7 @@ export default function TerminalAuditForm() {
         </form>
       )}
 
-      {/* Footer Disclaimer */}
+      {/* Disclaimer */}
       <div className="p-4 bg-[#0A0A0A] rounded-xl border border-white/5 flex items-start gap-3">
         <div className="mt-0.5 text-purple-500">
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
