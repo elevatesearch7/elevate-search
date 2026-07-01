@@ -62,7 +62,6 @@ export default function TerminalAuditForm() {
     setStatus('submitting');
 
     try {
-      // Fire the processed dataset directly at our newly created backend API route
       const apiResponse = await fetch('/api/audit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -104,12 +103,9 @@ export default function TerminalAuditForm() {
         </div>
       ) : (
         <form onSubmit={handleFormSubmit} className="space-y-5">
-          
-          {/* 1. Client Name Input Panel */}
+          {/* 1. Client Name */}
           <div className="space-y-2">
-            <label className="block text-xs font-bold text-[#A1A1AA] tracking-wider uppercase">
-              Client Name *
-            </label>
+            <label className="block text-xs font-bold text-[#A1A1AA] tracking-wider uppercase">Client Name *</label>
             <input
               type="text"
               name="name"
@@ -121,27 +117,23 @@ export default function TerminalAuditForm() {
             />
           </div>
 
-          {/* 2. Phone / WhatsApp Input Panel */}
+          {/* 2. Phone / WhatsApp */}
           <div className="space-y-2">
-            <label className="block text-xs font-bold text-[#A1A1AA] tracking-wider uppercase">
-              Phone Number or WhatsApp Number *
-            </label>
+            <label className="block text-xs font-bold text-[#A1A1AA] tracking-wider uppercase">Phone Number or WhatsApp Number *</label>
             <input
               type="tel"
               name="phone"
               required
               value={formData.phone}
               onChange={handleInputChange}
-              placeholder="e.g., +91 98765 43210 (To receive your report)"
+              placeholder="e.g., +91 98765 43210"
               className="w-full px-4 py-3 bg-black border border-white/10 focus:border-purple-500 rounded-xl text-sm text-white focus:outline-none transition"
             />
           </div>
 
-          {/* 3. Contact Email Input Panel */}
+          {/* 3. Mail ID */}
           <div className="space-y-2">
-            <label className="block text-xs font-bold text-[#A1A1AA] tracking-wider uppercase">
-              Mail ID *
-            </label>
+            <label className="block text-xs font-bold text-[#A1A1AA] tracking-wider uppercase">Mail ID *</label>
             <input
               type="email"
               name="email"
@@ -153,11 +145,9 @@ export default function TerminalAuditForm() {
             />
           </div>
 
-          {/* 4. Current Target Website URL Panel (Fixed to type="text") */}
+          {/* 4. Current Target Website URL */}
           <div className="space-y-2">
-            <label className="block text-xs font-bold text-[#A1A1AA] tracking-wider uppercase">
-              Current Target Website URL *
-            </label>
+            <label className="block text-xs font-bold text-[#A1A1AA] tracking-wider uppercase">Current Target Website URL *</label>
             <input
               type="text"
               name="website"
@@ -169,16 +159,12 @@ export default function TerminalAuditForm() {
                 validationError ? 'border-red-500 focus:border-red-500' : 'border-purple-500/30 focus:border-purple-500'
               }`}
             />
-            {validationError && (
-              <p className="text-xs font-semibold text-red-400 mt-1">{validationError}</p>
-            )}
+            {validationError && <p className="text-xs font-semibold text-red-400 mt-1">{validationError}</p>}
           </div>
 
-          {/* 5. Operational Target Message Box Panel */}
+          {/* 5. Message Box */}
           <div className="space-y-2">
-            <label className="block text-xs font-bold text-[#A1A1AA] tracking-wider uppercase">
-              Operational Target Message
-            </label>
+            <label className="block text-xs font-bold text-[#A1A1AA] tracking-wider uppercase">Operational Target Message</label>
             <textarea
               name="message"
               rows={4}
@@ -189,14 +175,13 @@ export default function TerminalAuditForm() {
             />
           </div>
 
-          {/* Error Warning Banner */}
+          {/* Error Banner */}
           {status === 'error' && (
             <p className="text-xs text-red-400 text-center bg-red-500/10 p-3 rounded-xl border border-red-500/20">
               Transmission error. Please refresh or contact your platform operator directly over WhatsApp.
             </p>
           )}
 
-          {/* Form Submit Trigger Button */}
           <button
             type="submit"
             disabled={status === 'submitting'}
@@ -207,7 +192,7 @@ export default function TerminalAuditForm() {
         </form>
       )}
 
-      {/* Compliance Footer Shield */}
+      {/* Footer Disclaimer */}
       <div className="p-4 bg-[#0A0A0A] rounded-xl border border-white/5 flex items-start gap-3">
         <div className="mt-0.5 text-purple-500">
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

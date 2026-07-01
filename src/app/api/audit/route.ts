@@ -2,20 +2,18 @@ import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
   try {
-    // 1. Safely parse the incoming JSON data to avoid crash loops
     const body = await req.json().catch(() => null);
     if (!body) {
-      return NextResponse.json({ success: false, error: "Missing or malformed data payload" }, { status: 400 });
+      return NextResponse.json({ success: false, error: "Malformed payload data structure" }, { status: 400 });
     }
 
     const { name, phone, email, website, message } = body;
 
-    // 2. Safeguard the phone formatting logic so it NEVER throws a 500 crash
     const safePhone = typeof phone === 'string' ? phone : '';
     const cleanDigits = safePhone.replace(/\D/g, '');
-    const whatsappLink = cleanDigits ? `https://wa.me/${cleanDigits}` : 'No valid phone number provided';
+    const whatsappLink = cleanDigits ? `https://wa.me/${cleanDigits}` : 'No phone provided';
 
-    // 3. Connect directly to the Web3Forms secure email delivery network
+    // Establish link with Web3Forms secure gateway
     const response = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: {
@@ -23,8 +21,8 @@ export async function POST(req: Request) {
         'Accept': 'application/json'
       },
       body: JSON.stringify({
-        access_key: "00935dde-ee3f-4ed7-bdf7-168303be0ff9", // <-- Make sure your real key is pasted here!
-        subject: `🚨 New Elevate Search Lead: ${name || 'New Client'}`,
+        access_key: "YOUR_ACTUAL_WEB3FORMS_KEY_HERE", // <-- Double-check your key is pasted here perfectly!
+        subject: `🚨 New Elevate Search Lead: ${name || 'New Lead'}`,
         from_name: "Elevate AI Terminal",
         
         "Client Name": name || "Not provided",
@@ -36,20 +34,34 @@ export async function POST(req: Request) {
       })
     });
 
-    const data = await response.json();
+    // Read response safely as raw text first to block unexpected formatting crashes
+    const rawText = await response.text();
+    let responseData;
+    
+    try {
+      responseData = JSON.parse(rawText);
+    } catch {
+      return NextResponse.json({ 
+        success: false, 
+        error: "External API did not return standard JSON format data structure",
+        rawBody: rawText.substring(0, 150)
+      }, { status: 400 });
+    }
 
-    if (data.success) {
+    if (response.ok && responseData.success) {
       return NextResponse.json({ success: true });
     } else {
-      return NextResponse.json({ success: false, error: data.message }, { status: 400 });
+      return NextResponse.json({ 
+        success: false, 
+        error: responseData.message || "Gateway access credentials rejected" 
+      }, { status: 400 });
     }
 
   } catch (error: any) {
-    // 4. If a crash happens, output the exact reason so it displays in your browser Network tab
     return NextResponse.json({ 
       success: false, 
-      error: "Internal Server Exception Handler", 
-      message: error?.message || String(error) 
+      error: "Internal Exception Intercepted", 
+      details: error?.message || String(error) 
     }, { status: 500 });
   }
 }
