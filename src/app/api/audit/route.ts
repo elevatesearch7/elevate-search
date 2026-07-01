@@ -2,66 +2,60 @@ import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
   try {
-    const body = await req.json().catch(() => null);
-    if (!body) {
-      return NextResponse.json({ success: false, error: "Malformed payload data structure" }, { status: 400 });
+    // 1. Safely parse incoming data packages
+    const data = await req.json().catch(() => null);
+    if (!data) {
+      return NextResponse.json({ success: false, error: "Empty payload body" }, { status: 400 });
     }
 
-    const { name, phone, email, website, message } = body;
+    // 2. Destructure data properties with safe fallbacks
+    const name = data.name || "New Lead";
+    const phone = data.phone || "Not provided";
+    const email = data.email || "Not provided";
+    const website = data.website || "Not provided";
+    const message = data.message || "No message left.";
 
-    const safePhone = typeof phone === 'string' ? phone : '';
-    const cleanDigits = safePhone.replace(/\D/g, '');
-    const whatsappLink = cleanDigits ? `https://wa.me/${cleanDigits}` : 'No phone provided';
-
-    // Establish link with Web3Forms secure gateway
-    const response = await fetch('https://api.web3forms.com/submit', {
+    // 3. Directly transmit clean payload arrays straight to Web3Forms
+    const externalResponse = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
       body: JSON.stringify({
-        access_key: "YOUR_ACTUAL_WEB3FORMS_KEY_HERE", // <-- Double-check your key is pasted here perfectly!
-        subject: `🚨 New Elevate Search Lead: ${name || 'New Lead'}`,
+        access_key: "YOUR_ACTUAL_WEB3FORMS_KEY_HERE", // <-- Ensure your active key is pasted here!
+        subject: `🚨 New Elevate Search Lead: ${name}`,
         from_name: "Elevate AI Terminal",
         
-        "Client Name": name || "Not provided",
-        "WhatsApp Link": whatsappLink,
-        "Phone Provided": safePhone || "Not provided",
-        "Email Address": email || "Not provided",
-        "Target Website": website || "Not provided",
-        "Operational Message": message || "No custom message provided."
+        "Client Name": name,
+        "Phone / WhatsApp": phone,
+        "Email Address": email,
+        "Target Website Link": website,
+        "Operational Message": message
       })
     });
 
-    // Read response safely as raw text first to block unexpected formatting crashes
-    const rawText = await response.text();
-    let responseData;
+    const resultText = await externalResponse.text();
+    let parsedResult;
     
     try {
-      responseData = JSON.parse(rawText);
+      parsedResult = JSON.parse(resultText);
     } catch {
-      return NextResponse.json({ 
-        success: false, 
-        error: "External API did not return standard JSON format data structure",
-        rawBody: rawText.substring(0, 150)
-      }, { status: 400 });
+      return NextResponse.json({ success: false, error: "Bad gateway string mapping" }, { status: 400 });
     }
 
-    if (response.ok && responseData.success) {
+    if (externalResponse.ok && parsedResult.success) {
       return NextResponse.json({ success: true });
     } else {
-      return NextResponse.json({ 
-        success: false, 
-        error: responseData.message || "Gateway access credentials rejected" 
-      }, { status: 400 });
+      return NextResponse.json({ success: false, error: parsedResult.message || "Key verification refused" }, { status: 400 });
     }
 
-  } catch (error: any) {
+  } catch (serverError: any) {
+    console.error("Intercepted server crash loop:", serverError);
     return NextResponse.json({ 
       success: false, 
-      error: "Internal Exception Intercepted", 
-      details: error?.message || String(error) 
+      error: "Internal runtime failure protection layer trigger",
+      details: serverError?.message || String(serverError)
     }, { status: 500 });
   }
 }
