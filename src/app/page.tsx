@@ -8,8 +8,10 @@ import {
   Mic, CheckCircle2, Eye, Compass, Layers, ChevronDown
 } from 'lucide-react';
 import SchemaMarkup from "@/components/SchemaMarkup";
+import FuturisticHero from '@/components/FuturisticHero';
+import TerminalAuditForm from '@/components/AuditForm';
 
-export default function HomePage() {
+export default function Home() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
   const futureCards = [
@@ -87,59 +89,29 @@ export default function HomePage() {
   };
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full bg-black min-h-screen">
       <SchemaMarkup type="FAQPage" data={faqSchemaData} />
 
-      {/* SECTION 1: HERO */}
-      <section className="relative min-h-[90vh] flex items-center justify-center pt-24 pb-16 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-glow opacity-40 pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-8">
+      {/* 1. CINEMATIC SCIFI HERO & BENTO GRID DECK */}
+      <FuturisticHero />
+      
+      {/* 2. LIVE LEAD CAPTURE AUDIT TERMINAL SECTION */}
+      <section className="py-20 bg-black relative z-10 border-t border-white/[0.03]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center space-y-3 mb-12 px-4">
+            <h2 className="text-3xl font-extrabold text-white tracking-tight">
+              Connect With Our Technical Team
+            </h2>
+            <p className="text-xs text-zinc-400 max-w-sm mx-auto leading-relaxed">
+              Ready to patch your system visibility dropouts? Book a manual roadmap audit below.
+            </p>
+          </div>
           
-          <motion.div 
-            initial={{ opacity: 0, y: 15 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#111111] border border-white/10 text-xs text-[#A1A1AA] font-medium"
-          >
-            <Sparkles className="w-3.5 h-3.5 text-[#A855F7]" />
-            The Next Generation of Visibility Ecosystems
-          </motion.div>
-
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.1] max-w-5xl mx-auto"
-          >
-            Built for Modern <span className="bg-gradient-to-r from-white via-[#A1A1AA] to-[#8B5CF6] bg-clip-text text-transparent">Search Visibility.</span>
-          </motion.h1>
-
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-base sm:text-xl text-[#A1A1AA] max-w-3xl mx-auto leading-relaxed"
-          >
-            Elevate Search helps businesses improve visibility across Google Search, Google Maps, and emerging AI-powered search experiences.
-          </motion.p>
-
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
-          >
-            <Link href="/contact" className="w-full sm:w-auto px-8 py-4 rounded-xl text-sm font-semibold purple-gradient text-white transition-transform hover:scale-[1.02] active:scale-[0.98] shadow-[0_4px_20px_rgba(139,92,246,0.3)] text-center">
-              Get Free Visibility Audit
-            </Link>
-            <Link href="/solutions" className="w-full sm:w-auto px-8 py-4 rounded-xl text-sm font-semibold bg-[#111111] text-white border border-white/10 hover:bg-white/5 transition-colors text-center">
-              Explore Solutions
-            </Link>
-          </motion.div>
+          <TerminalAuditForm />
         </div>
       </section>
 
-      {/* SECTION 2: WHAT IS SEARCH VISIBILITY? */}
+      {/* 3. WHAT IS SEARCH VISIBILITY? */}
       <section className="py-24 border-t border-white/5 bg-[#050505] relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -181,7 +153,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 3: THE FUTURE OF SEARCH IS ALREADY HERE */}
+      {/* 4. THE FUTURE OF SEARCH IS ALREADY HERE */}
       <section className="py-24 bg-[#111111]/30 border-y border-white/5 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           <div className="text-center max-w-3xl mx-auto space-y-4">
@@ -215,7 +187,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 4 & 5: SOLUTIONS & PRICING */}
+      {/* 5. SOLUTIONS & PRICING */}
       <section className="py-24 bg-[#050505] relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           <div className="text-center max-w-3xl mx-auto space-y-4">
@@ -280,7 +252,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 6: WHY CHOOSE ELEVATE SEARCH */}
+      {/* 6. WHY CHOOSE ELEVATE SEARCH */}
       <section className="py-24 bg-[#111111]/20 border-t border-white/5 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           <div className="text-center max-w-2xl mx-auto space-y-4">
@@ -302,7 +274,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 7: HOW WE WORK (PROCESS) */}
+      {/* 7. HOW WE WORK (PROCESS) */}
       <section className="py-24 bg-[#050505] relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           <div className="text-center max-w-2xl mx-auto space-y-4">
@@ -325,7 +297,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 8: FAQ */}
+      {/* 8. FAQ */}
       <section className="py-24 bg-[#111111]/30 border-t border-white/5 relative">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="text-center space-y-4">
@@ -362,7 +334,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 9: LATEST INSIGHTS */}
+      {/* 9. LATEST INSIGHTS */}
       <section className="py-24 bg-[#050505] relative border-b border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
@@ -386,7 +358,7 @@ export default function HomePage() {
                 </div>
                 <div className="flex items-center justify-between text-[11px] text-[#A1A1AA] pt-6 mt-6 border-t border-white/5">
                   <span>{ins.date}</span>
-                  <span>5 min read</span>
+                  <span>{ins.readTime}</span>
                 </div>
               </div>
             ))}
@@ -394,7 +366,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* UPDATED SECTION 10: MINIMAL CONTACT CTA (No descriptive About-style clutter) */}
+      {/* 10. MINIMAL CONTACT CTA */}
       <section className="py-20 relative bg-[#050505] text-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link 
