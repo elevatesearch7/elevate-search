@@ -5,11 +5,10 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { 
   ArrowUpRight, Search, MapPin, Cpu, MessageSquare, Sparkles, 
-  Mic, CheckCircle2, Eye, Compass, Layers, ChevronDown
+  Mic, CheckCircle2, Eye, Compass, Layers, ChevronDown, Terminal
 } from 'lucide-react';
 import SchemaMarkup from "@/components/SchemaMarkup";
 import FuturisticHero from '@/components/FuturisticHero';
-import TerminalAuditForm from '@/components/AuditForm';
 
 export default function Home() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
@@ -89,25 +88,56 @@ export default function Home() {
   };
 
   return (
-    <div className="relative w-full bg-black min-h-screen">
+    <div className="relative w-full bg-black min-h-screen selection:bg-purple-500/30 selection:text-white">
       <SchemaMarkup type="FAQPage" data={faqSchemaData} />
+      
+      {/* Dynamic Keyframe Shimmer Animations Stylesheet Inject */}
+      <style>{`
+        @keyframes sweep {
+          0% { left: -100%; }
+          100% { left: 200%; }
+        }
+        .animate-shimmer-sweep {
+          animation: sweep 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+        }
+      `}</style>
 
       {/* 1. CINEMATIC SCIFI HERO & BENTO GRID DECK */}
       <FuturisticHero />
       
-      {/* 2. LIVE LEAD CAPTURE AUDIT TERMINAL SECTION */}
-      <section className="py-20 bg-black relative z-10 border-t border-white/[0.03]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-3 mb-12 px-4">
-            <h2 className="text-3xl font-extrabold text-white tracking-tight">
-              Connect With Our Technical Team
+      {/* 2. HIGH-TECH EYE-CATCHING CTA BRIDGE DECK (Replaces full form layout) */}
+      <section className="py-24 bg-black relative z-10 overflow-hidden border-t border-white/[0.03]">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-purple-600/5 rounded-full filter blur-[100px] pointer-events-none mix-blend-screen animate-pulse" />
+        
+        <div className="max-w-4xl mx-auto px-4 text-center relative z-10 space-y-8">
+          <div className="space-y-3">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
+              Ready to Inspect Your System Assets?
             </h2>
-            <p className="text-xs text-zinc-400 max-w-sm mx-auto leading-relaxed">
-              Ready to patch your system visibility dropouts? Book a manual roadmap audit below.
+            <p className="text-xs sm:text-sm text-zinc-400 max-w-lg mx-auto leading-relaxed">
+              Initialize a complete forensic node evaluation. Map rendering latency, schema parameters, and indexing dropouts across all discovery networks.
             </p>
           </div>
           
-          <TerminalAuditForm />
+          {/* Futuristic Magnetic Shimmer Button Assembly */}
+          <div className="pt-2">
+            <Link 
+              href="/contact" 
+              className="relative group inline-flex items-center gap-3 px-8 py-4.5 bg-zinc-950 border border-purple-500/30 rounded-xl text-white font-bold text-xs uppercase tracking-widest transition-all duration-500 hover:border-purple-500 hover:shadow-[0_0_35px_rgba(168,85,247,0.25)] overflow-hidden active:scale-[0.98]"
+            >
+              {/* Shimmer Overlay Strip */}
+              <div className="absolute top-0 h-full w-1/3 transform -skew-x-12 bg-gradient-to-r from-transparent via-white/[0.08] to-transparent -left-full group-hover:animate-shimmer-sweep" />
+              
+              {/* Active Online Radar Beacon Indicator */}
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
+              </span>
+              
+              <span className="tracking-[0.15em]">Access Diagnostic Form Matrix</span>
+              <ArrowUpRight className="w-4 h-4 text-purple-400 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+            </Link>
+          </div>
         </div>
       </section>
 
