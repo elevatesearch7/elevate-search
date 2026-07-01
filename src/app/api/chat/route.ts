@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-// Explicitly define the internal data structures to pass strict type lint validation checks
+// Strict type contracts to pass Vercel development linter compilation runs smoothly
 interface GeminiPart {
   text?: string;
 }
@@ -22,7 +22,7 @@ export async function POST(req: Request) {
   try {
     const { message } = await req.json();
 
-    const systemInstruction = `You are the elite, ultra-intelligent AI Visibility Assistant running natively on the Elevate Search platform. 
+    const systemInstructionText = `You are the elite, ultra-intelligent AI Visibility Assistant running natively on the Elevate Search platform. 
     Your objective is to consult potential clients fluidly on Website SEO, Google Maps Matrix positioning (GEO), and Answer Engine Optimization (AEO).
 
     Core Corporate Knowledge Parameters:
@@ -35,29 +35,36 @@ export async function POST(req: Request) {
     - Official Direct Channels: Email is elevatesearch7@gmail.com, Voice line is 8850286037.
 
     Operational Rules:
-    - Keep answers conversational, crisp, confident, and professional. Avoid long blocks of text.
-    - Use clear, plain business terms rather than dense marketing buzzwords.`;
+    - Keep answers conversational, crisp, confident, and professional.
+    - Use clear, plain business terms rather than dense marketing buzzwords.
+    - CRITICAL FORMATTING RULE: Return your entire response as a single continuous paragraph of clean, plain text. Do NOT use any line breaks (\\n), bullet points, bold markdown (**), or special symbols. Ensure your sentences are completely finished and never cut off mid-thought.`;
 
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
       return NextResponse.json({ text: "System Configuration Notice: GEMINI_API_KEY environment variable is currently missing from your host dashboard setup." });
     }
 
-    // Modernized destination mapping targeting the stable active generation core
-    const apiResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${apiKey}`, {
+    // Fixed: Restructured payload to use the correct root-level systemInstruction parameter block
+    const apiResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         contents: [
-          { role: 'user', parts: [{ text: `${systemInstruction}\n\nClient Input Query: "${message}"\n\nAI Diagnostic Response:` }] }
+          { role: 'user', parts: [{ text: message }] }
         ],
-        generationConfig: { maxOutputTokens: 250, temperature: 0.6 }
+        systemInstruction: {
+          parts: [{ text: systemInstructionText }]
+        },
+        generationConfig: { 
+          maxOutputTokens: 800, // Expanded generation boundary room to let thoughts finish fully
+          temperature: 0.6 
+        }
       })
     });
 
     const outputData = (await apiResponse.json()) as GeminiApiResponse;
 
-    // 1. SUCCESS: Return the clean, processed AI response string
+    // 1. SUCCESS: Return the clean AI response text string
     const cleanOutput = outputData.candidates?.[0]?.content?.parts?.[0]?.text;
     if (cleanOutput) {
       return NextResponse.json({ text: cleanOutput });
@@ -70,7 +77,7 @@ export async function POST(req: Request) {
       });
     }
 
-    // 3. DISAGREEMENT FALLBACK: Gracefully redirect clients if backend anomalies surface
+    // 3. ERROR FALLBACK
     if (outputData.error) {
       return NextResponse.json({ text: "Our visibility scanning array is running a quick background adjustment. Feel free to submit your URL via our Free Audit Form for a comprehensive evaluation layout!" });
     }
@@ -78,7 +85,6 @@ export async function POST(req: Request) {
     return NextResponse.json({ text: "I'm experiencing a brief signal loop deviation across the local indexing network. Let's start an immediate text diagnostic over on WhatsApp!" });
 
   } catch {
-    // Parameterless catch block ensures zero unused variable warnings are generated during Vercel's build
     return NextResponse.json({ text: "The local search array is taking longer than expected to process." }, { status: 500 });
   }
 }
