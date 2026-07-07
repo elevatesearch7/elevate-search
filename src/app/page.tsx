@@ -50,10 +50,7 @@ export default function Home() {
     { q: "What is Search Optimization?", a: "Search Optimization is the methodical practice of calibrating public digital assets to ensure clear discovery, processing, and indexing by modern lookup systems." },
     { q: "What is AEO?", a: "AEO (Answer Engine Optimization) focuses on optimizing content frameworks specifically for conversational LLMs like AI Overviews, ChatGPT, and Gemini to use as authoritative source citations." },
     { q: "What is Local SEO?", a: "Local SEO focuses on enhancing discoverability within specific physical operational radii, matching localized intent directly to brick-and-mortar operations." },
-    { q: "Why is Google Business Profile important?", a: "Your Google Business Profile serves as the core physical layout verification layer feeding maps, location filters, and localized transactional lookups." },
-    { q: "How long does SEO take?", a: "Measurable changes typically appear within 3 to 6 months as platforms re-crawl networks, cross-verify entity data, and update historical authority records." },
-    { q: "What is a Website Audit?", a: "A technical evaluation identifying rendering speed issues, broken layout architectures, canonical structure defects, and structural blocks limiting crawlers." },
-    { q: "How much does Search Optimization cost?", a: "Our dedicated targeted frameworks scale from ₹8,000 to ₹20,000 based on scale, with individual audits available between ₹500 and ₹1,000." }
+    { q: "Why is Google Business Profile important?", a: "Your Google Business Profile serves as the core physical layout verification layer feeding maps, location filters, and localized transactional lookups." }
   ];
 
   const insights = [
@@ -70,19 +67,20 @@ export default function Home() {
     }))
   };
 
+  // Structured Framer Motion Variants
   const sectionParent = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.05 } }
   };
 
   const slideLeft = {
-    hidden: { opacity: 0, x: -40, filter: 'blur(4px)' },
-    visible: { opacity: 1, x: 0, filter: 'blur(0px)', transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } }
+    hidden: { opacity: 0, x: -50, filter: 'blur(4px)' },
+    visible: { opacity: 1, x: 0, filter: 'blur(0px)', transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
   };
 
   const slideRight = {
-    hidden: { opacity: 0, x: 40, filter: 'blur(4px)' },
-    visible: { opacity: 1, x: 0, filter: 'blur(0px)', transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } }
+    hidden: { opacity: 0, x: 50, filter: 'blur(4px)' },
+    visible: { opacity: 1, x: 0, filter: 'blur(0px)', transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
   };
 
   const cascadeUp = {
@@ -91,235 +89,235 @@ export default function Home() {
   };
 
   return (
-    <div className="relative w-full min-h-screen overflow-x-hidden selection:bg-purple-500/30 selection:text-white">
+    /* 
+      MASTER SNAP VIEWPORT BOX: 
+      Forces the browser to convert normal mouse wheel parameters into strict full screen presentations.
+    */
+    <div className="w-full h-screen overflow-y-auto snap-y snap-mandatory scroll-smooth bg-[#050505] text-white selection:bg-purple-500/30">
       <SchemaMarkup type="FAQPage" data={faqSchemaData} />
-
       <InteractiveNodes />
 
-      <div className="relative z-10 w-full bg-transparent">
+      {/* SLIDE 1: INTRO HERO GRID TIMELINE */}
+      <div className="w-full min-h-screen snap-start snap-always flex items-center justify-center relative">
         <FuturisticHero />
+      </div>
 
-        {/* CHAPTER 1: Operational Scope Strategy Section */}
-        <motion.section 
-          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={sectionParent}
-          className="py-20 lg:py-24 border-t border-white/[0.04] bg-black/50 backdrop-blur-md relative"
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-              <motion.div variants={slideLeft} className="space-y-4 lg:space-y-6">
-                <h2 className="text-xs font-bold uppercase tracking-widest text-[#8B5CF6]">{t('sec2Badge')}</h2>
-                <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight leading-tight">{t('sec2Title')}</h3>
-                <p className="text-[#A1A1AA] leading-relaxed text-xs sm:text-sm lg:text-base max-w-xl">{t('sec2Desc')}</p>
+      {/* SLIDE 2: OPERATIONAL CORE SECTION */}
+      <motion.section 
+        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.3 }} variants={sectionParent}
+        className="w-full min-h-screen snap-start snap-always flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-black/40 backdrop-blur-md border-t border-white/[0.02]"
+      >
+        <div className="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <motion.div variants={slideLeft} className="space-y-4 lg:space-y-6">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#8B5CF6] block">{t('sec2Badge')}</span>
+            <h3 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">{t('sec2Title')}</h3>
+            <p className="text-[#A1A1AA] leading-relaxed text-xs sm:text-sm lg:text-base max-w-xl">{t('sec2Desc')}</p>
+          </motion.div>
+          
+          <motion.div variants={slideRight} className="bg-zinc-950/60 backdrop-blur-md rounded-2xl border border-white/10 p-6 sm:p-8 relative overflow-hidden space-y-6 shadow-2xl">
+            <h4 className="text-xs font-bold text-[#A855F7] tracking-wider uppercase">Strategic Core Parameters</h4>
+            <div className="space-y-4 lg:space-y-5">
+              <div className="flex gap-3.5 items-start">
+                <div className="p-2 rounded-lg bg-black/60 border border-white/10 text-purple-400 flex-shrink-0"><Eye className="w-4 h-4" /></div>
+                <div>
+                  <h5 className="text-xs sm:text-sm font-semibold text-white mb-0.5">What is it?</h5>
+                  <p className="text-[11px] sm:text-xs text-[#A1A1AA] leading-relaxed">A multi-platform discovery strategy targeting websites, map interfaces, and LLM answer systems.</p>
+                </div>
+              </div>
+              <div className="flex gap-3.5 items-start">
+                <div className="p-2 rounded-lg bg-black/60 border border-white/10 text-indigo-400 flex-shrink-0"><Compass className="w-4 h-4" /></div>
+                <div>
+                  <h5 className="text-xs sm:text-sm font-semibold text-white mb-0.5">Why does it matter?</h5>
+                  <p className="text-[11px] sm:text-xs text-[#A1A1AA] leading-relaxed">Legacy SEO approaches fail to rank on multi-faceted Search Result Pages (SERPs) and AI answers.</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* SLIDE 3: UNIFIED PLATFORMS CORE MATRIX */}
+      <motion.section 
+        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.25 }} variants={sectionParent}
+        className="w-full min-h-screen snap-start snap-always flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black/20 to-zinc-950/10 backdrop-blur-sm border-t border-white/[0.02]"
+      >
+        <div className="max-w-7xl w-full mx-auto space-y-10 lg:space-y-12">
+          <motion.div variants={cascadeUp} className="text-center max-w-2xl mx-auto space-y-2">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#A855F7] block">{t('sec3Badge')}</span>
+            <h3 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight">{t('sec3Title')}</h3>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {futureCards.map((card, idx) => {
+              const IconComp = card.icon;
+              return (
+                <motion.div 
+                  key={idx} variants={cascadeUp}
+                  className="bg-zinc-950/50 backdrop-blur-md border border-white/10 rounded-xl p-5 transition-all duration-500 hover:border-purple-500/40 hover:bg-zinc-900/40 group relative overflow-hidden shadow-xl"
+                >
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="p-2.5 rounded-lg bg-black/60 border border-white/10 text-[#8B5CF6] group-hover:text-purple-400 transition-colors"><IconComp className="w-4 h-4" /></div>
+                    <span className="text-[9px] font-semibold text-[#A855F7] bg-[#A855F7]/10 px-2.5 py-0.5 rounded-full border border-[#A855F7]/20">{card.highlight}</span>
+                  </div>
+                  <h4 className="text-base font-bold text-white mb-1.5">{card.title}</h4>
+                  <p className="text-xs text-[#A1A1AA] leading-relaxed">{card.desc}</p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </motion.section>
+
+      {/* SLIDE 4: SOLUTIONS & PRICING ENGINE */}
+      <motion.section 
+        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.25 }} variants={sectionParent}
+        className="w-full min-h-screen snap-start snap-always flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-black/40 backdrop-blur-md border-t border-white/[0.02]"
+      >
+        <div className="max-w-7xl w-full mx-auto space-y-10 lg:space-y-12">
+          <motion.div variants={cascadeUp} className="text-center max-w-2xl mx-auto space-y-2">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#8B5CF6] block">{t('sec4Badge')}</span>
+            <h3 className="text-2xl sm:text-4xl font-black tracking-tight">{t('sec4Title')}</h3>
+          </motion.div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+            {plans.map((plan, idx) => (
+              <motion.div key={idx} variants={cascadeUp} className={`bg-zinc-950/40 backdrop-blur-xl border rounded-xl p-6 lg:p-8 relative flex flex-col justify-between transition-all duration-500 ${plan.recommended ? 'border-[#8B5CF6] bg-zinc-900/50 lg:scale-105 z-10 shadow-2xl' : 'border-white/10'}`}>
+                <div>
+                  <h4 className="text-lg font-bold text-white mb-1.5">{plan.name}</h4>
+                  <p className="text-xs text-[#A1A1AA] mb-4 min-h-[32px]">{plan.desc}</p>
+                  <div className="text-3xl font-extrabold text-white mb-4">{plan.price}</div>
+                  <div className="h-[1px] bg-white/10 mb-4" />
+                  <ul className="space-y-2 mb-6">
+                    {plan.features.map((feat, fIdx) => (
+                      <li key={fIdx} className="flex items-center gap-2 text-xs text-[#A1A1AA]"><CheckCircle2 className="w-3.5 h-3.5 text-[#8B5CF6] flex-shrink-0" />{feat}</li>
+                    ))}
+                  </ul>
+                </div>
+                <Link href="/contact" className={`w-full py-2.5 rounded-xl text-xs font-semibold text-center transition-all ${plan.recommended ? 'purple-gradient text-white shadow-lg' : 'bg-black/50 text-white border border-white/10'}`}>
+                  Select Framework Plan
+                </Link>
               </motion.div>
-              
-              <motion.div variants={slideRight} className="bg-zinc-950/60 backdrop-blur-md rounded-2xl border border-white/10 p-6 sm:p-8 relative overflow-hidden space-y-6 shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-full blur-3xl pointer-events-none" />
-                <h4 className="text-xs font-bold text-[#A855F7] tracking-wider uppercase">Strategic Core Parameters</h4>
-                <div className="space-y-4 lg:space-y-5">
-                  <div className="flex gap-3.5 items-start">
-                    <div className="p-2 rounded-lg bg-black/60 border border-white/10 text-purple-400 flex-shrink-0"><Eye className="w-4 h-4" /></div>
-                    <div>
-                      <h5 className="text-xs sm:text-sm font-semibold text-white mb-0.5">What is it?</h5>
-                      <p className="text-[11px] sm:text-xs text-[#A1A1AA] leading-relaxed">A multi-platform discovery strategy targeting websites, map interfaces, and LLM answer systems.</p>
-                    </div>
-                  </div>
-                  <div className="flex gap-3.5 items-start">
-                    <div className="p-2 rounded-lg bg-black/60 border border-white/10 text-indigo-400 flex-shrink-0"><Compass className="w-4 h-4" /></div>
-                    <div>
-                      <h5 className="text-xs sm:text-sm font-semibold text-white mb-0.5">Why does it matter?</h5>
-                      <p className="text-[11px] sm:text-xs text-[#A1A1AA] leading-relaxed">Legacy SEO approaches fail to rank on multi-faceted Search Result Pages (SERPs) and AI answers.</p>
-                    </div>
-                  </div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+      {/* SLIDE 5: STRATEGIC DIFFERENCE (WHY CHOOSE US) */}
+      <motion.section 
+        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.25 }} variants={sectionParent}
+        className="w-full min-h-screen snap-start snap-always flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-transparent border-t border-white/[0.02]"
+      >
+        <div className="max-w-7xl w-full mx-auto space-y-12">
+          <motion.div variants={cascadeUp} className="text-center max-w-xl mx-auto space-y-2">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#A855F7] block">The Strategic Difference</span>
+            <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">Why Choose Elevate Search</h3>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5">
+            {valueProps.map((vp, idx) => (
+              <motion.div key={idx} variants={cascadeUp} className="bg-zinc-950/40 backdrop-blur-sm border border-white/5 p-5 rounded-xl space-y-1.5 shadow-lg">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-1 h-5 purple-gradient rounded-full" />
+                  <h4 className="text-sm font-bold text-white">{vp.title}</h4>
+                </div>
+                <p className="text-xs text-[#A1A1AA] leading-relaxed">{vp.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+      {/* SLIDE 6: EXECUTION PIPELINE WORKFLOW */}
+      <motion.section 
+        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.25 }} variants={sectionParent}
+        className="w-full min-h-screen snap-start snap-always flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-black/40 backdrop-blur-md border-t border-white/[0.02]"
+      >
+        <div className="max-w-7xl w-full mx-auto space-y-12">
+          <motion.div variants={cascadeUp} className="text-center max-w-xl mx-auto space-y-2">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#8B5CF6] block">Execution Workflow</span>
+            <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">How We Work</h3>
+          </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 relative">
+            {steps.map((st, idx) => (
+              <motion.div key={idx} variants={cascadeUp} className="bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-5 relative overflow-hidden group shadow-xl">
+                <span className="absolute -top-3 -right-1 text-6xl font-black text-white/5 select-none tracking-tighter">{st.step}</span>
+                <span className="text-[10px] font-bold text-[#8B5CF6] block mb-1.5">{st.step} // Phase</span>
+                <h4 className="text-sm sm:text-base font-bold text-white mb-1.5">{st.name}</h4>
+                <p className="text-xs text-[#A1A1AA] leading-relaxed">{st.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+      {/* SLIDE 7: FAQ KNOWLEDGE HUB */}
+      <motion.section 
+        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.25 }} variants={sectionParent}
+        className="w-full min-h-screen snap-start snap-always flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-transparent border-t border-white/[0.02]"
+      >
+        <div className="max-w-3xl w-full mx-auto space-y-10">
+          <motion.div variants={cascadeUp} className="text-center space-y-2">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#A855F7] block">Information Hub</span>
+            <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">Frequently Asked Questions</h3>
+          </motion.div>
+          <motion.div variants={cascadeUp} className="space-y-3">
+            {faqs.map((faq, idx) => {
+              const isSelected = activeFaq === idx;
+              return (
+                <div key={idx} className="bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden shadow-md">
+                  <button onClick={() => setActiveFaq(isSelected ? null : idx)} className="w-full text-left p-4 flex items-center justify-between text-white font-medium text-xs sm:text-sm focus:outline-none bg-zinc-900/20 hover:bg-zinc-900/40 transition-colors">
+                    <span>{faq.q}</span>
+                    <ChevronDown className={`w-3.5 h-3.5 text-[#A1A1AA] transition-transform duration-300 ${isSelected ? 'transform rotate-180 text-white' : ''}`} />
+                  </button>
+                  <motion.div initial={false} animate={{ height: isSelected ? "auto" : 0, opacity: isSelected ? 1 : 0 }} transition={{ duration: 0.2 }} className="overflow-hidden">
+                    <p className="p-4 text-xs text-[#A1A1AA] leading-relaxed border-t border-white/5 bg-black/20">{faq.a}</p>
+                  </motion.div>
+                </div>
+              );
+            })}
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* SLIDE 8: DATA INTEGRITY INSIGHTS */}
+      <motion.section 
+        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.25 }} variants={sectionParent}
+        className="w-full min-h-screen snap-start snap-always flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-black/40 backdrop-blur-md border-t border-white/[0.02]"
+      >
+        <div className="max-w-7xl w-full mx-auto space-y-10">
+          <div className="space-y-1 text-center lg:text-left">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#8B5CF6] block">Intel & Research</span>
+            <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight">Latest Insights</h3>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {insights.map((ins, idx) => (
+              <motion.div key={idx} variants={cascadeUp} className="bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-5 flex flex-col justify-between group shadow-xl">
+                <div className="space-y-3">
+                  <span className="inline-block text-[9px] font-bold uppercase tracking-wider text-[#A855F7] bg-[#A855F7]/10 px-2.5 py-0.5 rounded-full">{ins.cat}</span>
+                  <h4 className="text-sm font-bold text-white leading-snug group-hover:text-[#8B5CF6] transition-colors">{ins.title}</h4>
+                </div>
+                <div className="flex items-center justify-between text-[10px] text-[#A1A1AA] pt-4 mt-4 border-t border-white/5">
+                  <span>{ins.date}</span>
+                  <span>{ins.readTime}</span>
                 </div>
               </motion.div>
-            </div>
+            ))}
           </div>
-        </motion.section>
+        </div>
+      </motion.section>
 
-        {/* CHAPTER 2: Unified Platforms Grid Section */}
-        <motion.section 
-          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.15 }} variants={sectionParent}
-          className="py-20 lg:py-24 border-t border-white/[0.04] bg-gradient-to-b from-black/20 to-zinc-950/10 backdrop-blur-sm relative"
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 lg:space-y-16">
-            <motion.div variants={cascadeUp} className="text-center max-w-2xl mx-auto space-y-3">
-              <h2 className="text-xs font-bold uppercase tracking-widest text-[#A855F7]">{t('sec3Badge')}</h2>
-              <h3 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">{t('sec3Title')}</h3>
-            </motion.div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
-              {futureCards.map((card, idx) => {
-                const IconComp = card.icon;
-                return (
-                  <motion.div 
-                    key={idx} 
-                    variants={cascadeUp}
-                    className="bg-zinc-950/50 backdrop-blur-md border border-white/10 rounded-xl p-5 lg:p-6 transition-all duration-500 hover:border-purple-500/40 hover:bg-zinc-900/40 group relative overflow-hidden shadow-xl hover:-translate-y-0.5"
-                  >
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="p-2.5 rounded-lg bg-black/60 border border-white/10 text-[#8B5CF6] group-hover:text-purple-400 transition-colors"><IconComp className="w-4 h-4" /></div>
-                      <span className="text-[9px] font-semibold text-[#A855F7] bg-[#A855F7]/10 px-2.5 py-0.5 rounded-full border border-[#A855F7]/20">{card.highlight}</span>
-                    </div>
-                    <h4 className="text-base font-bold text-white mb-1.5">{card.title}</h4>
-                    <p className="text-xs text-[#A1A1AA] leading-relaxed">{card.desc}</p>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Pricing Matrix Deck Section */}
-        <motion.section 
-          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.12 }} variants={sectionParent}
-          className="py-20 lg:py-24 bg-black/40 backdrop-blur-md border-t border-white/[0.04]"
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 lg:space-y-16">
-            <motion.div variants={cascadeUp} className="text-center max-w-2xl mx-auto space-y-3">
-              <h2 className="text-xs font-bold uppercase tracking-widest text-[#8B5CF6]">{t('sec4Badge')}</h2>
-              <h3 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">{t('sec4Title')}</h3>
-            </motion.div>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-start">
-              {plans.map((plan, idx) => (
-                <motion.div key={idx} variants={cascadeUp} className={`bg-zinc-950/40 backdrop-blur-xl border rounded-xl p-6 lg:p-8 relative flex flex-col justify-between transition-all duration-500 ${plan.recommended ? 'border-[#8B5CF6] bg-zinc-900/50 lg:scale-105 z-10 shadow-[0_10px_30px_rgba(139,92,246,0.1)]' : 'border-white/10 hover:border-white/20'}`}>
-                  <div>
-                    <h4 className="text-lg lg:text-xl font-bold text-white mb-1.5">{plan.name}</h4>
-                    <p className="text-xs text-[#A1A1AA] mb-4 min-h-[32px]">{plan.desc}</p>
-                    <div className="text-3xl lg:text-4xl font-extrabold text-white mb-4">{plan.price}</div>
-                    <div className="h-[1px] bg-white/10 mb-4" />
-                    <ul className="space-y-2.5 mb-6">
-                      {plan.features.map((feat, fIdx) => (
-                        <li key={fIdx} className="flex items-center gap-2 text-xs text-[#A1A1AA]"><CheckCircle2 className="w-3.5 h-3.5 text-[#8B5CF6] flex-shrink-0" />{feat}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <Link href="/contact" className={`w-full py-2.5 rounded-xl text-xs font-semibold text-center transition-all ${plan.recommended ? 'purple-gradient text-white shadow-lg' : 'bg-black/50 text-white border border-white/10'}`}>
-                    Select Framework Plan
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Why Choose Elevate Search Section */}
-        <motion.section 
-          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.12 }} variants={sectionParent}
-          className="py-20 lg:py-24 bg-transparent border-t border-white/[0.04]"
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 lg:space-y-16">
-            <motion.div variants={cascadeUp} className="text-center max-w-xl mx-auto space-y-3">
-              <h2 className="text-xs font-bold uppercase tracking-widest text-[#A855F7]">The Strategic Difference</h2>
-              <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">Why Choose Elevate Search</h3>
-            </motion.div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5">
-              {valueProps.map((vp, idx) => (
-                <motion.div key={idx} variants={cascadeUp} className="bg-zinc-950/40 backdrop-blur-sm border border-white/5 p-5 rounded-xl space-y-1.5 shadow-lg hover:border-zinc-800 transition-colors">
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-1 h-5 purple-gradient rounded-full" />
-                    <h4 className="text-sm sm:text-base font-bold text-white">{vp.title}</h4>
-                  </div>
-                  <p className="text-xs text-[#A1A1AA] leading-relaxed">{vp.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Execution Workflow Phase System */}
-        <motion.section 
-          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.12 }} variants={sectionParent}
-          className="py-20 lg:py-24 bg-black/40 backdrop-blur-md border-t border-white/[0.04]"
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 lg:space-y-16">
-            <motion.div variants={cascadeUp} className="text-center max-w-xl mx-auto space-y-3">
-              <h2 className="text-xs font-bold uppercase tracking-widest text-[#8B5CF6]">Execution Workflow</h2>
-              <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">How We Work</h3>
-            </motion.div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 relative">
-              {steps.map((st, idx) => (
-                <motion.div key={idx} variants={cascadeUp} className="bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-5 relative overflow-hidden group shadow-xl">
-                  <span className="absolute -top-3 -right-1 text-6xl font-black text-white/5 select-none tracking-tighter">{st.step}</span>
-                  <span className="text-[10px] font-bold text-[#8B5CF6] block mb-1.5">{st.step} // Phase</span>
-                  <h4 className="text-sm sm:text-base font-bold text-white mb-1.5">{st.name}</h4>
-                  <p className="text-xs text-[#A1A1AA] leading-relaxed">{st.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-
-        {/* FAQ Accordion Hub */}
-        <motion.section 
-          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.12 }} variants={sectionParent}
-          className="py-20 lg:py-24 bg-transparent border-t border-white/[0.04]"
-        >
-          <div className="max-w-3xl mx-auto px-4 space-y-10 lg:space-y-12">
-            <motion.div variants={cascadeUp} className="text-center space-y-3">
-              <h2 className="text-xs font-bold uppercase tracking-widest text-[#A855F7]">Information Hub</h2>
-              <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">Frequently Asked Questions</h3>
-            </motion.div>
-            <motion.div variants={cascadeUp} className="space-y-3">
-              {faqs.map((faq, idx) => {
-                const isSelected = activeFaq === idx;
-                return (
-                  <div key={idx} className="bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden shadow-md">
-                    <button onClick={() => setActiveFaq(isSelected ? null : idx)} className="w-full text-left p-4 sm:p-5 flex items-center justify-between text-white font-medium text-xs sm:text-sm lg:text-base focus:outline-none bg-zinc-900/20 hover:bg-zinc-900/40 transition-colors">
-                      <span>{faq.q}</span>
-                      <ChevronDown className={`w-3.5 h-3.5 text-[#A1A1AA] transition-transform duration-300 ${isSelected ? 'transform rotate-180 text-white' : ''}`} />
-                    </button>
-                    <motion.div initial={false} animate={{ height: isSelected ? "auto" : 0, opacity: isSelected ? 1 : 0 }} transition={{ duration: 0.25 }} className="overflow-hidden">
-                      <p className="p-4 sm:p-5 pt-0 text-xs text-[#A1A1AA] leading-relaxed border-t border-white/5 bg-black/20">{faq.a}</p>
-                    </motion.div>
-                  </div>
-                );
-              })}
-            </motion.div>
-          </div>
-        </motion.section>
-
-        {/* Latest Research Insights Grid */}
-        <motion.section 
-          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.12 }} variants={sectionParent}
-          className="py-20 lg:py-24 bg-black/40 backdrop-blur-md border-y border-white/[0.04]"
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 lg:space-y-12">
-            <div className="space-y-2">
-              <h2 className="text-xs font-bold uppercase tracking-widest text-[#8B5CF6]">Intel & Research</h2>
-              <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight">Latest Insights</h3>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-              {insights.map((ins, idx) => (
-                <motion.div key={idx} variants={cascadeUp} className="bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-5 lg:p-6 flex flex-col justify-between group shadow-xl">
-                  <div className="space-y-3">
-                    <span className="inline-block text-[9px] font-bold uppercase tracking-wider text-[#A855F7] bg-[#A855F7]/10 px-2.5 py-0.5 rounded-full">{ins.cat}</span>
-                    <h4 className="text-sm sm:text-base font-bold text-white leading-snug group-hover:text-[#8B5CF6] transition-colors">{ins.title}</h4>
-                  </div>
-                  <div className="flex items-center justify-between text-[10px] text-[#A1A1AA] pt-4 mt-4 border-t border-white/5">
-                    <span>{ins.date}</span>
-                    <span>{ins.readTime}</span>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Magnetic Physics Anchor CTA Bridge */}
-        <motion.section 
-          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }} variants={cascadeUp}
-          className="py-24 sm:py-32 relative bg-transparent text-center flex flex-col items-center justify-center"
-        >
-          <div className="max-w-4xl mx-auto px-4 space-y-6 sm:space-y-8 flex flex-col items-center">
-            <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-white tracking-tight">Ready to Maximize Your Search Real Estate?</h3>
-            <Magnetic>
-              <Link href="/contact" className="px-8 py-4 sm:px-10 sm:py-5 rounded-xl font-bold purple-gradient text-white shadow-2xl inline-flex items-center gap-3 uppercase tracking-widest text-[10px] sm:text-xs border border-white/10">
-                Launch Free Visibility Audit <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 h-4" />
-              </Link>
-            </Magnetic>
-          </div>
-        </motion.section>
-      </div>
+      {/* SLIDE 9: CLOSING PIPELINE GATEWAY */}
+      <motion.section 
+        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.3 }} variants={cascadeUp}
+        className="w-full min-h-screen snap-start snap-always flex items-center justify-center px-4 text-center bg-transparent border-t border-white/[0.02]"
+      >
+        <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8 flex flex-col items-center">
+          <h3 className="text-xl sm:text-3xl font-black text-white tracking-tight">Ready to Maximize Your Search Real Estate?</h3>
+          <Magnetic>
+            <Link href="/contact" className="px-8 py-4 rounded-xl font-bold purple-gradient text-white shadow-2xl inline-flex items-center gap-3 uppercase tracking-widest text-[10px] sm:text-xs border border-white/10">
+              Launch Free Visibility Audit <ArrowUpRight className="w-3.5 h-3.5" />
+            </Link>
+          </Magnetic>
+        </div>
+      </motion.section>
     </div>
   );
 }
