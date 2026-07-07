@@ -33,17 +33,15 @@ export default function Home() {
     { name: "Complete Search Visibility Solution", price: "₹20,000", desc: "The ultimate unified blueprint maximizing coverage across all modern environments.", features: ["Website Search Audit & Action Plan", "Full Local Map Optimization Pack", "AI Engine Optimization Framework", "Cross-Platform Competitor Strategy", "Ongoing Technical Health Tracking"], recommended: true }
   ];
 
-  // 🛠️ EXPANDED WHY CHOOSE US PARAMS
   const valueProps = [
     { title: "Transparency Over Complexity", desc: "We completely eliminate ambiguous, vanity keyword trackers and vague performance charts. Our technical cell focuses exclusively on trackable spatial real estate share, certified index status, clear organic visibility growth vectors, and real inbound customer client leads." },
     { title: "Engineered For Next-Gen Discovery", desc: "We map engineering workflows directly to live algorithmic trends: Generative AI summary generation (AEO), conversational large language model database text training loops (GEO), vector matching indexing layers, and geocentered map database calibrations." },
     { title: "Education-Driven Strategy", desc: "We reject typical opaque, hidden agency habits. We provide your internal product management and marketing teams with total clarity, deep architectural explanations, clear development code reviews, and detailed technical framework data logs." },
-    { title: "Algorithm-Resilient Architecture", desc: "We build sustainable, high-authority systems designed to withstand volatile core search algorithm drops without ever deploying risky, automated short-term shortcuts or dangerous black-hat networks." },
+    { title: "Algorithm-Resilient Architecture", desc: "We build sustainable, high-authority systems designed to withstand volatile core search algorithm drops without ever deploying risky, automated short-term shortcuts or dangerous black-hat shortcuts." },
     { title: "Elite Technical Specialization", desc: "We specialize where traditional digital marketing shops fail. From complex programmatic schema deployment layers to custom backend server caching optimizations, we address the technical logic that deep engine crawlers prioritize." },
     { title: "Continuous Model Monitoring", desc: "Modern search configurations shift weekly. We constantly run automated diagnostic scanning loops against updating AI lookup arrays and mapping indices to keep your digital parameters pristine." }
   ];
 
-  // 🛠️ DETAILED WORKFLOW PHASES WITH ALL SUB-WORK DETAILS
   const steps = [
     { 
       step: "01", 
@@ -71,7 +69,6 @@ export default function Home() {
     }
   ];
 
-  // 🛠️ ENRICHED FAQ MATRIX FOR MAXIMUM DEPTH
   const faqs = [
     { q: "What is Search Optimization (SEO)?", a: "Search Optimization is the methodical practice of calibrating public digital assets to ensure clear discovery, processing, fast rendering speeds, and pristine schema indexation by modern search crawler algorithms." },
     { q: "What is Answer Engine Optimization (AEO)?", a: "AEO focuses on preparing structured text layouts, logical heading paths, and explicit entity relationships specifically for AI summaries and conversational answer cards like Google's AI Overviews, ensuring your brand serves as their source citation." },
@@ -133,11 +130,11 @@ export default function Home() {
         <div className="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center my-auto">
           <motion.div variants={slideLeft} className="space-y-4">
             <span className="text-xs font-bold uppercase tracking-widest text-[#8B5CF6] block">{t('sec2Badge')}</span>
-            <h3 className="text-2xl sm:text-4xl font-black tracking-tight leading-tight">{t('sec2Title')}</h3>
+            <h3 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">{t('sec2Title')}</h3>
             <p className="text-[#A1A1AA] leading-relaxed text-xs sm:text-sm lg:text-base max-w-xl">{t('sec2Desc')}</p>
           </motion.div>
           
-          <motion.div variants={slideRight} className="bg-zinc-950/60 backdrop-blur-md rounded-2xl border border-white/10 p-6 sm:p-8 relative overflow-hidden space-y-4 shadow-2xl">
+          <motion.div variants={slideRight} className="bg-zinc-950/60 backdrop-blur-md rounded-2xl border border-white/10 p-6 sm:p-8 relative overflow-hidden space-y-6 shadow-2xl">
             <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-full blur-3xl pointer-events-none" />
             <h4 className="text-xs font-bold text-[#A855F7] tracking-wider uppercase">Unified Discovery Framework</h4>
             
@@ -228,7 +225,7 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* SLIDE 5: STRATEGIC DIFFERENCE (Expanded to 6 Highly Substantiated Points) */}
+      {/* SLIDE 5: STRATEGIC DIFFERENCE */}
       <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }} variants={sectionParent}
         className="w-full min-h-screen snap-start snap-always flex flex-col justify-start pt-24 xl:pt-28 pb-12 px-4 sm:px-6 lg:px-8 bg-transparent border-t border-white/[0.02]"
@@ -254,7 +251,7 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* SLIDE 6: EXECUTION PIPELINE WORKFLOW (Enriched with Core Sub-Work Track Metrics) */}
+      {/* SLIDE 6: EXECUTION PIPELINE WORKFLOW */}
       <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }} variants={sectionParent}
         className="w-full min-h-screen snap-start snap-always flex flex-col justify-start pt-24 xl:pt-28 pb-12 px-4 sm:px-6 lg:px-8 bg-black/40 backdrop-blur-md border-t border-white/[0.02]"
@@ -273,7 +270,6 @@ export default function Home() {
                   <h4 className="text-sm font-bold text-white mb-1.5">{st.name}</h4>
                   <p className="text-[11px] text-[#A1A1AA] leading-relaxed mb-3">{st.desc}</p>
                 </div>
-                {/* Clean Sub-Work Tasks Matrix Injection */}
                 <div className="border-t border-white/5 pt-2.5 space-y-1">
                   {st.subTasks.map((task, tIdx) => (
                     <div key={tIdx} className="text-[10px] text-purple-400 flex items-center gap-1.5 font-medium">
@@ -288,7 +284,7 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* SLIDE 7: FAQ KNOWLEDGE HUB (Expanded Deep Technical Database Questions) */}
+      {/* 🛠️ SLIDE 7: FAQ KNOWLEDGE HUB (FIXED: Added utility filters to hide the scroll line completely) */}
       <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }} variants={sectionParent}
         className="w-full min-h-screen snap-start snap-always flex flex-col justify-start pt-24 xl:pt-28 pb-12 px-4 sm:px-6 lg:px-8 bg-transparent border-t border-white/[0.02]"
@@ -298,7 +294,12 @@ export default function Home() {
             <span className="text-xs font-bold uppercase tracking-widest text-[#A855F7] block">Information Hub</span>
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">Frequently Asked Questions</h3>
           </motion.div>
-          <motion.div variants={cascadeUp} className="space-y-2 max-h-[60vh] overflow-y-auto pr-1 select-none">
+          
+          {/* Scrollbar hidden cleanly using arbitrary variants inside class utilities */}
+          <motion.div 
+            variants={cascadeUp} 
+            className="space-y-2 max-h-[60vh] overflow-y-auto pr-1 select-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+          >
             {faqs.map((faq, idx) => {
               const isSelected = activeFaq === idx;
               return (
@@ -325,11 +326,11 @@ export default function Home() {
         <div className="max-w-7xl w-full mx-auto space-y-8 my-auto">
           <div className="space-y-1 text-center">
             <span className="text-xs font-bold uppercase tracking-widest text-[#8B5CF6] block">Intel & Research</span>
-            <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight">Latest Insights</h3>
+            <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">Latest Insights</h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {insights.map((ins, idx) => (
-              <motion.div key={idx} variants={cascadeUp} className="bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-4 flex flex-col justify-between group shadow-xl">
+              <motion.div key={idx} variants={cascadeUp} className="bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-4 sm:p-5 flex flex-col justify-between group shadow-xl">
                 <div className="space-y-2">
                   <span className="inline-block text-[9px] font-bold uppercase tracking-wider text-[#A855F7] bg-[#A855F7]/10 px-2.5 py-0.5 rounded-full">{ins.cat}</span>
                   <h4 className="text-xs sm:text-sm font-bold text-white leading-snug group-hover:text-[#8B5CF6] transition-colors">{ins.title}</h4>
@@ -344,12 +345,11 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* SLIDE 9: PERFECT SINGLE-SLIDE CLOSING CTA + CLEAN WHATSAPP FOOTER EMBED */}
+      {/* SLIDE 9: INTEGRATED CLOSING CTA + BRAND FOOTER PANEL */}
       <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }} variants={sectionParent}
         className="w-full min-h-screen snap-start snap-always flex flex-col justify-between pt-24 xl:pt-28 pb-6 px-4 sm:px-6 lg:px-8 bg-zinc-950/30 border-t border-white/[0.04] relative"
       >
-        {/* Balanced Closing Call to Action Node */}
         <motion.div variants={cascadeUp} className="max-w-4xl mx-auto text-center space-y-4 py-4 my-auto flex flex-col items-center justify-center">
           <h3 className="text-xl sm:text-3xl font-black text-white tracking-tight">Ready to Maximize Your Search Real Estate?</h3>
           <Magnetic>
@@ -359,11 +359,9 @@ export default function Home() {
           </Magnetic>
         </motion.div>
 
-        {/* Clean, Singular Footer Matrix Block With WhatsApp Link Trigger */}
         <motion.div variants={cascadeUp} className="max-w-7xl w-full mx-auto border-t border-white/[0.05] pt-6 mt-auto space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
             
-            {/* Identity Layout */}
             <div className="space-y-3">
               <Link href="/" className="flex items-center gap-2 group">
                 <img src="/logo.webp" alt="Elevate Search Logo" className="w-7 h-7 rounded-full object-cover" />
@@ -377,7 +375,6 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Site Links Menu */}
             <div className="space-y-2">
               <h4 className="text-[10px] font-bold uppercase tracking-widest text-zinc-300">Navigation</h4>
               <ul className="space-y-1 text-[11px] text-zinc-400 font-medium">
@@ -390,7 +387,6 @@ export default function Home() {
               </ul>
             </div>
 
-            {/* Service Array Indices */}
             <div className="space-y-2">
               <h4 className="text-[10px] font-bold uppercase tracking-widest text-zinc-300">Optimizations</h4>
               <ul className="space-y-1.5 text-[11px] text-zinc-400 font-medium">
@@ -401,7 +397,6 @@ export default function Home() {
               </ul>
             </div>
 
-            {/* Comms Framework Handles + Standalone WhatsApp CTA Node */}
             <div className="space-y-2.5">
               <h4 className="text-[10px] font-bold uppercase tracking-widest text-zinc-300">Direct Channels</h4>
               <ul className="space-y-1.5 text-[11px] text-zinc-400 font-medium break-all">
@@ -410,7 +405,6 @@ export default function Home() {
                 <li className="flex items-center gap-2"><Instagram className="w-3.5 h-3.5 text-purple-400 shrink-0" /> <a href="https://instagram.com/elevate_search" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">@elevate_search</a></li>
               </ul>
               
-              {/* Restored Native Premium Green WhatsApp Action Channel */}
               <div className="pt-1">
                 <a 
                   href="https://wa.me/918850286037" 
@@ -428,7 +422,6 @@ export default function Home() {
 
           </div>
 
-          {/* Sub-Copyright Meta Bar */}
           <div className="pt-3 border-t border-white/[0.03] flex flex-col sm:flex-row items-center justify-between gap-2 text-[10px] text-zinc-500 font-medium">
             <p>© {currentYear} Elevate Search. All rights reserved.</p>
             <div className="flex gap-4">
