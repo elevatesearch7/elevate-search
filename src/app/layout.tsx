@@ -2,7 +2,6 @@ import React from 'react';
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import SchemaMarkup from "@/components/SchemaMarkup";
 import Chatbot from "@/components/Chatbot";
 import { LanguageProvider } from "@/context/LanguageContext";
@@ -68,7 +67,6 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className="bg-[#050505] text-white selection:bg-[#8B5CF6]/30 relative min-h-screen">
-        {/* Wrapping your global application layout layer inside the multi-language context context array */}
         <LanguageProvider>
           <SchemaMarkup type="Organization" data={orgData} />
           <SchemaMarkup type="LocalBusiness" data={localBizData} />
@@ -79,10 +77,9 @@ export default function RootLayout({
             {children}
           </main>
           
-          {/* This tag injects the chatbot globally so it floats cleanly over every page layout */}
           <Chatbot />
           
-          <Footer />
+          {/* Standing footer completely removed here to fully kill the duplicate layout bug */}
         </LanguageProvider>
       </body>
     </html>
