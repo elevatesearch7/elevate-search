@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SchemaMarkup from "@/components/SchemaMarkup";
 import Chatbot from "@/components/Chatbot";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 export const metadata: Metadata = {
   title: "Elevate Search | Premium Modern Search Visibility & AEO Agency",
@@ -47,14 +48,14 @@ export default function RootLayout({
   const orgData = {
     name: "Elevate Search",
     url: "https://elevatesearch.in",
-    logo: "https://elevatesearch.in/logo.png.png",
+    logo: "https://elevatesearch.in/logo.webp",
     sameAs: [],
     description: "A premium search visibility enterprise optimizing platforms for Google, Maps, and AI conversational answers."
   };
 
   const localBizData = {
     name: "Elevate Search",
-    image: "https://elevatesearch.in/logo.png.png",
+    image: "https://elevatesearch.in/logo.webp",
     priceRange: "₹8000-₹20000",
     address: {
       "@type": "PostalAddress",
@@ -67,19 +68,22 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className="bg-[#050505] text-white selection:bg-[#8B5CF6]/30 relative min-h-screen">
-        <SchemaMarkup type="Organization" data={orgData} />
-        <SchemaMarkup type="LocalBusiness" data={localBizData} />
-        
-        <Navbar />
-        
-        <main className="min-h-screen">
-          {children}
-        </main>
-        
-        {/* This tag injects the chatbot globally so it floats cleanly over every page layout */}
-        <Chatbot />
-        
-        <Footer />
+        {/* Wrapping your global application layout layer inside the multi-language context context array */}
+        <LanguageProvider>
+          <SchemaMarkup type="Organization" data={orgData} />
+          <SchemaMarkup type="LocalBusiness" data={localBizData} />
+          
+          <Navbar />
+          
+          <main className="min-h-screen">
+            {children}
+          </main>
+          
+          {/* This tag injects the chatbot globally so it floats cleanly over every page layout */}
+          <Chatbot />
+          
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );
