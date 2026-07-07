@@ -67,56 +67,51 @@ export default function Home() {
     }))
   };
 
-  // Structured Framer Motion Variants
   const sectionParent = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.05 } }
+    visible: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.03 } }
   };
 
   const slideLeft = {
-    hidden: { opacity: 0, x: -50, filter: 'blur(4px)' },
-    visible: { opacity: 1, x: 0, filter: 'blur(0px)', transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+    hidden: { opacity: 0, x: -40, filter: 'blur(4px)' },
+    visible: { opacity: 1, x: 0, filter: 'blur(0px)', transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
   };
 
   const slideRight = {
-    hidden: { opacity: 0, x: 50, filter: 'blur(4px)' },
-    visible: { opacity: 1, x: 0, filter: 'blur(0px)', transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+    hidden: { opacity: 0, x: 40, filter: 'blur(4px)' },
+    visible: { opacity: 1, x: 0, filter: 'blur(0px)', transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
   };
 
   const cascadeUp = {
-    hidden: { opacity: 0, y: 30, filter: 'blur(4px)' },
-    visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } }
+    hidden: { opacity: 0, y: 25, filter: 'blur(4px)' },
+    visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
   };
 
   return (
-    /* 
-      MASTER SNAP VIEWPORT BOX: 
-      Forces the browser to convert normal mouse wheel parameters into strict full screen presentations.
-    */
     <div className="w-full h-screen overflow-y-auto snap-y snap-mandatory scroll-smooth bg-[#050505] text-white selection:bg-purple-500/30">
       <SchemaMarkup type="FAQPage" data={faqSchemaData} />
       <InteractiveNodes />
 
-      {/* SLIDE 1: INTRO HERO GRID TIMELINE */}
-      <div className="w-full min-h-screen snap-start snap-always flex items-center justify-center relative">
+      {/* SLIDE 1: HERO CONTAINER TIMELINE */}
+      <div className="w-full min-h-screen snap-start snap-always flex flex-col justify-start relative">
         <FuturisticHero />
       </div>
 
       {/* SLIDE 2: OPERATIONAL CORE SECTION */}
       <motion.section 
-        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.3 }} variants={sectionParent}
-        className="w-full min-h-screen snap-start snap-always flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-black/40 backdrop-blur-md border-t border-white/[0.02]"
+        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} variants={sectionParent}
+        className="w-full min-h-screen snap-start snap-always flex flex-col justify-start pt-24 xl:pt-28 pb-12 px-4 sm:px-6 lg:px-8 bg-black/40 backdrop-blur-md border-t border-white/[0.02]"
       >
-        <div className="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          <motion.div variants={slideLeft} className="space-y-4 lg:space-y-6">
+        <div className="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center my-auto">
+          <motion.div variants={slideLeft} className="space-y-4">
             <span className="text-xs font-bold uppercase tracking-widest text-[#8B5CF6] block">{t('sec2Badge')}</span>
-            <h3 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">{t('sec2Title')}</h3>
+            <h3 className="text-2xl sm:text-4xl font-black tracking-tight leading-tight">{t('sec2Title')}</h3>
             <p className="text-[#A1A1AA] leading-relaxed text-xs sm:text-sm lg:text-base max-w-xl">{t('sec2Desc')}</p>
           </motion.div>
           
-          <motion.div variants={slideRight} className="bg-zinc-950/60 backdrop-blur-md rounded-2xl border border-white/10 p-6 sm:p-8 relative overflow-hidden space-y-6 shadow-2xl">
+          <motion.div variants={slideRight} className="bg-zinc-950/60 backdrop-blur-md rounded-2xl border border-white/10 p-6 sm:p-8 relative overflow-hidden space-y-5 shadow-2xl">
             <h4 className="text-xs font-bold text-[#A855F7] tracking-wider uppercase">Strategic Core Parameters</h4>
-            <div className="space-y-4 lg:space-y-5">
+            <div className="space-y-4">
               <div className="flex gap-3.5 items-start">
                 <div className="p-2 rounded-lg bg-black/60 border border-white/10 text-purple-400 flex-shrink-0"><Eye className="w-4 h-4" /></div>
                 <div>
@@ -136,31 +131,31 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* SLIDE 3: UNIFIED PLATFORMS CORE MATRIX */}
+      {/* SLIDE 3: UNIFIED PLATFORMS CORE MATRIX (FIXED HEADER COUPLING) */}
       <motion.section 
-        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.25 }} variants={sectionParent}
-        className="w-full min-h-screen snap-start snap-always flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black/20 to-zinc-950/10 backdrop-blur-sm border-t border-white/[0.02]"
+        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }} variants={sectionParent}
+        className="w-full min-h-screen snap-start snap-always flex flex-col justify-start pt-24 xl:pt-28 pb-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black/20 to-zinc-950/10 backdrop-blur-sm border-t border-white/[0.02]"
       >
-        <div className="max-w-7xl w-full mx-auto space-y-10 lg:space-y-12">
-          <motion.div variants={cascadeUp} className="text-center max-w-2xl mx-auto space-y-2">
+        <div className="max-w-7xl w-full mx-auto space-y-6 lg:space-y-8 my-auto">
+          <motion.div variants={cascadeUp} className="text-center max-w-2xl mx-auto space-y-1">
             <span className="text-xs font-bold uppercase tracking-widest text-[#A855F7] block">{t('sec3Badge')}</span>
-            <h3 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight">{t('sec3Title')}</h3>
+            <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">{t('sec3Title')}</h3>
           </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4">
             {futureCards.map((card, idx) => {
               const IconComp = card.icon;
               return (
                 <motion.div 
                   key={idx} variants={cascadeUp}
-                  className="bg-zinc-950/50 backdrop-blur-md border border-white/10 rounded-xl p-5 transition-all duration-500 hover:border-purple-500/40 hover:bg-zinc-900/40 group relative overflow-hidden shadow-xl"
+                  className="bg-zinc-950/50 backdrop-blur-md border border-white/10 rounded-xl p-4 sm:p-5 transition-all duration-500 hover:border-purple-500/40 hover:bg-zinc-900/40 group relative overflow-hidden shadow-xl"
                 >
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="p-2.5 rounded-lg bg-black/60 border border-white/10 text-[#8B5CF6] group-hover:text-purple-400 transition-colors"><IconComp className="w-4 h-4" /></div>
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="p-2 rounded-lg bg-black/60 border border-white/10 text-[#8B5CF6] group-hover:text-purple-400 transition-colors"><IconComp className="w-4 h-4" /></div>
                     <span className="text-[9px] font-semibold text-[#A855F7] bg-[#A855F7]/10 px-2.5 py-0.5 rounded-full border border-[#A855F7]/20">{card.highlight}</span>
                   </div>
-                  <h4 className="text-base font-bold text-white mb-1.5">{card.title}</h4>
-                  <p className="text-xs text-[#A1A1AA] leading-relaxed">{card.desc}</p>
+                  <h4 className="text-sm sm:text-base font-bold text-white mb-1">{card.title}</h4>
+                  <p className="text-[11px] sm:text-xs text-[#A1A1AA] leading-relaxed">{card.desc}</p>
                 </motion.div>
               );
             })}
@@ -170,29 +165,29 @@ export default function Home() {
 
       {/* SLIDE 4: SOLUTIONS & PRICING ENGINE */}
       <motion.section 
-        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.25 }} variants={sectionParent}
-        className="w-full min-h-screen snap-start snap-always flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-black/40 backdrop-blur-md border-t border-white/[0.02]"
+        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }} variants={sectionParent}
+        className="w-full min-h-screen snap-start snap-always flex flex-col justify-start pt-24 xl:pt-28 pb-12 px-4 sm:px-6 lg:px-8 bg-black/40 backdrop-blur-md border-t border-white/[0.02]"
       >
-        <div className="max-w-7xl w-full mx-auto space-y-10 lg:space-y-12">
-          <motion.div variants={cascadeUp} className="text-center max-w-2xl mx-auto space-y-2">
+        <div className="max-w-7xl w-full mx-auto space-y-6 lg:space-y-8 my-auto">
+          <motion.div variants={cascadeUp} className="text-center max-w-2xl mx-auto space-y-1">
             <span className="text-xs font-bold uppercase tracking-widest text-[#8B5CF6] block">{t('sec4Badge')}</span>
-            <h3 className="text-2xl sm:text-4xl font-black tracking-tight">{t('sec4Title')}</h3>
+            <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">{t('sec4Title')}</h3>
           </motion.div>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6 items-start">
             {plans.map((plan, idx) => (
-              <motion.div key={idx} variants={cascadeUp} className={`bg-zinc-950/40 backdrop-blur-xl border rounded-xl p-6 lg:p-8 relative flex flex-col justify-between transition-all duration-500 ${plan.recommended ? 'border-[#8B5CF6] bg-zinc-900/50 lg:scale-105 z-10 shadow-2xl' : 'border-white/10'}`}>
+              <motion.div key={idx} variants={cascadeUp} className={`bg-zinc-950/40 backdrop-blur-xl border rounded-xl p-5 lg:p-6 relative flex flex-col justify-between transition-all duration-500 ${plan.recommended ? 'border-[#8B5CF6] bg-zinc-900/50 lg:scale-105 z-10 shadow-2xl' : 'border-white/10'}`}>
                 <div>
-                  <h4 className="text-lg font-bold text-white mb-1.5">{plan.name}</h4>
-                  <p className="text-xs text-[#A1A1AA] mb-4 min-h-[32px]">{plan.desc}</p>
-                  <div className="text-3xl font-extrabold text-white mb-4">{plan.price}</div>
-                  <div className="h-[1px] bg-white/10 mb-4" />
-                  <ul className="space-y-2 mb-6">
+                  <h4 className="text-base sm:text-lg font-bold text-white mb-1">{plan.name}</h4>
+                  <p className="text-[11px] text-[#A1A1AA] mb-3 min-h-[32px]">{plan.desc}</p>
+                  <div className="text-2xl sm:text-3xl font-extrabold text-white mb-3">{plan.price}</div>
+                  <div className="h-[1px] bg-white/10 mb-3" />
+                  <ul className="space-y-1.5 mb-5">
                     {plan.features.map((feat, fIdx) => (
                       <li key={fIdx} className="flex items-center gap-2 text-xs text-[#A1A1AA]"><CheckCircle2 className="w-3.5 h-3.5 text-[#8B5CF6] flex-shrink-0" />{feat}</li>
                     ))}
                   </ul>
                 </div>
-                <Link href="/contact" className={`w-full py-2.5 rounded-xl text-xs font-semibold text-center transition-all ${plan.recommended ? 'purple-gradient text-white shadow-lg' : 'bg-black/50 text-white border border-white/10'}`}>
+                <Link href="/contact" className={`w-full py-2 rounded-xl text-xs font-semibold text-center transition-all ${plan.recommended ? 'purple-gradient text-white shadow-lg' : 'bg-black/50 text-white border border-white/10'}`}>
                   Select Framework Plan
                 </Link>
               </motion.div>
@@ -201,21 +196,21 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* SLIDE 5: STRATEGIC DIFFERENCE (WHY CHOOSE US) */}
+      {/* SLIDE 5: STRATEGIC DIFFERENCE */}
       <motion.section 
-        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.25 }} variants={sectionParent}
-        className="w-full min-h-screen snap-start snap-always flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-transparent border-t border-white/[0.02]"
+        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }} variants={sectionParent}
+        className="w-full min-h-screen snap-start snap-always flex flex-col justify-start pt-24 xl:pt-28 pb-12 px-4 sm:px-6 lg:px-8 bg-transparent border-t border-white/[0.02]"
       >
-        <div className="max-w-7xl w-full mx-auto space-y-12">
-          <motion.div variants={cascadeUp} className="text-center max-w-xl mx-auto space-y-2">
+        <div className="max-w-7xl w-full mx-auto space-y-8 my-auto">
+          <motion.div variants={cascadeUp} className="text-center max-w-xl mx-auto space-y-1">
             <span className="text-xs font-bold uppercase tracking-widest text-[#A855F7] block">The Strategic Difference</span>
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">Why Choose Elevate Search</h3>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {valueProps.map((vp, idx) => (
-              <motion.div key={idx} variants={cascadeUp} className="bg-zinc-950/40 backdrop-blur-sm border border-white/5 p-5 rounded-xl space-y-1.5 shadow-lg">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-1 h-5 purple-gradient rounded-full" />
+              <motion.div key={idx} variants={cascadeUp} className="bg-zinc-950/40 backdrop-blur-sm border border-white/5 p-4 rounded-xl space-y-1 shadow-lg">
+                <div className="flex items-center gap-2">
+                  <div className="w-1 h-4 purple-gradient rounded-full" />
                   <h4 className="text-sm font-bold text-white">{vp.title}</h4>
                 </div>
                 <p className="text-xs text-[#A1A1AA] leading-relaxed">{vp.desc}</p>
@@ -227,20 +222,20 @@ export default function Home() {
 
       {/* SLIDE 6: EXECUTION PIPELINE WORKFLOW */}
       <motion.section 
-        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.25 }} variants={sectionParent}
-        className="w-full min-h-screen snap-start snap-always flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-black/40 backdrop-blur-md border-t border-white/[0.02]"
+        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }} variants={sectionParent}
+        className="w-full min-h-screen snap-start snap-always flex flex-col justify-start pt-24 xl:pt-28 pb-12 px-4 sm:px-6 lg:px-8 bg-black/40 backdrop-blur-md border-t border-white/[0.02]"
       >
-        <div className="max-w-7xl w-full mx-auto space-y-12">
-          <motion.div variants={cascadeUp} className="text-center max-w-xl mx-auto space-y-2">
+        <div className="max-w-7xl w-full mx-auto space-y-8 my-auto">
+          <motion.div variants={cascadeUp} className="text-center max-w-xl mx-auto space-y-1">
             <span className="text-xs font-bold uppercase tracking-widest text-[#8B5CF6] block">Execution Workflow</span>
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">How We Work</h3>
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 relative">
             {steps.map((st, idx) => (
-              <motion.div key={idx} variants={cascadeUp} className="bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-5 relative overflow-hidden group shadow-xl">
-                <span className="absolute -top-3 -right-1 text-6xl font-black text-white/5 select-none tracking-tighter">{st.step}</span>
-                <span className="text-[10px] font-bold text-[#8B5CF6] block mb-1.5">{st.step} // Phase</span>
-                <h4 className="text-sm sm:text-base font-bold text-white mb-1.5">{st.name}</h4>
+              <motion.div key={idx} variants={cascadeUp} className="bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-4 relative overflow-hidden group shadow-xl">
+                <span className="absolute -top-3 -right-1 text-5xl font-black text-white/5 select-none tracking-tighter">{st.step}</span>
+                <span className="text-[9px] font-bold text-[#8B5CF6] block mb-1">{st.step} // Phase</span>
+                <h4 className="text-sm font-bold text-white mb-1">{st.name}</h4>
                 <p className="text-xs text-[#A1A1AA] leading-relaxed">{st.desc}</p>
               </motion.div>
             ))}
@@ -250,15 +245,15 @@ export default function Home() {
 
       {/* SLIDE 7: FAQ KNOWLEDGE HUB */}
       <motion.section 
-        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.25 }} variants={sectionParent}
-        className="w-full min-h-screen snap-start snap-always flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-transparent border-t border-white/[0.02]"
+        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }} variants={sectionParent}
+        className="w-full min-h-screen snap-start snap-always flex flex-col justify-start pt-24 xl:pt-28 pb-12 px-4 sm:px-6 lg:px-8 bg-transparent border-t border-white/[0.02]"
       >
-        <div className="max-w-3xl w-full mx-auto space-y-10">
-          <motion.div variants={cascadeUp} className="text-center space-y-2">
+        <div className="max-w-3xl w-full mx-auto space-y-8 my-auto">
+          <motion.div variants={cascadeUp} className="text-center space-y-1">
             <span className="text-xs font-bold uppercase tracking-widest text-[#A855F7] block">Information Hub</span>
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">Frequently Asked Questions</h3>
           </motion.div>
-          <motion.div variants={cascadeUp} className="space-y-3">
+          <motion.div variants={cascadeUp} className="space-y-2.5">
             {faqs.map((faq, idx) => {
               const isSelected = activeFaq === idx;
               return (
@@ -277,24 +272,24 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* SLIDE 8: DATA INTEGRITY INSIGHTS */}
+      {/* SLIDE 8: RESEARCH INSIGHTS */}
       <motion.section 
-        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.25 }} variants={sectionParent}
-        className="w-full min-h-screen snap-start snap-always flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-black/40 backdrop-blur-md border-t border-white/[0.02]"
+        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }} variants={sectionParent}
+        className="w-full min-h-screen snap-start snap-always flex flex-col justify-start pt-24 xl:pt-28 pb-12 px-4 sm:px-6 lg:px-8 bg-black/40 backdrop-blur-md border-t border-white/[0.02]"
       >
-        <div className="max-w-7xl w-full mx-auto space-y-10">
-          <div className="space-y-1 text-center lg:text-left">
+        <div className="max-w-7xl w-full mx-auto space-y-8 my-auto">
+          <div className="space-y-1 text-center">
             <span className="text-xs font-bold uppercase tracking-widest text-[#8B5CF6] block">Intel & Research</span>
             <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight">Latest Insights</h3>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {insights.map((ins, idx) => (
-              <motion.div key={idx} variants={cascadeUp} className="bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-5 flex flex-col justify-between group shadow-xl">
-                <div className="space-y-3">
+              <motion.div key={idx} variants={cascadeUp} className="bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-4 flex flex-col justify-between group shadow-xl">
+                <div className="space-y-2">
                   <span className="inline-block text-[9px] font-bold uppercase tracking-wider text-[#A855F7] bg-[#A855F7]/10 px-2.5 py-0.5 rounded-full">{ins.cat}</span>
-                  <h4 className="text-sm font-bold text-white leading-snug group-hover:text-[#8B5CF6] transition-colors">{ins.title}</h4>
+                  <h4 className="text-xs sm:text-sm font-bold text-white leading-snug group-hover:text-[#8B5CF6] transition-colors">{ins.title}</h4>
                 </div>
-                <div className="flex items-center justify-between text-[10px] text-[#A1A1AA] pt-4 mt-4 border-t border-white/5">
+                <div className="flex items-center justify-between text-[10px] text-[#A1A1AA] pt-3 mt-3 border-t border-white/5">
                   <span>{ins.date}</span>
                   <span>{ins.readTime}</span>
                 </div>
@@ -304,15 +299,15 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* SLIDE 9: CLOSING PIPELINE GATEWAY */}
+      {/* SLIDE 9: CLOSING GATEWAY BRIDGE */}
       <motion.section 
-        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.3 }} variants={cascadeUp}
-        className="w-full min-h-screen snap-start snap-always flex items-center justify-center px-4 text-center bg-transparent border-t border-white/[0.02]"
+        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.25 }} variants={cascadeUp}
+        className="w-full min-h-screen snap-start snap-always flex flex-col justify-start pt-24 xl:pt-28 pb-12 px-4 text-center bg-transparent border-t border-white/[0.02]"
       >
-        <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8 flex flex-col items-center">
+        <div className="max-w-4xl mx-auto space-y-6 flex flex-col items-center my-auto">
           <h3 className="text-xl sm:text-3xl font-black text-white tracking-tight">Ready to Maximize Your Search Real Estate?</h3>
           <Magnetic>
-            <Link href="/contact" className="px-8 py-4 rounded-xl font-bold purple-gradient text-white shadow-2xl inline-flex items-center gap-3 uppercase tracking-widest text-[10px] sm:text-xs border border-white/10">
+            <Link href="/contact" className="px-8 py-4 rounded-xl font-bold purple-gradient text-white shadow-2xl inline-flex items-center gap-3 uppercase tracking-widest text-xs border border-white/10">
               Launch Free Visibility Audit <ArrowUpRight className="w-3.5 h-3.5" />
             </Link>
           </Magnetic>
