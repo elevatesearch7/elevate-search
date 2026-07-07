@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { 
   ArrowUpRight, Search, MapPin, Cpu, MessageSquare, 
-  Mic, CheckCircle2, Eye, Compass, ChevronDown 
+  Mic, CheckCircle2, Eye, Compass, ChevronDown, Mail, Phone, Instagram, Layers, Globe
 } from 'lucide-react';
 import SchemaMarkup from "@/components/SchemaMarkup";
 import FuturisticHero from '@/components/FuturisticHero';
@@ -16,14 +16,16 @@ import { useLanguage } from '@/context/LanguageContext';
 export default function Home() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const { t } = useLanguage();
+  const currentYear = new Date().getFullYear();
 
+  // Expanded multi-platform visibility indices
   const futureCards = [
-    { title: "Google Search", icon: Search, desc: "Dominate conventional layouts, snippet components, and structured results matrices.", highlight: "Classic SEO Core" },
-    { title: "Google Maps", icon: MapPin, desc: "Acquire localized grid dominance and map visibility vectors.", highlight: "Local 3-Pack Authority" },
-    { title: "AI Overviews", icon: Cpu, desc: "Format entity architecture to safely anchor brand citations in direct AI summaries.", highlight: "LLM Citation Vector" },
-    { title: "ChatGPT", icon: MessageSquare, desc: "Influence real-time conversational retrieval indexes and user choice patterns.", highlight: "OpenAI Index Sync" },
-    { title: "Gemini", icon: Cpu, desc: "Optimize structural knowledge graphs for native multimodal platform feeds.", highlight: "Google Ecosystem Flow" },
-    { title: "Voice Search", icon: Mic, desc: "Target naturally articulated consumer inquiries and contextual semantic keys.", highlight: "Conversational Query Captures" }
+    { title: "Google Search (SEO)", icon: Search, desc: "Dominate conventional desktop and mobile layout frames, optimize featured snippets, clear out indexation bottlenecks, and configure premium structured schema matrices.", highlight: "Classic Organic Authority" },
+    { title: "Google Maps (Local SEO)", icon: MapPin, desc: "Calibrate localized map coordinates and grid configurations. We push your physical profile straight into regional 3-pack boxes where high-intent buyers choose proximity services.", highlight: "Geocentric Proximity" },
+    { title: "AI Overviews (AEO)", icon: Cpu, desc: "Restructure textual data to feed semantic entity relationship parsers. We configure your articles so Google's machine learning model cites your company directly in native summaries.", highlight: "Generative Summary Mapping" },
+    { title: "ChatGPT Optimization", icon: MessageSquare, desc: "Inject brand tokens and clear domain citations directly into OpenAI's web crawling indexes and foundational vector memory nodes to trigger direct user recommendations.", highlight: "OpenAI Memory Index" },
+    { title: "Gemini Optimization", icon: Globe, desc: "Synchronize structural knowledge graphs with Google's multimodal ecosystem, forcing real-time engine pipelines to parse and trust your product parameters instantly.", highlight: "Google DeepMind Graph" },
+    { title: "Voice & Conversational (GEO)", icon: Mic, desc: "Capture natural, long-tail spoken phrasing and contextual query captures used across modern smart devices, digital home controllers, and real-time mobile assistants.", highlight: "Semantic Retrieval Sync" }
   ];
 
   const plans = [
@@ -32,25 +34,27 @@ export default function Home() {
     { name: "Complete Search Visibility Solution", price: "₹20,000", desc: "The ultimate unified blueprint maximizing coverage across all modern environments.", features: ["Website Search Audit & Action Plan", "Full Local Map Optimization Pack", "AI Engine Optimization Framework", "Cross-Platform Competitor Strategy", "Ongoing Technical Health Tracking"], recommended: true }
   ];
 
+  // Enriched value proposition arguments to eliminate empty screen real estate
   const valueProps = [
-    { title: "Transparency Over Complexity", desc: "No ambiguous jargon metrics. We focus strictly on visible spatial share, authentic traffic numbers, and conversion indicators." },
-    { title: "Built For Modern Search", desc: "We map workflows directly to live algorithmic trends: Generative AI summary generation, vector matching, and structured map profiles." },
-    { title: "Education-Driven Approach", desc: "We empower your team with deep clarity, clear breakdowns, and detailed actionable data frameworks." },
-    { title: "Sustainable Growth Focus", desc: "We construct foundational systems designed to resist algorithm updates without relying on black-hat tactics." }
+    { title: "Transparency Over Complexity", desc: "We eliminate ambiguous, vanity keyword trackers and vague performance charts. Our cell focuses exclusively on measurable spatial real estate share, certified index rankings, clear organic visibility vectors, and direct inbound client leads." },
+    { title: "Engineered For Next-Gen Discovery", desc: "We map workflows directly to live algorithmic trends: Generative AI summary generation, conversational large language model training loops, vector matching indexing layers, and geocentered business profile calibrations." },
+    { title: "Education-Driven Strategy", desc: "We reject typical opaque, hidden agency patterns. We provide your internal teams with complete transparency, comprehensive data breakdowns, clear code reviews, and actionable analytical framework blueprints." },
+    { title: "Algorithm-Resilient Architecture", desc: "We engineer sustainable, zero-risk technical systems designed to survive heavy search algorithm core updates without relying on dangerous, short-term gray-hat or black-hat shortcuts." }
   ];
 
+  // Explicitly updated workflow phases reflecting detailed audit mechanics
   const steps = [
-    { step: "01", name: "Audit", desc: "Deep analytical crawling of current discovery indexes and missing citation points." },
-    { step: "02", name: "Strategy", desc: "Formulating architectural maps matching target buyer inquiries to answers." },
-    { step: "03", name: "Optimization", desc: "Execution of structural code adjustments, technical fixes, and spatial asset deployment." },
-    { step: "04", name: "Growth", desc: "Continuous monitoring, refinement, and ongoing capture of emerging AI visibility frameworks." }
+    { step: "01", name: "Comprehensive Audit", desc: "Deep programmatic crawling analyzing on-page semantics, technical code architecture, off-page backlink and citation profiles, alongside GEO engine footprint tracking." },
+    { step: "02", name: "Vector Strategy", desc: "Formulating precise entity mapping blueprints designed to connect target buyer intent vectors directly to your site assets across standard and conversational discovery grids." },
+    { step: "03", name: "Structural Deployment", desc: "Execution of technical code optimizations, performance upgrades, schematic markup injections, and localized proximity map system synchronizations." },
+    { step: "04", name: "Algorithmic Growth", desc: "Continuous metric monitoring, citation calibration adjustments, and real-time adjustments as new LLM models and AI answer vectors alter market parameters." }
   ];
 
   const faqs = [
-    { q: "What is Search Optimization?", a: "Search Optimization is the methodical practice of calibrating public digital assets to ensure clear discovery, processing, and indexing by modern lookup systems." },
-    { q: "What is AEO?", a: "AEO (Answer Engine Optimization) focuses on optimizing content frameworks specifically for conversational LLMs like AI Overviews, ChatGPT, and Gemini to use as authoritative source citations." },
-    { q: "What is Local SEO?", a: "Local SEO focuses on enhancing discoverability within specific physical operational radii, matching localized intent directly to brick-and-mortar operations." },
-    { q: "Why is Google Business Profile important?", a: "Your Google Business Profile serves as the core physical layout verification layer feeding maps, location filters, and localized transactional lookups." }
+    { q: "What is Search Optimization (SEO)?", a: "Search Optimization is the methodical practice of calibrating public digital assets to ensure clear discovery, processing, fast rendering speeds, and pristine schema indexation by modern search crawler algorithms." },
+    { q: "What is Answer Engine Optimization (AEO)?", a: "AEO focuses on preparing structured text layouts and entity relationships specifically for AI summaries and conversational engines like Google's AI Overviews, ensuring your brand serves as their source citation." },
+    { q: "What is Generative Engine Optimization (GEO)?", a: "GEO is the specialized discipline of refining brand footprint data so that generative AI tools like ChatGPT and Gemini pull your data during real-time recommendation queries." },
+    { q: "Why is Local SEO and Google Business Profile vital?", a: "Your Google Business Profile serves as the verified location layer feeding map interfaces and proximity queries. Optimizing it ensures you dominate local map grids when nearby buyers attempt to make a transaction." }
   ];
 
   const insights = [
@@ -92,12 +96,12 @@ export default function Home() {
       <SchemaMarkup type="FAQPage" data={faqSchemaData} />
       <InteractiveNodes />
 
-      {/* SLIDE 1: HERO CONTAINER TIMELINE */}
+      {/* SLIDE 1: INTRO HERO CONTAINER */}
       <div className="w-full min-h-screen snap-start snap-always flex flex-col justify-start relative">
         <FuturisticHero />
       </div>
 
-      {/* SLIDE 2: OPERATIONAL CORE SECTION */}
+      {/* SLIDE 2: OPERATIONAL CORE SECTION (Reflecting image_76ba9d.png Layout with Detailed Content) */}
       <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} variants={sectionParent}
         className="w-full min-h-screen snap-start snap-always flex flex-col justify-start pt-24 xl:pt-28 pb-12 px-4 sm:px-6 lg:px-8 bg-black/40 backdrop-blur-md border-t border-white/[0.02]"
@@ -105,33 +109,37 @@ export default function Home() {
         <div className="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center my-auto">
           <motion.div variants={slideLeft} className="space-y-4">
             <span className="text-xs font-bold uppercase tracking-widest text-[#8B5CF6] block">{t('sec2Badge')}</span>
-            <h3 className="text-2xl sm:text-4xl font-black tracking-tight leading-tight">{t('sec2Title')}</h3>
+            <h3 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">{t('sec2Title')}</h3>
             <p className="text-[#A1A1AA] leading-relaxed text-xs sm:text-sm lg:text-base max-w-xl">{t('sec2Desc')}</p>
           </motion.div>
           
-          <motion.div variants={slideRight} className="bg-zinc-950/60 backdrop-blur-md rounded-2xl border border-white/10 p-6 sm:p-8 relative overflow-hidden space-y-5 shadow-2xl">
-            <h4 className="text-xs font-bold text-[#A855F7] tracking-wider uppercase">Strategic Core Parameters</h4>
-            <div className="space-y-4">
-              <div className="flex gap-3.5 items-start">
-                <div className="p-2 rounded-lg bg-black/60 border border-white/10 text-purple-400 flex-shrink-0"><Eye className="w-4 h-4" /></div>
-                <div>
-                  <h5 className="text-xs sm:text-sm font-semibold text-white mb-0.5">What is it?</h5>
-                  <p className="text-[11px] sm:text-xs text-[#A1A1AA] leading-relaxed">A multi-platform discovery strategy targeting websites, map interfaces, and LLM answer systems.</p>
-                </div>
+          <motion.div variants={slideRight} className="bg-zinc-950/60 backdrop-blur-md rounded-2xl border border-white/10 p-6 sm:p-8 relative overflow-hidden space-y-6 shadow-2xl">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-full blur-3xl pointer-events-none" />
+            <h4 className="text-xs font-bold text-[#A855F7] tracking-wider uppercase">Unified Discovery Framework</h4>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+              <div className="p-4 rounded-xl bg-black/30 border border-white/5 space-y-1">
+                <h5 className="text-xs font-bold text-white flex items-center gap-2"><Search className="w-3.5 h-3.5 text-purple-400" /> SEO Core</h5>
+                <p className="text-[11px] text-zinc-400 leading-normal">Optimizing standard indices, load velocity parameters, and layout crawl pathways.</p>
               </div>
-              <div className="flex gap-3.5 items-start">
-                <div className="p-2 rounded-lg bg-black/60 border border-white/10 text-indigo-400 flex-shrink-0"><Compass className="w-4 h-4" /></div>
-                <div>
-                  <h5 className="text-xs sm:text-sm font-semibold text-white mb-0.5">Why does it matter?</h5>
-                  <p className="text-[11px] sm:text-xs text-[#A1A1AA] leading-relaxed">Legacy SEO approaches fail to rank on multi-faceted Search Result Pages (SERPs) and AI answers.</p>
-                </div>
+              <div className="p-4 rounded-xl bg-black/30 border border-white/5 space-y-1">
+                <h5 className="text-xs font-bold text-white flex items-center gap-2"><Cpu className="w-3.5 h-3.5 text-indigo-400" /> AEO Systems</h5>
+                <p className="text-[11px] text-zinc-400 leading-normal">Formatting raw content layers into semantic relationships for direct AI summary citations.</p>
+              </div>
+              <div className="p-4 rounded-xl bg-black/30 border border-white/5 space-y-1">
+                <h5 className="text-xs font-bold text-white flex items-center gap-2"><Layers className="w-3.5 h-3.5 text-purple-400" /> GEO Engines</h5>
+                <p className="text-[11px] text-zinc-400 leading-normal">Baking brand identity variables cleanly into vector database queries powering LLM chat engines.</p>
+              </div>
+              <div className="p-4 rounded-xl bg-black/30 border border-white/5 space-y-1">
+                <h5 className="text-xs font-bold text-white flex items-center gap-2"><MapPin className="w-3.5 h-3.5 text-indigo-400" /> Local Grid</h5>
+                <p className="text-[11px] text-zinc-400 leading-normal">Calibrating physical map coordinates and GBP parameters to capture location requests.</p>
               </div>
             </div>
           </motion.div>
         </div>
       </motion.section>
 
-      {/* SLIDE 3: UNIFIED PLATFORMS CORE MATRIX (FIXED HEADER COUPLING) */}
+      {/* SLIDE 3: UNIFIED PLATFORMS CORE MATRIX */}
       <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }} variants={sectionParent}
         className="w-full min-h-screen snap-start snap-always flex flex-col justify-start pt-24 xl:pt-28 pb-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black/20 to-zinc-950/10 backdrop-blur-sm border-t border-white/[0.02]"
@@ -196,7 +204,7 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* SLIDE 5: STRATEGIC DIFFERENCE */}
+      {/* SLIDE 5: STRATEGIC DIFFERENCE (Reflecting image_76ba84.png Layout with Rich Details) */}
       <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }} variants={sectionParent}
         className="w-full min-h-screen snap-start snap-always flex flex-col justify-start pt-24 xl:pt-28 pb-12 px-4 sm:px-6 lg:px-8 bg-transparent border-t border-white/[0.02]"
@@ -206,12 +214,12 @@ export default function Home() {
             <span className="text-xs font-bold uppercase tracking-widest text-[#A855F7] block">The Strategic Difference</span>
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">Why Choose Elevate Search</h3>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
             {valueProps.map((vp, idx) => (
-              <motion.div key={idx} variants={cascadeUp} className="bg-zinc-950/40 backdrop-blur-sm border border-white/5 p-4 rounded-xl space-y-1 shadow-lg">
+              <motion.div key={idx} variants={cascadeUp} className="bg-zinc-950/40 backdrop-blur-sm border border-white/5 p-5 rounded-xl space-y-2 shadow-lg">
                 <div className="flex items-center gap-2">
-                  <div className="w-1 h-4 purple-gradient rounded-full" />
-                  <h4 className="text-sm font-bold text-white">{vp.title}</h4>
+                  <div className="w-1.5 h-4.5 purple-gradient rounded-full" />
+                  <h4 className="text-sm sm:text-base font-bold text-white">{vp.title}</h4>
                 </div>
                 <p className="text-xs text-[#A1A1AA] leading-relaxed">{vp.desc}</p>
               </motion.div>
@@ -220,7 +228,7 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* SLIDE 6: EXECUTION PIPELINE WORKFLOW */}
+      {/* SLIDE 6: EXECUTION PIPELINE WORKFLOW (Enriched Phase 1 Details) */}
       <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }} variants={sectionParent}
         className="w-full min-h-screen snap-start snap-always flex flex-col justify-start pt-24 xl:pt-28 pb-12 px-4 sm:px-6 lg:px-8 bg-black/40 backdrop-blur-md border-t border-white/[0.02]"
@@ -232,18 +240,20 @@ export default function Home() {
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 relative">
             {steps.map((st, idx) => (
-              <motion.div key={idx} variants={cascadeUp} className="bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-4 relative overflow-hidden group shadow-xl">
-                <span className="absolute -top-3 -right-1 text-5xl font-black text-white/5 select-none tracking-tighter">{st.step}</span>
-                <span className="text-[9px] font-bold text-[#8B5CF6] block mb-1">{st.step} // Phase</span>
-                <h4 className="text-sm font-bold text-white mb-1">{st.name}</h4>
-                <p className="text-xs text-[#A1A1AA] leading-relaxed">{st.desc}</p>
+              <motion.div key={idx} variants={cascadeUp} className="bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-5 relative overflow-hidden group shadow-xl min-h-[180px] flex flex-col justify-between">
+                <div>
+                  <span className="absolute -top-3 -right-1 text-5xl font-black text-white/5 select-none tracking-tighter">{st.step}</span>
+                  <span className="text-[9px] font-bold text-[#8B5CF6] block mb-1">{st.step} // Phase</span>
+                  <h4 className="text-sm font-bold text-white mb-2">{st.name}</h4>
+                  <p className="text-xs text-[#A1A1AA] leading-relaxed">{st.desc}</p>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </motion.section>
 
-      {/* SLIDE 7: FAQ KNOWLEDGE HUB */}
+      {/* SLIDE 7: FAQ KNOWLEDGE HUB (Reflecting image_76ba67.png Layout) */}
       <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }} variants={sectionParent}
         className="w-full min-h-screen snap-start snap-always flex flex-col justify-start pt-24 xl:pt-28 pb-12 px-4 sm:px-6 lg:px-8 bg-transparent border-t border-white/[0.02]"
@@ -272,7 +282,7 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* SLIDE 8: RESEARCH INSIGHTS */}
+      {/* SLIDE 8: RESEARCH INSIGHTS (Reflecting image_76ba64.png Layout) */}
       <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }} variants={sectionParent}
         className="w-full min-h-screen snap-start snap-always flex flex-col justify-start pt-24 xl:pt-28 pb-12 px-4 sm:px-6 lg:px-8 bg-black/40 backdrop-blur-md border-t border-white/[0.02]"
@@ -280,14 +290,14 @@ export default function Home() {
         <div className="max-w-7xl w-full mx-auto space-y-8 my-auto">
           <div className="space-y-1 text-center">
             <span className="text-xs font-bold uppercase tracking-widest text-[#8B5CF6] block">Intel & Research</span>
-            <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight">Latest Insights</h3>
+            <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">Latest Insights</h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {insights.map((ins, idx) => (
-              <motion.div key={idx} variants={cascadeUp} className="bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-4 flex flex-col justify-between group shadow-xl">
+              <motion.div key={idx} variants={cascadeUp} className="bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-4 sm:p-5 flex flex-col justify-between group shadow-xl">
                 <div className="space-y-2">
                   <span className="inline-block text-[9px] font-bold uppercase tracking-wider text-[#A855F7] bg-[#A855F7]/10 px-2.5 py-0.5 rounded-full">{ins.cat}</span>
-                  <h4 className="text-xs sm:text-sm font-bold text-white leading-snug group-hover:text-[#8B5CF6] transition-colors">{ins.title}</h4>
+                  <h4 className="text-xs sm:text-sm lg:text-base font-bold text-white leading-snug group-hover:text-[#8B5CF6] transition-colors">{ins.title}</h4>
                 </div>
                 <div className="flex items-center justify-between text-[10px] text-[#A1A1AA] pt-3 mt-3 border-t border-white/5">
                   <span>{ins.date}</span>
@@ -299,20 +309,86 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* SLIDE 9: CLOSING GATEWAY BRIDGE */}
+      {/* SLIDE 9: INTEGRATED CLOSING CTA + FULL BRAND FOOTER SLIDE PANEL */}
       <motion.section 
-        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.25 }} variants={cascadeUp}
-        className="w-full min-h-screen snap-start snap-always flex flex-col justify-start pt-24 xl:pt-28 pb-12 px-4 text-center bg-transparent border-t border-white/[0.02]"
+        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }} variants={sectionParent}
+        className="w-full min-h-screen snap-start snap-always flex flex-col justify-between pt-24 xl:pt-28 pb-6 px-4 sm:px-6 lg:px-8 bg-zinc-950/30 border-t border-white/[0.04] relative"
       >
-        <div className="max-w-4xl mx-auto space-y-6 flex flex-col items-center my-auto">
+        {/* Closing CTA Action Card */}
+        <motion.div variants={cascadeUp} className="max-w-4xl mx-auto text-center space-y-4 lg:space-y-5 py-4 my-auto flex flex-col items-center justify-center">
           <h3 className="text-xl sm:text-3xl font-black text-white tracking-tight">Ready to Maximize Your Search Real Estate?</h3>
           <Magnetic>
-            <Link href="/contact" className="px-8 py-4 rounded-xl font-bold purple-gradient text-white shadow-2xl inline-flex items-center gap-3 uppercase tracking-widest text-xs border border-white/10">
+            <Link href="/contact" className="px-8 py-3.5 sm:px-10 sm:py-4 rounded-xl font-bold purple-gradient text-white shadow-2xl inline-flex items-center gap-3 uppercase tracking-widest text-xs border border-white/10 hover:scale-[1.02] transition-transform">
               Launch Free Visibility Audit <ArrowUpRight className="w-3.5 h-3.5" />
             </Link>
           </Magnetic>
-        </div>
+        </motion.div>
+
+        {/* Full Grid Brand Footer Architecture */}
+        <motion.div variants={cascadeUp} className="max-w-7xl w-full mx-auto border-t border-white/[0.05] pt-8 mt-auto space-y-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 items-start text-left">
+            
+            {/* C1: Identity */}
+            <div className="space-y-3">
+              <Link href="/" className="flex items-center gap-2 group">
+                <img src="/logo.webp" alt="Elevate Search Logo" className="w-8 h-8 rounded-full object-cover" />
+                <span className="font-black text-lg tracking-tight select-none">
+                  <span className="bg-gradient-to-b from-white to-zinc-300 bg-clip-text text-transparent">Elevate</span>
+                  <span className="bg-gradient-to-r from-purple-400 to-indigo-500 bg-clip-text text-transparent ml-1">Search</span>
+                </span>
+              </Link>
+              <p className="text-[11px] text-zinc-400 leading-relaxed">
+                Be Found. Be Chosen. Elevate Search transforms enterprise visual presence across standard search engines, mapping applications, and emerging conversational AI discovery platforms.
+              </p>
+            </div>
+
+            {/* C2: Site Links */}
+            <div className="space-y-3">
+              <h4 className="text-[10px] font-bold uppercase tracking-widest text-zinc-300">Navigation</h4>
+              <ul className="space-y-1 text-[11px] text-zinc-400 font-medium">
+                <li><Link href="/" className="hover:text-white transition-colors">{t('home')}</Link></li>
+                <li><Link href="/about" className="hover:text-white transition-colors">{t('about')}</Link></li>
+                <li><Link href="/solutions" className="hover:text-white transition-colors">{t('solutions')}</Link></li>
+                <li><Link href="/pricing" className="hover:text-white transition-colors">{t('pricing')}</Link></li>
+                <li><Link href="/insights" className="hover:text-white transition-colors">{t('insights')}</Link></li>
+                <li><Link href="/contact" className="hover:text-white transition-colors">{t('contact')}</Link></li>
+              </ul>
+            </div>
+
+            {/* C3: Services */}
+            <div className="space-y-3">
+              <h4 className="text-[10px] font-bold uppercase tracking-widest text-zinc-300">Optimizations</h4>
+              <ul className="space-y-1.5 text-[11px] text-zinc-400 font-medium">
+                <li className="flex items-center gap-2"><Search className="w-3.5 h-3.5 text-purple-400" /> <span>Website Engine SEO</span></li>
+                <li className="flex items-center gap-2"><MapPin className="w-3.5 h-3.5 text-indigo-400" /> <span>Google Maps Matrix</span></li>
+                <li className="flex items-center gap-2"><Cpu className="w-3.5 h-3.5 text-purple-400" /> <span>AI Overview (AEO)</span></li>
+                <li className="flex items-center gap-2"><MessageSquare className="w-3.5 h-3.5 text-indigo-400" /> <span>Conversational Engines</span></li>
+              </ul>
+            </div>
+
+            {/* C4: Contact Handles */}
+            <div className="space-y-3">
+              <h4 className="text-[10px] font-bold uppercase tracking-widest text-zinc-300">Direct Channels</h4>
+              <ul className="space-y-1.5 text-[11px] text-zinc-400 font-medium break-all">
+                <li className="flex items-center gap-2"><Mail className="w-3.5 h-3.5 text-purple-400 shrink-0" /> <a href="mailto:elevatesearch7@gmail.com" className="hover:text-white transition-colors">elevatesearch7@gmail.com</a></li>
+                <li className="flex items-center gap-2"><Phone className="w-3.5 h-3.5 text-purple-400 shrink-0" /> <a href="tel:+918850286037" className="hover:text-white transition-colors">8850286037</a></li>
+                <li className="flex items-center gap-2"><Instagram className="w-3.5 h-3.5 text-purple-400 shrink-0" /> <a href="https://instagram.com/elevate_search" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">@elevate_search</a></li>
+              </ul>
+            </div>
+
+          </div>
+
+          {/* Sub-Copyright Data Bar */}
+          <div className="pt-3 border-t border-white/[0.03] flex flex-col sm:flex-row items-center justify-between gap-2 text-[10px] text-zinc-500 font-medium">
+            <p>© {currentYear} Elevate Search. All rights reserved.</p>
+            <div className="flex gap-4">
+              <Link href="/privacy" className="hover:text-zinc-300 transition-colors">Privacy Framework</Link>
+              <Link href="/terms" className="hover:text-zinc-300 transition-colors">Terms of Vector Service</Link>
+            </div>
+          </div>
+        </motion.div>
       </motion.section>
+
     </div>
   );
 }
