@@ -1,59 +1,37 @@
 import { NextResponse } from 'next/server';
 
-export async function POST(req: Request) {
+export async function POST(request: Request) {
   try {
-    const data = await req.json().catch(() => null);
-    if (!data) {
-      return NextResponse.json({ success: false, error: "Empty payload body" }, { status: 400 });
-    }
+    const dataPayload = await request.json();
 
-    // Extract the raw clean data fields from the frontend
-    const name = data.name || "New Lead";
-    const phone = data.phone || "Not provided";
-    const email = data.email || "Not provided";
-    const website = data.website || "Not provided";
-    const message = data.message || "No message left.";
-
-    // Hyper-standardized payload layout matching Web3Forms specifications exactly
-    const externalResponse = await fetch('https://api.web3forms.com/submit', {
+    // The backend server handles the communication, bypassing client-side ad-blockers entirely
+    const apiResponse = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        'Accept': 'application/json',
       },
       body: JSON.stringify({
-        access_key: "00935dde-ee3f-4ed7-bdf7-168303be0ff9", 
-        subject: `🚨 New Elevate Search Lead: ${name}`,
+        access_key: "00935dde-ee3f-4ed7-bdf7-168303be0ff9",
+        subject: `🚨 New Elevate Search Lead: ${dataPayload.name}`,
         from_name: "Elevate AI Terminal",
-        name: name,
-        email: email,
-        phone: phone,
-        website: website,
-        message: message
-      })
+        name: dataPayload.name,
+        email: dataPayload.email,
+        phone: dataPayload.phone,
+        website: dataPayload.website,
+        message: dataPayload.message,
+      }),
     });
 
-    const resultText = await externalResponse.text();
-    let parsedResult;
-    
-    try {
-      parsedResult = JSON.parse(resultText);
-    } catch {
-      return NextResponse.json({ success: false, error: "Bad gateway string mapping" }, { status: 400 });
-    }
+    const resultData = await apiResponse.json();
 
-    if (externalResponse.ok && parsedResult.success) {
+    if (apiResponse.ok && resultData.success) {
       return NextResponse.json({ success: true });
-    } else {
-      return NextResponse.json({ success: false, error: parsedResult.message || "Key verification refused" }, { status: 400 });
     }
 
-  } catch (serverError: any) {
-    console.error("Intercepted server crash loop:", serverError);
-    return NextResponse.json({ 
-      success: false, 
-      error: "Internal runtime failure protection layer trigger",
-      details: serverError?.message || String(serverError)
-    }, { status: 500 });
+    return NextResponse.json({ success: false, error: resultData.message }, { status: apiResponse.status });
+  } catch (error: any) {
+    console.error("Backend Form Error:", error);
+    return NextResponse.json({ success: false, error: error?.message || "Internal Server Error" }, { status: 500 });
   }
 }
