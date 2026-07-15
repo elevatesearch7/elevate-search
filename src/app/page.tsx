@@ -113,28 +113,32 @@ export default function Home() {
   };
 
   return (
-    <div className="w-full h-screen overflow-y-auto snap-y snap-mandatory scroll-smooth bg-[#050505] text-white selection:bg-purple-500/30">
+    /* 
+      🛠️ MOBILE-FIRST SCROLL VIEWPORT OVERHAUL:
+      Switches to standard overflow scrolling on mobile devices, enabling snap mechanics ONLY on desktop frameworks (md: screens).
+    */
+    <div className="w-full min-h-screen md:h-screen overflow-y-auto md:snap-y md:snap-mandatory scroll-smooth bg-[#050505] text-white selection:bg-purple-500/30 overflow-x-hidden">
       <SchemaMarkup type="FAQPage" data={faqSchemaData} />
       <InteractiveNodes />
 
       {/* SLIDE 1: INTRO HERO CONTAINER */}
-      <div className="w-full min-h-screen snap-start snap-always flex flex-col justify-start relative">
+      <div className="w-full min-h-screen md:snap-start md:snap-always flex flex-col justify-start relative">
         <FuturisticHero />
       </div>
 
       {/* SLIDE 2: OPERATIONAL CORE SECTION */}
       <motion.section 
-        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} variants={sectionParent}
-        className="w-full min-h-screen snap-start snap-always flex flex-col justify-start pt-24 xl:pt-28 pb-12 px-4 sm:px-6 lg:px-8 bg-black/40 backdrop-blur-md border-t border-white/[0.02]"
+        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }} variants={sectionParent}
+        className="w-full min-h-screen md:snap-start md:snap-always flex flex-col justify-start pt-28 pb-16 md:pb-12 px-4 sm:px-6 lg:px-8 bg-black/40 backdrop-blur-md border-t border-white/[0.02]"
       >
-        <div className="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center my-auto">
+        <div className="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center md:my-auto">
           <motion.div variants={slideLeft} className="space-y-4">
             <span className="text-xs font-bold uppercase tracking-widest text-[#8B5CF6] block">{t('sec2Badge')}</span>
-            <h3 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">{t('sec2Title')}</h3>
+            <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight leading-tight">{t('sec2Title')}</h3>
             <p className="text-[#A1A1AA] leading-relaxed text-xs sm:text-sm lg:text-base max-w-xl">{t('sec2Desc')}</p>
           </motion.div>
           
-          <motion.div variants={slideRight} className="bg-zinc-950/60 backdrop-blur-md rounded-2xl border border-white/10 p-6 sm:p-8 relative overflow-hidden space-y-6 shadow-2xl">
+          <motion.div variants={slideRight} className="bg-zinc-950/60 backdrop-blur-md rounded-2xl border border-white/10 p-5 sm:p-8 relative overflow-hidden space-y-6 shadow-2xl">
             <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-full blur-3xl pointer-events-none" />
             <h4 className="text-xs font-bold text-[#A855F7] tracking-wider uppercase">Unified Discovery Framework</h4>
             
@@ -162,16 +166,16 @@ export default function Home() {
 
       {/* SLIDE 3: UNIFIED PLATFORMS CORE MATRIX */}
       <motion.section 
-        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }} variants={sectionParent}
-        className="w-full min-h-screen snap-start snap-always flex flex-col justify-start pt-24 xl:pt-28 pb-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black/20 to-zinc-950/10 backdrop-blur-sm border-t border-white/[0.02]"
+        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} variants={sectionParent}
+        className="w-full min-h-screen md:snap-start md:snap-always flex flex-col justify-start pt-28 pb-16 md:pb-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black/20 to-zinc-950/10 backdrop-blur-sm border-t border-white/[0.02]"
       >
-        <div className="max-w-7xl w-full mx-auto space-y-6 lg:space-y-8 my-auto">
+        <div className="max-w-7xl w-full mx-auto space-y-6 lg:space-y-8 md:my-auto">
           <motion.div variants={cascadeUp} className="text-center max-w-2xl mx-auto space-y-1">
             <span className="text-xs font-bold uppercase tracking-widest text-[#A855F7] block">{t('sec3Badge')}</span>
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">{t('sec3Title')}</h3>
           </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {futureCards.map((card, idx) => {
               const IconComp = card.icon;
               return (
@@ -194,15 +198,15 @@ export default function Home() {
 
       {/* SLIDE 4: SOLUTIONS & PRICING ENGINE */}
       <motion.section 
-        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }} variants={sectionParent}
-        className="w-full min-h-screen snap-start snap-always flex flex-col justify-start pt-24 xl:pt-28 pb-12 px-4 sm:px-6 lg:px-8 bg-black/40 backdrop-blur-md border-t border-white/[0.02]"
+        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} variants={sectionParent}
+        className="w-full min-h-screen md:snap-start md:snap-always flex flex-col justify-start pt-28 pb-16 md:pb-12 px-4 sm:px-6 lg:px-8 bg-black/40 backdrop-blur-md border-t border-white/[0.02]"
       >
-        <div className="max-w-7xl w-full mx-auto space-y-6 lg:space-y-8 my-auto">
+        <div className="max-w-7xl w-full mx-auto space-y-6 lg:space-y-8 md:my-auto">
           <motion.div variants={cascadeUp} className="text-center max-w-2xl mx-auto space-y-1">
             <span className="text-xs font-bold uppercase tracking-widest text-[#8B5CF6] block">{t('sec4Badge')}</span>
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">{t('sec4Title')}</h3>
           </motion.div>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6 items-start">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 items-start">
             {plans.map((plan, idx) => (
               <motion.div key={idx} variants={cascadeUp} className={`bg-zinc-950/40 backdrop-blur-xl border rounded-xl p-5 lg:p-6 relative flex flex-col justify-between transition-all duration-500 ${plan.recommended ? 'border-[#8B5CF6] bg-zinc-900/50 lg:scale-105 z-10 shadow-2xl' : 'border-white/10'}`}>
                 <div>
@@ -227,15 +231,15 @@ export default function Home() {
 
       {/* SLIDE 5: STRATEGIC DIFFERENCE */}
       <motion.section 
-        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }} variants={sectionParent}
-        className="w-full min-h-screen snap-start snap-always flex flex-col justify-start pt-24 xl:pt-28 pb-12 px-4 sm:px-6 lg:px-8 bg-transparent border-t border-white/[0.02]"
+        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} variants={sectionParent}
+        className="w-full min-h-screen md:snap-start md:snap-always flex flex-col justify-start pt-28 pb-16 md:pb-12 px-4 sm:px-6 lg:px-8 bg-transparent border-t border-white/[0.02]"
       >
-        <div className="max-w-7xl w-full mx-auto space-y-6 lg:space-y-8 my-auto">
+        <div className="max-w-7xl w-full mx-auto space-y-6 lg:space-y-8 md:my-auto">
           <motion.div variants={cascadeUp} className="text-center max-w-xl mx-auto space-y-1">
             <span className="text-xs font-bold uppercase tracking-widest text-[#A855F7] block">The Strategic Difference</span>
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">Why Choose Elevate Search</h3>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {valueProps.map((vp, idx) => (
               <motion.div key={idx} variants={cascadeUp} className="bg-zinc-950/40 backdrop-blur-sm border border-white/5 p-4 rounded-xl space-y-1.5 shadow-lg flex flex-col justify-between min-h-[140px]">
                 <div>
@@ -253,8 +257,8 @@ export default function Home() {
 
       {/* SLIDE 6: EXECUTION PIPELINE WORKFLOW */}
       <motion.section 
-        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }} variants={sectionParent}
-        className="w-full min-h-screen snap-start snap-always flex flex-col justify-start pt-24 xl:pt-28 pb-12 px-4 sm:px-6 lg:px-8 bg-black/40 backdrop-blur-md border-t border-white/[0.02]"
+        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} variants={sectionParent}
+        className="w-full min-h-screen md:snap-start md:snap-always flex flex-col justify-start pt-28 pb-16 md:pb-12 px-4 sm:px-6 lg:px-8 bg-black/40 backdrop-blur-md border-t border-white/[0.02]"
       >
         <div className="max-w-7xl w-full mx-auto space-y-8 my-auto">
           <motion.div variants={cascadeUp} className="text-center max-w-xl mx-auto space-y-1">
@@ -284,10 +288,10 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* 🛠️ SLIDE 7: FAQ KNOWLEDGE HUB (FIXED: Added utility filters to hide the scroll line completely) */}
+      {/* SLIDE 7: FAQ KNOWLEDGE HUB */}
       <motion.section 
-        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }} variants={sectionParent}
-        className="w-full min-h-screen snap-start snap-always flex flex-col justify-start pt-24 xl:pt-28 pb-12 px-4 sm:px-6 lg:px-8 bg-transparent border-t border-white/[0.02]"
+        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} variants={sectionParent}
+        className="w-full min-h-screen md:snap-start md:snap-always flex flex-col justify-start pt-28 pb-16 md:pb-12 px-4 sm:px-6 lg:px-8 bg-transparent border-t border-white/[0.02]"
       >
         <div className="max-w-3xl w-full mx-auto space-y-6 my-auto">
           <motion.div variants={cascadeUp} className="text-center space-y-1">
@@ -295,18 +299,17 @@ export default function Home() {
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">Frequently Asked Questions</h3>
           </motion.div>
           
-          {/* Scrollbar hidden cleanly using arbitrary variants inside class utilities */}
           <motion.div 
             variants={cascadeUp} 
-            className="space-y-2 max-h-[60vh] overflow-y-auto pr-1 select-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+            className="space-y-2 max-h-[60vh] md:max-h-[55vh] overflow-y-auto pr-1 select-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
           >
             {faqs.map((faq, idx) => {
               const isSelected = activeFaq === idx;
               return (
                 <div key={idx} className="bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden shadow-md">
                   <button onClick={() => setActiveFaq(isSelected ? null : idx)} className="w-full text-left p-4 flex items-center justify-between text-white font-medium text-xs sm:text-sm focus:outline-none bg-zinc-900/20 hover:bg-zinc-900/40 transition-colors">
-                    <span>{faq.q}</span>
-                    <ChevronDown className={`w-3.5 h-3.5 text-[#A1A1AA] transition-transform duration-300 ${isSelected ? 'transform rotate-180 text-white' : ''}`} />
+                    <span className="pr-2">{faq.q}</span>
+                    <ChevronDown className={`w-3.5 h-3.5 text-[#A1A1AA] transition-transform duration-300 shrink-0 ${isSelected ? 'transform rotate-180 text-white' : ''}`} />
                   </button>
                   <motion.div initial={false} animate={{ height: isSelected ? "auto" : 0, opacity: isSelected ? 1 : 0 }} transition={{ duration: 0.2 }} className="overflow-hidden">
                     <p className="p-4 text-xs text-[#A1A1AA] leading-relaxed border-t border-white/5 bg-black/20">{faq.a}</p>
@@ -320,20 +323,20 @@ export default function Home() {
 
       {/* SLIDE 8: RESEARCH INSIGHTS */}
       <motion.section 
-        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }} variants={sectionParent}
-        className="w-full min-h-screen snap-start snap-always flex flex-col justify-start pt-24 xl:pt-28 pb-12 px-4 sm:px-6 lg:px-8 bg-black/40 backdrop-blur-md border-t border-white/[0.02]"
+        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} variants={sectionParent}
+        className="w-full min-h-screen md:snap-start md:snap-always flex flex-col justify-start pt-28 pb-16 md:pb-12 px-4 sm:px-6 lg:px-8 bg-black/40 backdrop-blur-md border-t border-white/[0.02]"
       >
         <div className="max-w-7xl w-full mx-auto space-y-8 my-auto">
           <div className="space-y-1 text-center">
             <span className="text-xs font-bold uppercase tracking-widest text-[#8B5CF6] block">Intel & Research</span>
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">Latest Insights</h3>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {insights.map((ins, idx) => (
               <motion.div key={idx} variants={cascadeUp} className="bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-4 sm:p-5 flex flex-col justify-between group shadow-xl">
                 <div className="space-y-2">
                   <span className="inline-block text-[9px] font-bold uppercase tracking-wider text-[#A855F7] bg-[#A855F7]/10 px-2.5 py-0.5 rounded-full">{ins.cat}</span>
-                  <h4 className="text-xs sm:text-sm font-bold text-white leading-snug group-hover:text-[#8B5CF6] transition-colors">{ins.title}</h4>
+                  <h4 className="text-xs sm:text-sm lg:text-base font-bold text-white leading-snug group-hover:text-[#8B5CF6] transition-colors">{ins.title}</h4>
                 </div>
                 <div className="flex items-center justify-between text-[10px] text-[#A1A1AA] pt-3 mt-3 border-t border-white/5">
                   <span>{ins.date}</span>
@@ -347,10 +350,11 @@ export default function Home() {
 
       {/* SLIDE 9: INTEGRATED CLOSING CTA + BRAND FOOTER PANEL */}
       <motion.section 
-        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }} variants={sectionParent}
-        className="w-full min-h-screen snap-start snap-always flex flex-col justify-between pt-24 xl:pt-28 pb-6 px-4 sm:px-6 lg:px-8 bg-zinc-950/30 border-t border-white/[0.04] relative"
+        initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} variants={sectionParent}
+        className="w-full min-h-screen md:snap-start md:snap-always flex flex-col justify-between pt-28 pb-6 px-4 sm:px-6 lg:px-8 bg-zinc-950/30 border-t border-white/[0.04] relative"
       >
-        <motion.div variants={cascadeUp} className="max-w-4xl mx-auto text-center space-y-4 py-4 my-auto flex flex-col items-center justify-center">
+        {/* Closing CTA Action Card */}
+        <motion.div variants={cascadeUp} className="max-w-4xl mx-auto text-center space-y-4 py-8 md:py-4 md:my-auto flex flex-col items-center justify-center">
           <h3 className="text-xl sm:text-3xl font-black text-white tracking-tight">Ready to Maximize Your Search Real Estate?</h3>
           <Magnetic>
             <Link href="/contact" className="px-8 py-3.5 sm:px-10 sm:py-4 rounded-xl font-bold purple-gradient text-white shadow-2xl inline-flex items-center gap-3 uppercase tracking-widest text-xs border border-white/10 hover:scale-[1.02] transition-transform">
@@ -359,9 +363,11 @@ export default function Home() {
           </Magnetic>
         </motion.div>
 
-        <motion.div variants={cascadeUp} className="max-w-7xl w-full mx-auto border-t border-white/[0.05] pt-6 mt-auto space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+        {/* Full Grid Brand Footer Architecture */}
+        <motion.div variants={cascadeUp} className="max-w-7xl w-full mx-auto border-t border-white/[0.05] pt-6 space-y-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
             
+            {/* Identity Layout */}
             <div className="space-y-3">
               <Link href="/" className="flex items-center gap-2 group">
                 <img src="/logo.webp" alt="Elevate Search Logo" className="w-7 h-7 rounded-full object-cover" />
@@ -375,6 +381,7 @@ export default function Home() {
               </p>
             </div>
 
+            {/* Site Links Menu */}
             <div className="space-y-2">
               <h4 className="text-[10px] font-bold uppercase tracking-widest text-zinc-300">Navigation</h4>
               <ul className="space-y-1 text-[11px] text-zinc-400 font-medium">
@@ -387,6 +394,7 @@ export default function Home() {
               </ul>
             </div>
 
+            {/* Service Array Indices */}
             <div className="space-y-2">
               <h4 className="text-[10px] font-bold uppercase tracking-widest text-zinc-300">Optimizations</h4>
               <ul className="space-y-1.5 text-[11px] text-zinc-400 font-medium">
@@ -397,6 +405,7 @@ export default function Home() {
               </ul>
             </div>
 
+            {/* Contact Channels */}
             <div className="space-y-2.5">
               <h4 className="text-[10px] font-bold uppercase tracking-widest text-zinc-300">Direct Channels</h4>
               <ul className="space-y-1.5 text-[11px] text-zinc-400 font-medium break-all">
