@@ -113,10 +113,6 @@ export default function Home() {
   };
 
   return (
-    /* 
-      🛠️ MOBILE-FIRST SCROLL VIEWPORT OVERHAUL:
-      Switches to standard overflow scrolling on mobile devices, enabling snap mechanics ONLY on desktop frameworks (md: screens).
-    */
     <div className="w-full min-h-screen md:h-screen overflow-y-auto md:snap-y md:snap-mandatory scroll-smooth bg-[#050505] text-white selection:bg-purple-500/30 overflow-x-hidden">
       <SchemaMarkup type="FAQPage" data={faqSchemaData} />
       <InteractiveNodes />
@@ -175,13 +171,14 @@ export default function Home() {
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">{t('sec3Title')}</h3>
           </motion.div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {/* 🛠️ STEP 3 MODIFICATION: Converts the 6 platform cards into a horizontal swipe track on mobile */}
+          <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 pb-4 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {futureCards.map((card, idx) => {
               const IconComp = card.icon;
               return (
                 <motion.div 
                   key={idx} variants={cascadeUp}
-                  className="bg-zinc-950/50 backdrop-blur-md border border-white/10 rounded-xl p-4 sm:p-5 transition-all duration-500 hover:border-purple-500/40 hover:bg-zinc-900/40 group relative overflow-hidden shadow-xl"
+                  className="shrink-0 w-[85vw] sm:w-[65vw] md:w-auto snap-center snap-always bg-zinc-950/50 backdrop-blur-md border border-white/10 rounded-xl p-5 transition-all duration-500 hover:border-purple-500/40 hover:bg-zinc-900/40 group relative overflow-hidden shadow-xl"
                 >
                   <div className="flex items-center justify-between mb-3">
                     <div className="p-2 rounded-lg bg-black/60 border border-white/10 text-[#8B5CF6] group-hover:text-purple-400 transition-colors"><IconComp className="w-4 h-4" /></div>
@@ -206,9 +203,11 @@ export default function Home() {
             <span className="text-xs font-bold uppercase tracking-widest text-[#8B5CF6] block">{t('sec4Badge')}</span>
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">{t('sec4Title')}</h3>
           </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 items-start">
+          
+          {/* 🛠️ STEP 4 MODIFICATION: Converts the pricing deck into a horizontal swipe track on mobile */}
+          <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 items-start pb-4 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {plans.map((plan, idx) => (
-              <motion.div key={idx} variants={cascadeUp} className={`bg-zinc-950/40 backdrop-blur-xl border rounded-xl p-5 lg:p-6 relative flex flex-col justify-between transition-all duration-500 ${plan.recommended ? 'border-[#8B5CF6] bg-zinc-900/50 lg:scale-105 z-10 shadow-2xl' : 'border-white/10'}`}>
+              <motion.div key={idx} variants={cascadeUp} className={`shrink-0 w-[85vw] sm:w-[65vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-xl border rounded-xl p-5 lg:p-6 relative flex flex-col justify-between transition-all duration-500 ${plan.recommended ? 'border-[#8B5CF6] bg-zinc-900/50 lg:scale-105 z-10 shadow-2xl' : 'border-white/10'}`}>
                 <div>
                   <h4 className="text-base sm:text-lg font-bold text-white mb-1">{plan.name}</h4>
                   <p className="text-[11px] text-[#A1A1AA] mb-3 min-h-[32px]">{plan.desc}</p>
@@ -239,9 +238,11 @@ export default function Home() {
             <span className="text-xs font-bold uppercase tracking-widest text-[#A855F7] block">The Strategic Difference</span>
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">Why Choose Elevate Search</h3>
           </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          
+          {/* 🛠️ STEP 4 MODIFICATION (PART 2): Converts the Why Choose grid into a horizontal swipe track on mobile */}
+          <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 pb-4 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {valueProps.map((vp, idx) => (
-              <motion.div key={idx} variants={cascadeUp} className="bg-zinc-950/40 backdrop-blur-sm border border-white/5 p-4 rounded-xl space-y-1.5 shadow-lg flex flex-col justify-between min-h-[140px]">
+              <motion.div key={idx} variants={cascadeUp} className="shrink-0 w-[85vw] sm:w-[65vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-sm border border-white/5 p-4 rounded-xl space-y-1.5 shadow-lg flex flex-col justify-between min-h-[140px]">
                 <div>
                   <div className="flex items-center gap-2 mb-1.5">
                     <div className="w-1 h-4 purple-gradient rounded-full" />
@@ -260,14 +261,16 @@ export default function Home() {
         initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} variants={sectionParent}
         className="w-full min-h-screen md:snap-start md:snap-always flex flex-col justify-start pt-28 pb-16 md:pb-12 px-4 sm:px-6 lg:px-8 bg-black/40 backdrop-blur-md border-t border-white/[0.02]"
       >
-        <div className="max-w-7xl w-full mx-auto space-y-8 my-auto">
+        <div className="max-w-7xl w-full mx-auto space-y-8 md:my-auto">
           <motion.div variants={cascadeUp} className="text-center max-w-xl mx-auto space-y-1">
             <span className="text-xs font-bold uppercase tracking-widest text-[#8B5CF6] block">Execution Workflow</span>
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">How We Work</h3>
           </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 relative">
+          
+          {/* 🛠️ STEP 4 MODIFICATION (PART 3): Converts workflow track elements into a horizontal swipe deck on mobile */}
+          <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 relative pb-4 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {steps.map((st, idx) => (
-              <motion.div key={idx} variants={cascadeUp} className="bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-4 sm:p-5 relative overflow-hidden group shadow-xl min-h-[210px] flex flex-col justify-between">
+              <motion.div key={idx} variants={cascadeUp} className="shrink-0 w-[85vw] sm:w-[65vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-4 sm:p-5 relative overflow-hidden group shadow-xl min-h-[210px] flex flex-col justify-between">
                 <div className="space-y-2">
                   <span className="absolute -top-3 -right-1 text-5xl font-black text-white/5 select-none tracking-tighter">{st.step}</span>
                   <span className="text-[9px] font-bold text-[#8B5CF6] block mb-1">{st.step} // Phase</span>
@@ -299,6 +302,7 @@ export default function Home() {
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">Frequently Asked Questions</h3>
           </motion.div>
           
+          {/* 🛠️ STEP 5 MODIFICATION: Enforces a hidden scroll system responsive across mobile and desktop folds */}
           <motion.div 
             variants={cascadeUp} 
             className="space-y-2 max-h-[60vh] md:max-h-[55vh] overflow-y-auto pr-1 select-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
@@ -331,9 +335,9 @@ export default function Home() {
             <span className="text-xs font-bold uppercase tracking-widest text-[#8B5CF6] block">Intel & Research</span>
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">Latest Insights</h3>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 pb-4 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {insights.map((ins, idx) => (
-              <motion.div key={idx} variants={cascadeUp} className="bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-4 sm:p-5 flex flex-col justify-between group shadow-xl">
+              <motion.div key={idx} variants={cascadeUp} className="shrink-0 w-[85vw] sm:w-[65vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-4 sm:p-5 flex flex-col justify-between group shadow-xl">
                 <div className="space-y-2">
                   <span className="inline-block text-[9px] font-bold uppercase tracking-wider text-[#A855F7] bg-[#A855F7]/10 px-2.5 py-0.5 rounded-full">{ins.cat}</span>
                   <h4 className="text-xs sm:text-sm lg:text-base font-bold text-white leading-snug group-hover:text-[#8B5CF6] transition-colors">{ins.title}</h4>
@@ -351,9 +355,8 @@ export default function Home() {
       {/* SLIDE 9: INTEGRATED CLOSING CTA + BRAND FOOTER PANEL */}
       <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} variants={sectionParent}
-        className="w-full min-h-screen md:snap-start md:snap-always flex flex-col justify-between pt-28 pb-6 px-4 sm:px-6 lg:px-8 bg-zinc-950/30 border-t border-white/[0.04] relative"
+        className="w-full min-h-screen md:h-screen md:snap-start md:snap-always flex flex-col justify-between pt-28 pb-6 px-4 sm:px-6 lg:px-8 bg-zinc-950/30 border-t border-white/[0.04] relative"
       >
-        {/* Closing CTA Action Card */}
         <motion.div variants={cascadeUp} className="max-w-4xl mx-auto text-center space-y-4 py-8 md:py-4 md:my-auto flex flex-col items-center justify-center">
           <h3 className="text-xl sm:text-3xl font-black text-white tracking-tight">Ready to Maximize Your Search Real Estate?</h3>
           <Magnetic>
@@ -363,11 +366,9 @@ export default function Home() {
           </Magnetic>
         </motion.div>
 
-        {/* Full Grid Brand Footer Architecture */}
         <motion.div variants={cascadeUp} className="max-w-7xl w-full mx-auto border-t border-white/[0.05] pt-6 space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
             
-            {/* Identity Layout */}
             <div className="space-y-3">
               <Link href="/" className="flex items-center gap-2 group">
                 <img src="/logo.webp" alt="Elevate Search Logo" className="w-7 h-7 rounded-full object-cover" />
@@ -381,7 +382,6 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Site Links Menu */}
             <div className="space-y-2">
               <h4 className="text-[10px] font-bold uppercase tracking-widest text-zinc-300">Navigation</h4>
               <ul className="space-y-1 text-[11px] text-zinc-400 font-medium">
@@ -394,7 +394,6 @@ export default function Home() {
               </ul>
             </div>
 
-            {/* Service Array Indices */}
             <div className="space-y-2">
               <h4 className="text-[10px] font-bold uppercase tracking-widest text-zinc-300">Optimizations</h4>
               <ul className="space-y-1.5 text-[11px] text-zinc-400 font-medium">
@@ -405,7 +404,6 @@ export default function Home() {
               </ul>
             </div>
 
-            {/* Contact Channels */}
             <div className="space-y-2.5">
               <h4 className="text-[10px] font-bold uppercase tracking-widest text-zinc-300">Direct Channels</h4>
               <ul className="space-y-1.5 text-[11px] text-zinc-400 font-medium break-all">
