@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ArrowUpRight, Search, MapPin, Cpu, MessageSquare, 
   Mic, CheckCircle2, Eye, Compass, ChevronDown, Mail, Phone, Instagram, Layers, Globe
@@ -122,7 +122,6 @@ export default function Home() {
           </motion.div>
           
           <motion.div variants={slideRight} className="bg-zinc-950/60 backdrop-blur-md rounded-2xl border border-white/10 p-5 sm:p-8 relative overflow-hidden space-y-6 shadow-2xl">
-            {/* 🛠️ Calibrated Opacity smoothly to 6% (0.06) */}
             <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-[0.06] mix-blend-screen pointer-events-none" />
             
             <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-full blur-3xl pointer-events-none" />
@@ -169,7 +168,6 @@ export default function Home() {
                   key={idx} variants={cascadeUp}
                   className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always bg-zinc-950/50 backdrop-blur-md border border-white/10 rounded-xl p-6 transition-all duration-500 hover:border-purple-500/40 hover:bg-zinc-900/40 group relative overflow-hidden shadow-xl min-h-[340px] md:min-h-[200px] flex flex-col justify-between"
                 >
-                  {/* 🛠️ Calibrated Opacity down to 6% (0.06) */}
                   <div style={{ backgroundImage: `url(${card.img})` }} className="absolute inset-0 bg-cover bg-center opacity-[0.06] mix-blend-luminosity group-hover:opacity-[0.10] transition-opacity duration-500 pointer-events-none" />
                   
                   <div className="flex items-center justify-between mb-3 relative z-10">
@@ -204,7 +202,6 @@ export default function Home() {
           <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 items-start pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {plans.map((plan, idx) => (
               <motion.div key={idx} variants={cascadeUp} className={`shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-xl border rounded-xl p-7 py-12 md:p-6 relative flex flex-col justify-between transition-all duration-500 ${plan.recommended ? 'border-[#8B5CF6] bg-zinc-900/50 lg:scale-105 z-10 shadow-2xl' : 'border-white/10'} min-h-[500px] md:min-h-auto group overflow-hidden`}>
-                {/* 🛠️ Calibrated Opacity down to 6% (0.06) */}
                 <div style={{ backgroundImage: `url(${plan.img})` }} className="absolute inset-0 bg-cover bg-center opacity-[0.06] group-hover:opacity-[0.10] transition-opacity duration-500 pointer-events-none" />
                 
                 <div className="space-y-4 md:space-y-0 relative z-10">
@@ -231,29 +228,56 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* SLIDE 5: STRATEGIC DIFFERENCE */}
+      {/* SLIDE 5: STRATEGIC DIFFERENCE (WHY CHOOSE) */}
       <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} variants={sectionParent}
         className="w-full min-h-screen md:snap-start md:snap-always flex flex-col justify-start pt-28 pb-16 md:pb-12 px-4 sm:px-6 lg:px-8 bg-transparent border-t border-white/[0.02]"
       >
-        <div className="max-w-7xl w-full mx-auto space-y-6 lg:space-y-8 md:my-auto">
-          <motion.div variants={cascadeUp} className="text-center max-w-xl mx-auto space-y-1">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#A855F7] block">The Strategic Difference</span>
-            <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">Why Choose Elevate Search</h3>
+        <div className="max-w-7xl w-full mx-auto space-y-6 lg:space-y-10 md:my-auto">
+          <motion.div variants={cascadeUp} className="space-y-2 text-center max-w-xl mx-auto">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md border border-purple-500/20 bg-purple-500/5 text-purple-400 text-[10px] font-mono tracking-widest uppercase mx-auto select-none">
+              <span className="w-1.5 h-1.5 rounded-full bg-purple-500 animate-pulse" /> Core Capabilities Matrix
+            </div>
+            <h3 className="text-3xl sm:text-4xl font-black text-white tracking-tight leading-tight">
+              Why Choose <span className="bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent">Elevate Search</span>
+            </h3>
           </motion.div>
           
           <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {valueProps.map((vp, idx) => (
-              <motion.div key={idx} variants={cascadeUp} className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-sm border border-white/5 p-5 py-10 md:p-5 rounded-xl space-y-3 shadow-lg flex flex-col justify-between min-h-[260px] md:min-h-[170px] group overflow-hidden">
-                {/* 🛠️ Calibrated Opacity down to 6% (0.06) */}
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-[0.06] group-hover:opacity-[0.10] transition-opacity duration-500 pointer-events-none" />
-                
-                <div className="space-y-3 md:space-y-2 relative z-10">
-                  <div className="flex items-center gap-2">
-                    <div className="w-1.5 h-5 purple-gradient rounded-full" />
-                    <h4 className="text-base md:text-sm font-bold text-white">{vp.title}</h4>
+              <motion.div 
+                key={idx} variants={cascadeUp} 
+                className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always bg-[#09090b]/80 backdrop-blur-md border border-zinc-800/60 rounded-lg p-6 py-10 md:p-6 relative flex flex-col justify-between min-h-[300px] md:min-h-[220px] group overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.7)]"
+              >
+                <div className="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-purple-500/30 group-hover:border-purple-400/80 transition-colors duration-300" />
+                <div className="absolute top-0 right-0 w-2.5 h-2.5 border-t border-r border-purple-500/30 group-hover:border-purple-400/80 transition-colors duration-300" />
+                <div className="absolute bottom-0 left-0 w-2.5 h-2.5 border-b border-l border-purple-500/30 group-hover:border-purple-400/80 transition-colors duration-300" />
+                <div className="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-purple-500/30 group-hover:border-purple-400/80 transition-colors duration-300" />
+
+                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-[0.06] group-hover:opacity-[0.11] transition-opacity duration-500 pointer-events-none" />
+                <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-purple-500/[0.03] to-transparent -translate-y-full group-hover:translate-y-[200%] transition-transform duration-[1500ms] ease-out pointer-events-none" />
+
+                <div className="space-y-4 relative z-10">
+                  <div className="flex items-center justify-between text-[10px] font-mono tracking-widest text-zinc-500 select-none">
+                    <span>VECTOR_NODE // 0{idx + 1}</span>
+                    <span className="text-purple-500/40 font-bold group-hover:text-purple-400 transition-colors flex items-center gap-1">
+                      <span className="w-1 h-1 rounded-full bg-purple-500 inline-block animate-ping" /> SYS_OK
+                    </span>
                   </div>
-                  <p className="text-sm md:text-xs text-zinc-300 md:text-zinc-400 leading-relaxed">{vp.desc}</p>
+
+                  <div className="space-y-2">
+                    <h4 className="text-lg md:text-base font-black text-white group-hover:text-purple-400 transition-colors tracking-tight">
+                      {vp.title}
+                    </h4>
+                    <p className="text-sm md:text-xs text-zinc-300 md:text-zinc-400 leading-relaxed font-normal">
+                      {vp.desc}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="w-full flex items-center justify-between pt-4 border-t border-white/[0.03] text-[9px] font-mono text-zinc-600 relative z-10 select-none">
+                  <span>DATA_LOCK_SECURE</span>
+                  <span>PROT_v4.6</span>
                 </div>
               </motion.div>
             ))}
@@ -267,7 +291,7 @@ export default function Home() {
         initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} variants={sectionParent}
         className="w-full min-h-screen md:snap-start md:snap-always flex flex-col justify-start pt-28 pb-16 md:pb-12 px-4 sm:px-6 lg:px-8 bg-black/40 backdrop-blur-md border-t border-white/[0.02]"
       >
-        <div className="max-w-7xl w-full mx-auto space-y-8 md:my-auto">
+        <div className="max-w-7xl w-full mx-auto space-y-8 my-auto">
           <motion.div variants={cascadeUp} className="text-center max-w-xl mx-auto space-y-1">
             <span className="text-xs font-bold uppercase tracking-widest text-[#8B5CF6] block">Execution Workflow</span>
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">How We Work</h3>
@@ -276,7 +300,6 @@ export default function Home() {
           <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 relative pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {steps.map((st, idx) => (
               <motion.div key={idx} variants={cascadeUp} className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-5 py-10 md:p-5 relative overflow-hidden group shadow-xl min-h-[300px] md:min-h-[240px] flex flex-col justify-between">
-                {/* 🛠️ Calibrated Opacity down to 6% (0.06) */}
                 <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-[0.06] group-hover:opacity-[0.10] transition-opacity duration-500 pointer-events-none" />
                 
                 <div className="space-y-3 md:space-y-2 relative z-10">
@@ -300,31 +323,80 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* SLIDE 7: FAQ KNOWLEDGE HUB */}
+      {/* 🛠️ SLIDE 7: RE-ENGINEERED CYBERNETIC KNOWLEDGE RECOVERY PROTOCOL (FAQ HUB) */}
       <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} variants={sectionParent}
         className="w-full min-h-screen md:snap-start md:snap-always flex flex-col justify-start pt-28 pb-16 md:pb-12 px-4 sm:px-6 lg:px-8 bg-transparent border-t border-white/[0.02]"
       >
         <div className="max-w-3xl w-full mx-auto space-y-6 my-auto">
-          <motion.div variants={cascadeUp} className="text-center space-y-1">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#A855F7] block">Information Hub</span>
-            <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">Frequently Asked Questions</h3>
+          <motion.div variants={cascadeUp} className="space-y-2 text-center select-none">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md border border-purple-500/20 bg-purple-500/5 text-purple-400 text-[10px] font-mono tracking-widest uppercase mx-auto">
+              <Globe className="w-3 h-3 text-purple-400 animate-spin-slow" /> Query Retrieval Center
+            </div>
+            <h3 className="text-3xl sm:text-4xl font-black text-white tracking-tight leading-tight">
+              Frequently Asked Questions
+            </h3>
           </motion.div>
           
           <motion.div 
             variants={cascadeUp} 
-            className="space-y-2 max-h-[60vh] md:max-h-[55vh] overflow-y-auto pr-1 select-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+            className="space-y-3 max-h-[60vh] md:max-h-[55vh] overflow-y-auto pr-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
           >
             {faqs.map((faq, idx) => {
               const isSelected = activeFaq === idx;
               return (
-                <div key={idx} className="bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden shadow-md">
-                  <button onClick={() => setActiveFaq(isSelected ? null : idx)} className="w-full text-left p-4.5 flex items-center justify-between text-white font-medium text-xs sm:text-sm focus:outline-none bg-zinc-900/20 hover:bg-zinc-900/40 transition-colors">
-                    <span className="pr-2">{faq.q}</span>
-                    <ChevronDown className={`w-4 h-4 text-[#A1A1AA] transition-transform duration-300 shrink-0 ${isSelected ? 'transform rotate-180 text-white' : ''}`} />
+                <div 
+                  key={idx} 
+                  className={`bg-[#070709]/60 backdrop-blur-md border rounded-xl overflow-hidden transition-all duration-300 shadow-lg ${
+                    isSelected ? 'border-purple-500/40 shadow-purple-500/5 bg-zinc-950/80' : 'border-zinc-800/40 hover:border-zinc-700/60'
+                  }`}
+                >
+                  <button 
+                    onClick={() => setActiveFaq(isSelected ? null : idx)} 
+                    className="w-full text-left p-4.5 sm:p-5 flex items-center justify-between text-white focus:outline-none transition-colors group relative"
+                  >
+                    {/* Futuristic active left accent line tag */}
+                    <div className={`absolute left-0 top-0 h-full w-[2px] bg-gradient-to-b from-purple-400 to-indigo-500 transition-transform duration-300 ${
+                      isSelected ? 'scale-y-100' : 'scale-y-0'
+                    }`} />
+
+                    <div className="flex flex-col gap-1 pr-4">
+                      {/* Monospace decryption token tag */}
+                      <span className="text-[9px] font-mono tracking-widest text-zinc-500 uppercase select-none">
+                        CORE_INDEX // 0{idx + 1}
+                      </span>
+                      <span className={`text-xs sm:text-sm font-bold tracking-tight transition-colors duration-200 ${
+                        isSelected ? 'text-purple-400' : 'text-zinc-200 group-hover:text-white'
+                      }`}>
+                        {faq.q}
+                      </span>
+                    </div>
+                    
+                    <ChevronDown className={`w-4 h-4 text-zinc-500 transition-transform duration-300 shrink-0 ${
+                      isSelected ? 'transform rotate-180 text-purple-400' : 'group-hover:text-zinc-300'
+                    }`} />
                   </button>
-                  <motion.div initial={false} animate={{ height: isSelected ? "auto" : 0, opacity: isSelected ? 1 : 0 }} transition={{ duration: 0.2 }} className="overflow-hidden">
-                    <p className="p-4.5 text-sm md:text-xs text-zinc-300 md:text-zinc-400 leading-relaxed border-t border-white/5 bg-black/20">{faq.a}</p>
+                  
+                  <motion.div 
+                    initial={false} 
+                    animate={{ height: isSelected ? "auto" : 0, opacity: isSelected ? 1 : 0 }} 
+                    transition={{ duration: 0.25, ease: "easeInOut" }} 
+                    className="overflow-hidden relative"
+                  >
+                    {/* Themed image grid overlay mask */}
+                    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-[0.04] mix-blend-screen pointer-events-none" />
+                    
+                    <div className="p-4.5 sm:p-5 pt-1 text-xs sm:text-xs text-zinc-300 leading-relaxed border-t border-zinc-900 bg-black/40 relative z-10 space-y-3">
+                      <p className="max-w-2xl">{faq.a}</p>
+                      
+                      {/* Monospace protocol footer parameters inside answer fold */}
+                      <div className="flex items-center gap-4 text-[9px] font-mono text-zinc-600 select-none pt-2 border-t border-white/[0.02]">
+                        <span className="flex items-center gap-1">
+                          <span className="w-1 h-1 rounded-full bg-emerald-500 inline-block" /> STATUS // DECRYPTED_OK
+                        </span>
+                        <span>ACCESS // PUBLIC</span>
+                      </div>
+                    </div>
                   </motion.div>
                 </div>
               );
@@ -347,7 +419,6 @@ export default function Home() {
           <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {insights.map((ins, idx) => (
               <motion.div key={idx} variants={cascadeUp} className="shrink-0 w-[92vw] sm:w-[65vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-6 py-10 md:p-5 flex flex-col justify-between group shadow-xl min-h-[220px] md:min-h-[170px] overflow-hidden">
-                {/* 🛠️ Calibrated Opacity down to 6% (0.06) */}
                 <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1504639725590-34d0984388bd?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-[0.06] group-hover:opacity-[0.10] transition-opacity duration-500 pointer-events-none" />
                 
                 <div className="space-y-3 relative z-10">
