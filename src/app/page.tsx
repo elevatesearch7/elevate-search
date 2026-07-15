@@ -178,22 +178,24 @@ export default function Home() {
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">{t('sec3Title')}</h3>
           </motion.div>
           
-          {/* 🛠️ LENGTHENED PARAMS: Enhanced to min-h-[320px] and py-8 on mobile views */}
+          {/* 🛠️ PROPORTIONALLY UPSCALED CARDS FOR MOBILE SLIDES */}
           <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {futureCards.map((card, idx) => {
               const IconComp = card.icon;
               return (
                 <motion.div 
                   key={idx} variants={cascadeUp}
-                  className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always bg-zinc-950/50 backdrop-blur-md border border-white/10 rounded-xl p-6 py-8 md:py-6 transition-all duration-500 hover:border-purple-500/40 hover:bg-zinc-900/40 group relative overflow-hidden shadow-xl min-h-[320px] md:min-h-[200px] flex flex-col justify-between"
+                  className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always bg-zinc-950/50 backdrop-blur-md border border-white/10 rounded-xl p-7 py-12 md:p-6 transition-all duration-500 hover:border-purple-500/40 hover:bg-zinc-900/40 group relative overflow-hidden shadow-xl min-h-[340px] md:min-h-[200px] flex flex-col justify-between"
                 >
                   <div className="flex items-center justify-between mb-3">
-                    <div className="p-2 rounded-lg bg-black/60 border border-white/10 text-[#8B5CF6] group-hover:text-purple-400 transition-colors"><IconComp className="w-4 h-4" /></div>
+                    <div className="w-12 h-12 md:w-8 md:h-8 rounded-xl md:rounded-lg bg-black/60 border border-white/10 text-[#8B5CF6] group-hover:text-purple-400 transition-colors flex items-center justify-center">
+                      <IconComp className="w-5 h-5 md:w-4 md:h-4" />
+                    </div>
                     <span className="text-[9px] font-semibold text-[#A855F7] bg-[#A855F7]/10 px-2.5 py-0.5 rounded-full border border-[#A855F7]/20">{card.highlight}</span>
                   </div>
                   <div>
-                    <h4 className="text-sm sm:text-base font-bold text-white mb-1.5">{card.title}</h4>
-                    <p className="text-[11px] sm:text-xs text-[#A1A1AA] leading-relaxed">{card.desc}</p>
+                    <h4 className="text-lg md:text-base font-bold text-white mb-2">{card.title}</h4>
+                    <p className="text-sm md:text-xs text-zinc-300 md:text-zinc-400 leading-relaxed">{card.desc}</p>
                   </div>
                 </motion.div>
               );
@@ -214,22 +216,25 @@ export default function Home() {
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">{t('sec4Title')}</h3>
           </motion.div>
           
-          {/* 🛠️ LENGTHENED PARAMS: Enhanced to min-h-[460px] on mobile views */}
+          {/* 🛠️ PROPORTIONALLY UPSCALED PRICING SLIDES */}
           <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 items-start pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {plans.map((plan, idx) => (
-              <motion.div key={idx} variants={cascadeUp} className={`shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-xl border rounded-xl p-6 py-8 md:py-6 relative flex flex-col justify-between transition-all duration-500 ${plan.recommended ? 'border-[#8B5CF6] bg-zinc-900/50 lg:scale-105 z-10 shadow-2xl' : 'border-white/10'} min-h-[460px] md:min-h-auto`}>
-                <div>
-                  <h4 className="text-base sm:text-lg font-bold text-white mb-1">{plan.name}</h4>
-                  <p className="text-[11px] text-[#A1A1AA] mb-3 min-h-[32px]">{plan.desc}</p>
-                  <div className="text-2xl sm:text-3xl font-extrabold text-white mb-3">{plan.price}</div>
-                  <div className="h-[1px] bg-white/10 mb-3" />
-                  <ul className="space-y-1.5 mb-5">
+              <motion.div key={idx} variants={cascadeUp} className={`shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-xl border rounded-xl p-7 py-12 md:p-6 relative flex flex-col justify-between transition-all duration-500 ${plan.recommended ? 'border-[#8B5CF6] bg-zinc-900/50 lg:scale-105 z-10 shadow-2xl' : 'border-white/10'} min-h-[500px] md:min-h-auto`}>
+                <div className="space-y-4 md:space-y-0">
+                  <h4 className="text-lg md:text-base font-bold text-white">{plan.name}</h4>
+                  <p className="text-sm md:text-11px text-zinc-300 md:text-zinc-400 min-h-[32px]">{plan.desc}</p>
+                  <div className="text-4xl md:text-3xl font-black text-white">{plan.price}</div>
+                  <div className="h-[1px] bg-white/10" />
+                  <ul className="space-y-2.5 md:space-y-1.5 pb-4">
                     {plan.features.map((feat, fIdx) => (
-                      <li key={fIdx} className="flex items-center gap-2 text-xs text-[#A1A1AA]"><CheckCircle2 className="w-3.5 h-3.5 text-[#8B5CF6] flex-shrink-0" />{feat}</li>
+                      <li key={fIdx} className="flex items-center gap-2 text-sm md:text-xs text-zinc-300 md:text-zinc-400">
+                        <CheckCircle2 className="w-4 h-4 md:w-3.5 md:h-3.5 text-[#8B5CF6] flex-shrink-0" />
+                        {feat}
+                      </li>
                     ))}
                   </ul>
                 </div>
-                <Link href="/contact" className={`w-full py-2.5 rounded-xl text-xs font-semibold text-center transition-all ${plan.recommended ? 'purple-gradient text-white shadow-lg' : 'bg-black/50 text-white border border-white/10'}`}>
+                <Link href="/contact" className="w-full py-3 md:py-2 rounded-xl text-xs font-bold text-center transition-all purple-gradient text-white shadow-lg">
                   Select Framework Plan
                 </Link>
               </motion.div>
@@ -250,16 +255,16 @@ export default function Home() {
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">Why Choose Elevate Search</h3>
           </motion.div>
           
-          {/* 🛠️ LENGTHENED PARAMS: Enhanced to min-h-[260px] and py-8 on mobile views */}
+          {/* 🛠️ PROPORTIONALLY UPSCALED STRATEGIC BLOCKS */}
           <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {valueProps.map((vp, idx) => (
-              <motion.div key={idx} variants={cascadeUp} className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-sm border border-white/5 p-5 py-8 md:py-5 rounded-xl space-y-2 shadow-lg flex flex-col justify-between min-h-[260px] md:min-h-[170px]">
-                <div>
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <div className="w-1 h-4 purple-gradient rounded-full" />
-                    <h4 className="text-xs sm:text-sm font-bold text-white">{vp.title}</h4>
+              <motion.div key={idx} variants={cascadeUp} className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-sm border border-white/5 p-6 py-10 md:p-5 rounded-xl space-y-3 shadow-lg flex flex-col justify-between min-h-[260px] md:min-h-[170px]">
+                <div className="space-y-3 md:space-y-2">
+                  <div className="flex items-center gap-2">
+                    <div className="w-1.5 h-5 purple-gradient rounded-full" />
+                    <h4 className="text-base md:text-sm font-bold text-white">{vp.title}</h4>
                   </div>
-                  <p className="text-[11px] sm:text-xs text-[#A1A1AA] leading-relaxed">{vp.desc}</p>
+                  <p className="text-sm md:text-xs text-zinc-300 md:text-[#A1A1AA] leading-relaxed">{vp.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -279,20 +284,20 @@ export default function Home() {
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">How We Work</h3>
           </motion.div>
           
-          {/* 🛠️ LENGTHENED PARAMS: Enhanced to min-h-[300px] and py-8 on mobile views */}
+          {/* 🛠️ PROPORTIONALLY UPSCALED PIPELINE DECK */}
           <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 relative pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {steps.map((st, idx) => (
-              <motion.div key={idx} variants={cascadeUp} className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-5 py-8 md:py-5 relative overflow-hidden group shadow-xl min-h-[300px] md:min-h-[240px] flex flex-col justify-between">
-                <div className="space-y-2">
-                  <span className="absolute -top-3 -right-1 text-5xl font-black text-white/5 select-none tracking-tighter">{st.step}</span>
-                  <span className="text-[9px] font-bold text-[#8B5CF6] block mb-1">{st.step} // Phase</span>
-                  <h4 className="text-sm font-bold text-white mb-1.5">{st.name}</h4>
-                  <p className="text-[11px] text-[#A1A1AA] leading-relaxed mb-3">{st.desc}</p>
+              <motion.div key={idx} variants={cascadeUp} className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-6 py-10 md:p-5 relative overflow-hidden group shadow-xl min-h-[300px] md:min-h-[240px] flex flex-col justify-between">
+                <div className="space-y-3 md:space-y-2">
+                  <span className="absolute -top-3 -right-1 text-6xl font-black text-white/5 select-none tracking-tighter">{st.step}</span>
+                  <span className="text-[10px] md:text-[9px] font-bold text-[#8B5CF6] block mb-1">{st.step} // Phase</span>
+                  <h4 className="text-lg md:text-sm font-bold text-white">{st.name}</h4>
+                  <p className="text-sm md:text-11px text-zinc-300 md:text-[#A1A1AA] leading-relaxed">{st.desc}</p>
                 </div>
-                <div className="border-t border-white/5 pt-2.5 space-y-1">
+                <div className="border-t border-white/5 pt-3 space-y-1.5 md:space-y-1">
                   {st.subTasks.map((task, tIdx) => (
-                    <div key={tIdx} className="text-[10px] text-purple-400 flex items-center gap-1.5 font-medium">
-                      <div className="w-1 h-1 rounded-full bg-indigo-400 shrink-0" />
+                    <div key={tIdx} className="text-xs md:text-[10px] text-purple-400 flex items-center gap-2 font-medium">
+                      <div className="w-1.5 h-1.5 md:w-1 md:h-1 rounded-full bg-indigo-400 shrink-0" />
                       <span>{task}</span>
                     </div>
                   ))}
@@ -323,12 +328,12 @@ export default function Home() {
               const isSelected = activeFaq === idx;
               return (
                 <div key={idx} className="bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden shadow-md">
-                  <button onClick={() => setActiveFaq(isSelected ? null : idx)} className="w-full text-left p-4 flex items-center justify-between text-white font-medium text-xs sm:text-sm focus:outline-none bg-zinc-900/20 hover:bg-zinc-900/40 transition-colors">
+                  <button onClick={() => setActiveFaq(isSelected ? null : idx)} className="w-full text-left p-4.5 flex items-center justify-between text-white font-medium text-sm focus:outline-none bg-zinc-900/20 hover:bg-zinc-900/40 transition-colors">
                     <span className="pr-2">{faq.q}</span>
-                    <ChevronDown className={`w-3.5 h-3.5 text-[#A1A1AA] transition-transform duration-300 shrink-0 ${isSelected ? 'transform rotate-180 text-white' : ''}`} />
+                    <ChevronDown className={`w-4 h-4 text-[#A1A1AA] transition-transform duration-300 shrink-0 ${isSelected ? 'transform rotate-180 text-white' : ''}`} />
                   </button>
                   <motion.div initial={false} animate={{ height: isSelected ? "auto" : 0, opacity: isSelected ? 1 : 0 }} transition={{ duration: 0.2 }} className="overflow-hidden">
-                    <p className="p-4 text-xs text-[#A1A1AA] leading-relaxed border-t border-white/5 bg-black/20">{faq.a}</p>
+                    <p className="p-4.5 text-sm md:text-xs text-zinc-300 md:text-[#A1A1AA] leading-relaxed border-t border-white/5 bg-black/20">{faq.a}</p>
                   </motion.div>
                 </div>
               );
@@ -348,15 +353,15 @@ export default function Home() {
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">Latest Insights</h3>
           </div>
           
-          {/* 🛠 *LENGTHENED PARAMS: Enhanced to min-h-[220px] and py-8 on mobile views */}
+          {/* 🛠️ PROPORTIONALLY UPSCALED INSIGHT CARDS */}
           <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {insights.map((ins, idx) => (
-              <motion.div key={idx} variants={cascadeUp} className="shrink-0 w-[92vw] sm:w-[65vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-5 py-8 md:py-5 flex flex-col justify-between group shadow-xl min-h-[220px] md:min-h-[170px]">
-                <div className="space-y-2">
-                  <span className="inline-block text-[9px] font-bold uppercase tracking-wider text-[#A855F7] bg-[#A855F7]/10 px-2.5 py-0.5 rounded-full">{ins.cat}</span>
-                  <h4 className="text-xs sm:text-sm lg:text-base font-bold text-white leading-snug group-hover:text-[#8B5CF6] transition-colors">{ins.title}</h4>
+              <motion.div key={idx} variants={cascadeUp} className="shrink-0 w-[92vw] sm:w-[65vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-6 py-10 md:p-5 flex flex-col justify-between group shadow-xl min-h-[220px] md:min-h-[170px]">
+                <div className="space-y-3">
+                  <span className="inline-block text-[10px] md:text-[9px] font-bold uppercase tracking-wider text-[#A855F7] bg-[#A855F7]/10 px-2.5 py-0.5 rounded-full">{ins.cat}</span>
+                  <h4 className="text-base sm:text-sm lg:text-base font-bold text-white leading-snug group-hover:text-[#8B5CF6] transition-colors">{ins.title}</h4>
                 </div>
-                <div className="flex items-center justify-between text-[10px] text-[#A1A1AA] pt-3 mt-3 border-t border-white/5">
+                <div className="flex items-center justify-between text-xs md:text-[10px] text-zinc-400 pt-3 mt-3 border-t border-white/5">
                   <span>{ins.date}</span>
                   <span>{ins.readTime}</span>
                 </div>
