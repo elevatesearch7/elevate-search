@@ -122,8 +122,8 @@ export default function Home() {
           </motion.div>
           
           <motion.div variants={slideRight} className="bg-zinc-950/60 backdrop-blur-md rounded-2xl border border-white/10 p-5 sm:p-8 relative overflow-hidden space-y-6 shadow-2xl">
-            {/* 🖼️ Premium Neural Mesh Image Layer for Operational Core Card */}
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-[0.03] mix-blend-screen pointer-events-none" />
+            {/* 🖼️ Increased Neural Opacity from 0.03 -> 0.08 */}
+            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-[0.08] mix-blend-screen pointer-events-none" />
             
             <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-full blur-3xl pointer-events-none" />
             <h4 className="text-xs font-bold text-[#A855F7] tracking-wider uppercase relative z-10">Unified Discovery Framework</h4>
@@ -158,7 +158,7 @@ export default function Home() {
         <div className="max-w-7xl w-full mx-auto space-y-6 lg:space-y-8 md:my-auto">
           <motion.div variants={cascadeUp} className="text-center max-w-2xl mx-auto space-y-1">
             <span className="text-xs font-bold uppercase tracking-widest text-[#A855F7] block">{t('sec3Badge')}</span>
-            <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">{t('sec3Title')}</h3>
+            <span className="text-2xl sm:text-4xl font-black text-white tracking-tight">{t('sec3Title')}</span>
           </motion.div>
           
           <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
@@ -167,10 +167,10 @@ export default function Home() {
               return (
                 <motion.div 
                   key={idx} variants={cascadeUp}
-                  className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always bg-zinc-950/50 backdrop-blur-md border border-white/10 rounded-xl p-6 transition-all duration-500 hover:border-purple-500/40 hover:bg-zinc-900/40 group relative overflow-hidden shadow-xl min-h-[320px] md:min-h-[200px] flex flex-col justify-between"
+                  className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always bg-zinc-950/50 backdrop-blur-md border border-white/10 rounded-xl p-6 transition-all duration-500 hover:border-purple-500/40 hover:bg-zinc-900/40 group relative overflow-hidden shadow-xl min-h-[340px] md:min-h-[200px] flex flex-col justify-between"
                 >
-                  {/* 🖼️ Integrated Card Image Mask */}
-                  <div style={{ backgroundImage: `url(${card.img})` }} className="absolute inset-0 bg-cover bg-center opacity-[0.03] mix-blend-luminosity group-hover:opacity-[0.06] transition-opacity duration-500 pointer-events-none" />
+                  {/* 🖼️ Increased Card Opacity from 0.03 -> 0.08 */}
+                  <div style={{ backgroundImage: `url(${card.img})` }} className="absolute inset-0 bg-cover bg-center opacity-[0.08] mix-blend-luminosity group-hover:opacity-[0.13] transition-opacity duration-500 pointer-events-none" />
                   
                   <div className="flex items-center justify-between mb-3 relative z-10">
                     <div className="w-12 h-12 md:w-8 md:h-8 rounded-xl md:rounded-lg bg-black/60 border border-white/10 text-[#8B5CF6] group-hover:text-purple-400 transition-colors flex items-center justify-center">
@@ -204,8 +204,8 @@ export default function Home() {
           <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 items-start pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {plans.map((plan, idx) => (
               <motion.div key={idx} variants={cascadeUp} className={`shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-xl border rounded-xl p-7 py-12 md:p-6 relative flex flex-col justify-between transition-all duration-500 ${plan.recommended ? 'border-[#8B5CF6] bg-zinc-900/50 lg:scale-105 z-10 shadow-2xl' : 'border-white/10'} min-h-[500px] md:min-h-auto group overflow-hidden`}>
-                {/* 🖼️ Plan Card Image Mask */}
-                <div style={{ backgroundImage: `url(${plan.img})` }} className="absolute inset-0 bg-cover bg-center opacity-[0.02] group-hover:opacity-[0.04] transition-opacity duration-500 pointer-events-none" />
+                {/* 🖼️ Increased Pricing Opacity from 0.02 -> 0.07 */}
+                <div style={{ backgroundImage: `url(${plan.img})` }} className="absolute inset-0 bg-cover bg-center opacity-[0.07] group-hover:opacity-[0.12] transition-opacity duration-500 pointer-events-none" />
                 
                 <div className="space-y-4 md:space-y-0 relative z-10">
                   <h4 className="text-lg md:text-base font-bold text-white">{plan.name}</h4>
@@ -245,8 +245,8 @@ export default function Home() {
           <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {valueProps.map((vp, idx) => (
               <motion.div key={idx} variants={cascadeUp} className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-sm border border-white/5 p-5 py-10 md:p-5 rounded-xl space-y-3 shadow-lg flex flex-col justify-between min-h-[260px] md:min-h-[170px] group overflow-hidden">
-                {/* 🖼️ Strategic Vector Image Mask */}
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-[0.02] group-hover:opacity-[0.05] transition-opacity duration-500 pointer-events-none" />
+                {/* 🖼️ Increased Strategic Opacity from 0.02 -> 0.07 */}
+                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-[0.07] group-hover:opacity-[0.12] transition-opacity duration-500 pointer-events-none" />
                 
                 <div className="space-y-3 md:space-y-2 relative z-10">
                   <div className="flex items-center gap-2">
@@ -276,8 +276,8 @@ export default function Home() {
           <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 relative pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {steps.map((st, idx) => (
               <motion.div key={idx} variants={cascadeUp} className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-5 py-10 md:p-5 relative overflow-hidden group shadow-xl min-h-[300px] md:min-h-[240px] flex flex-col justify-between">
-                {/* 🖼️ Blueprint Matrix Image Mask */}
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-[0.02] group-hover:opacity-[0.04] transition-opacity duration-500 pointer-events-none" />
+                {/* 🖼️ Increased Blueprint Opacity from 0.02 -> 0.07 */}
+                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-[0.07] group-hover:opacity-[0.11] transition-opacity duration-500 pointer-events-none" />
                 
                 <div className="space-y-3 md:space-y-2 relative z-10">
                   <span className="absolute -top-3 -right-1 text-6xl font-black text-white/5 select-none tracking-tighter">{st.step}</span>
@@ -347,8 +347,8 @@ export default function Home() {
           <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {insights.map((ins, idx) => (
               <motion.div key={idx} variants={cascadeUp} className="shrink-0 w-[92vw] sm:w-[65vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-6 py-10 md:p-5 flex flex-col justify-between group shadow-xl min-h-[220px] md:min-h-[170px] overflow-hidden">
-                {/* 🖼️ Intel Block Background Overlay */}
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1504639725590-34d0984388bd?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-[0.02] group-hover:opacity-[0.05] transition-opacity duration-500 pointer-events-none" />
+                {/* 🖼️ Increased Intel Opacity from 0.02 -> 0.07 */}
+                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1504639725590-34d0984388bd?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-[0.07] group-hover:opacity-[0.12] transition-opacity duration-500 pointer-events-none" />
                 
                 <div className="space-y-3 relative z-10">
                   <span className="inline-block text-[10px] md:text-[9px] font-bold uppercase tracking-wider text-[#A855F7] bg-[#A855F7]/10 px-2.5 py-0.5 rounded-full">{ins.cat}</span>
