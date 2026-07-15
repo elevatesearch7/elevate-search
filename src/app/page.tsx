@@ -19,18 +19,18 @@ export default function Home() {
   const currentYear = new Date().getFullYear();
 
   const futureCards = [
-    { title: "Google Search (SEO)", icon: Search, desc: "Dominate conventional desktop and mobile layout frames, optimize featured snippets, clear out indexation bottlenecks, and configure premium structured schema matrices.", highlight: "Classic Organic Authority" },
-    { title: "Google Maps (Local SEO)", icon: MapPin, desc: "Calibrate localized map coordinates and grid configurations. We push your physical profile straight into regional 3-pack boxes where high-intent buyers choose proximity services.", highlight: "Geocentric Proximity" },
-    { title: "AI Overviews (AEO)", icon: Cpu, desc: "Restructure textual data to feed semantic entity relationship parsers. We configure your articles so Google's machine learning model cites your company directly in native summaries.", highlight: "Generative Summary Mapping" },
-    { title: "ChatGPT Optimization", icon: MessageSquare, desc: "Inject brand tokens and clear domain citations directly into OpenAI's web crawling indexes and foundational vector memory nodes to trigger direct user recommendations.", highlight: "OpenAI Memory Index" },
-    { title: "Gemini Optimization", icon: Globe, desc: "Synchronize structural knowledge graphs with Google's multimodal ecosystem, forcing real-time engine pipelines to parse and trust your product parameters instantly.", highlight: "Google DeepMind Graph" },
-    { title: "Voice & Conversational (GEO)", icon: Mic, desc: "Capture natural, long-tail spoken phrasing and contextual query captures used across modern smart devices, digital home controllers, and real-time mobile assistants.", highlight: "Semantic Retrieval Sync" }
+    { title: "Google Search (SEO)", icon: Search, desc: "Dominate conventional desktop and mobile layout frames, optimize featured snippets, clear out indexation bottlenecks, and configure premium structured schema matrices.", highlight: "Classic Organic Authority", img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop" },
+    { title: "Google Maps (Local SEO)", icon: MapPin, desc: "Calibrate localized map coordinates and grid configurations. We push your physical profile straight into regional 3-pack boxes where high-intent buyers choose proximity services.", highlight: "Geocentric Proximity", img: "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=800&auto=format&fit=crop" },
+    { title: "AI Overviews (AEO)", icon: Cpu, desc: "Restructure textual data to feed semantic entity relationship parsers. We configure your articles so Google's machine learning model cites your company directly in native summaries.", highlight: "Generative Summary Mapping", img: "https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=800&auto=format&fit=crop" },
+    { title: "ChatGPT Optimization", icon: MessageSquare, desc: "Inject brand tokens and clear domain citations directly into OpenAI's web crawling indexes and foundational vector memory nodes to trigger direct user recommendations.", highlight: "OpenAI Memory Index", img: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=800&auto=format&fit=crop" },
+    { title: "Gemini Optimization", icon: Globe, desc: "Synchronize structural knowledge graphs with Google's multimodal ecosystem, forcing real-time engine pipelines to parse and trust your product parameters instantly.", highlight: "Google DeepMind Graph", img: "https://images.unsplash.com/photo-1614741118887-7a4ee193a5fa?q=80&w=800&auto=format&fit=crop" },
+    { title: "Voice & Conversational (GEO)", icon: Mic, desc: "Capture natural, long-tail spoken phrasing and contextual query captures used across modern smart devices, digital home controllers, and real-time mobile assistants.", highlight: "Semantic Retrieval Sync", img: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=800&auto=format&fit=crop" }
   ];
 
   const plans = [
-    { name: "Website Search Optimization", price: "₹15,000", desc: "Architect foundational organic pipelines targeting explicit search algorithms.", features: ["Website Audit", "Keyword Research", "Competitor Analysis", "Technical SEO", "On-Page SEO"], recommended: false },
-    { name: "Google Business Optimization", price: "₹8,000", desc: "Capture geolocated transactional requests through geographic profile scaling.", features: ["GBP Optimization", "GBP Audit", "Local Keyword Research", "Competitor Analysis", "Review Strategy"], recommended: false },
-    { name: "Complete Search Visibility Solution", price: "₹20,000", desc: "The ultimate unified blueprint maximizing coverage across all modern environments.", features: ["Website Search Audit & Action Plan", "Full Local Map Optimization Pack", "AI Engine Optimization Framework", "Cross-Platform Competitor Strategy", "Ongoing Technical Health Tracking"], recommended: true }
+    { name: "Website Search Optimization", price: "₹15,000", desc: "Architect foundational organic pipelines targeting explicit search algorithms.", features: ["Website Audit", "Keyword Research", "Competitor Analysis", "Technical SEO", "On-Page SEO"], recommended: false, img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop" },
+    { name: "Google Business Optimization", price: "₹8,000", desc: "Capture geolocated transactional requests through geographic profile scaling.", features: ["GBP Optimization", "GBP Audit", "Local Keyword Research", "Competitor Analysis", "Review Strategy"], recommended: false, img: "https://images.unsplash.com/photo-1504639725590-34d0984388bd?q=80&w=800&auto=format&fit=crop" },
+    { name: "Complete Search Visibility Solution", price: "₹20,000", desc: "The ultimate unified blueprint maximizing coverage across all modern environments.", features: ["Website Search Audit & Action Plan", "Full Local Map Optimization Pack", "AI Engine Optimization Framework", "Cross-Platform Competitor Strategy", "Ongoing Technical Health Tracking"], recommended: true, img: "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=800&auto=format&fit=crop" }
   ];
 
   const valueProps = [
@@ -43,30 +43,10 @@ export default function Home() {
   ];
 
   const steps = [
-    { 
-      step: "01", 
-      name: "Deep System Audit", 
-      desc: "Full comprehensive analytical examination of target platform visibility layers.",
-      subTasks: ["On-Page Semantic Analysis", "Off-Page Citation Tracking", "Core Technical Health Audit", "GEO Engine Footprint Trace"]
-    },
-    { 
-      step: "02", 
-      name: "Vector Cluster Strategy", 
-      desc: "Formulating architectural maps to capture active buyer intent points.",
-      subTasks: ["Competitor Real Estate Mapping", "Semantic Intent Grouping", "Entity Graph Scoping", "LLM Source Identification"]
-    },
-    { 
-      step: "03", 
-      name: "Structural Deployment", 
-      desc: "Execution of site-wide asset optimizations and code refactoring.",
-      subTasks: ["Schema Markup Injection", "Source Performance Refactoring", "GBP Geo-Grid Calibration", "Ad-Blocker Proxy Routing"]
-    },
-    { 
-      step: "04", 
-      name: "Algorithmic Growth", 
-      desc: "Ongoing data refinement loops to protect visibility metrics over time.",
-      subTasks: ["LLM Citation Tracking", "Model Verification Sweeps", "Index Re-Submission Loops", "Spatial Foothold Scaling"]
-    }
+    { step: "01", name: "Deep System Audit", desc: "Full comprehensive analytical examination of target platform visibility layers.", subTasks: ["On-Page Semantic Analysis", "Off-Page Citation Tracking", "Core Technical Health Audit", "GEO Engine Footprint Trace"] },
+    { step: "02", name: "Vector Cluster Strategy", desc: "Formulating architectural maps to capture active buyer intent points.", subTasks: ["Competitor Real Estate Mapping", "Semantic Intent Grouping", "Entity Graph Scoping", "LLM Source Identification"] },
+    { step: "03", name: "Structural Deployment", desc: "Execution of site-wide asset optimizations and code refactoring.", subTasks: ["Schema Markup Injection", "Source Performance Refactoring", "GBP Geo-Grid Calibration", "Ad-Blocker Proxy Routing"] },
+    { step: "04", name: "Algorithmic Growth", desc: "Ongoing data refinement loops to protect visibility metrics over time.", subTasks: ["LLM Citation Tracking", "Model Verification Sweeps", "Index Re-Submission Loops", "Spatial Foothold Scaling"] }
   ];
 
   const faqs = [
@@ -142,23 +122,26 @@ export default function Home() {
           </motion.div>
           
           <motion.div variants={slideRight} className="bg-zinc-950/60 backdrop-blur-md rounded-2xl border border-white/10 p-5 sm:p-8 relative overflow-hidden space-y-6 shadow-2xl">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-full blur-3xl pointer-events-none" />
-            <h4 className="text-xs font-bold text-[#A855F7] tracking-wider uppercase">Unified Discovery Framework</h4>
+            {/* 🖼️ Premium Neural Mesh Image Layer for Operational Core Card */}
+            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-[0.03] mix-blend-screen pointer-events-none" />
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
-              <div className="p-4 rounded-xl bg-black/30 border border-white/5 space-y-1">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-full blur-3xl pointer-events-none" />
+            <h4 className="text-xs font-bold text-[#A855F7] tracking-wider uppercase relative z-10">Unified Discovery Framework</h4>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1 relative z-10">
+              <div className="p-4 rounded-xl bg-black/50 border border-white/5 space-y-1">
                 <h5 className="text-xs font-bold text-white flex items-center gap-2"><Search className="w-3.5 h-3.5 text-purple-400" /> SEO Core</h5>
                 <p className="text-[11px] text-zinc-400 leading-normal">Optimizing standard indices, load velocity parameters, and layout crawl pathways.</p>
               </div>
-              <div className="p-4 rounded-xl bg-black/30 border border-white/5 space-y-1">
+              <div className="p-4 rounded-xl bg-black/50 border border-white/5 space-y-1">
                 <h5 className="text-xs font-bold text-white flex items-center gap-2"><Cpu className="w-3.5 h-3.5 text-indigo-400" /> AEO Systems</h5>
                 <p className="text-[11px] text-zinc-400 leading-normal">Formatting raw content layers into semantic relationships for direct AI summary citations.</p>
               </div>
-              <div className="p-4 rounded-xl bg-black/30 border border-white/5 space-y-1">
+              <div className="p-4 rounded-xl bg-black/50 border border-white/5 space-y-1">
                 <h5 className="text-xs font-bold text-white flex items-center gap-2"><Layers className="w-3.5 h-3.5 text-purple-400" /> GEO Engines</h5>
                 <p className="text-[11px] text-zinc-400 leading-normal">Baking brand identity variables cleanly into vector database queries powering LLM chat engines.</p>
               </div>
-              <div className="p-4 rounded-xl bg-black/30 border border-white/5 space-y-1">
+              <div className="p-4 rounded-xl bg-black/50 border border-white/5 space-y-1">
                 <h5 className="text-xs font-bold text-white flex items-center gap-2"><MapPin className="w-3.5 h-3.5 text-indigo-400" /> Local Grid</h5>
                 <p className="text-[11px] text-zinc-400 leading-normal">Calibrating physical map coordinates and GBP parameters to capture location requests.</p>
               </div>
@@ -178,22 +161,24 @@ export default function Home() {
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">{t('sec3Title')}</h3>
           </motion.div>
           
-          {/* 🛠️ PROPORTIONALLY UPSCALED CARDS FOR MOBILE SLIDES */}
           <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {futureCards.map((card, idx) => {
               const IconComp = card.icon;
               return (
                 <motion.div 
                   key={idx} variants={cascadeUp}
-                  className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always bg-zinc-950/50 backdrop-blur-md border border-white/10 rounded-xl p-7 py-12 md:p-6 transition-all duration-500 hover:border-purple-500/40 hover:bg-zinc-900/40 group relative overflow-hidden shadow-xl min-h-[340px] md:min-h-[200px] flex flex-col justify-between"
+                  className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always bg-zinc-950/50 backdrop-blur-md border border-white/10 rounded-xl p-6 transition-all duration-500 hover:border-purple-500/40 hover:bg-zinc-900/40 group relative overflow-hidden shadow-xl min-h-[320px] md:min-h-[200px] flex flex-col justify-between"
                 >
-                  <div className="flex items-center justify-between mb-3">
+                  {/* 🖼️ Integrated Card Image Mask */}
+                  <div style={{ backgroundImage: `url(${card.img})` }} className="absolute inset-0 bg-cover bg-center opacity-[0.03] mix-blend-luminosity group-hover:opacity-[0.06] transition-opacity duration-500 pointer-events-none" />
+                  
+                  <div className="flex items-center justify-between mb-3 relative z-10">
                     <div className="w-12 h-12 md:w-8 md:h-8 rounded-xl md:rounded-lg bg-black/60 border border-white/10 text-[#8B5CF6] group-hover:text-purple-400 transition-colors flex items-center justify-center">
                       <IconComp className="w-5 h-5 md:w-4 md:h-4" />
                     </div>
                     <span className="text-[9px] font-semibold text-[#A855F7] bg-[#A855F7]/10 px-2.5 py-0.5 rounded-full border border-[#A855F7]/20">{card.highlight}</span>
                   </div>
-                  <div>
+                  <div className="relative z-10">
                     <h4 className="text-lg md:text-base font-bold text-white mb-2">{card.title}</h4>
                     <p className="text-sm md:text-xs text-zinc-300 md:text-zinc-400 leading-relaxed">{card.desc}</p>
                   </div>
@@ -216,11 +201,13 @@ export default function Home() {
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">{t('sec4Title')}</h3>
           </motion.div>
           
-          {/* 🛠️ PROPORTIONALLY UPSCALED PRICING SLIDES */}
           <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 items-start pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {plans.map((plan, idx) => (
-              <motion.div key={idx} variants={cascadeUp} className={`shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-xl border rounded-xl p-7 py-12 md:p-6 relative flex flex-col justify-between transition-all duration-500 ${plan.recommended ? 'border-[#8B5CF6] bg-zinc-900/50 lg:scale-105 z-10 shadow-2xl' : 'border-white/10'} min-h-[500px] md:min-h-auto`}>
-                <div className="space-y-4 md:space-y-0">
+              <motion.div key={idx} variants={cascadeUp} className={`shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-xl border rounded-xl p-7 py-12 md:p-6 relative flex flex-col justify-between transition-all duration-500 ${plan.recommended ? 'border-[#8B5CF6] bg-zinc-900/50 lg:scale-105 z-10 shadow-2xl' : 'border-white/10'} min-h-[500px] md:min-h-auto group overflow-hidden`}>
+                {/* 🖼️ Plan Card Image Mask */}
+                <div style={{ backgroundImage: `url(${plan.img})` }} className="absolute inset-0 bg-cover bg-center opacity-[0.02] group-hover:opacity-[0.04] transition-opacity duration-500 pointer-events-none" />
+                
+                <div className="space-y-4 md:space-y-0 relative z-10">
                   <h4 className="text-lg md:text-base font-bold text-white">{plan.name}</h4>
                   <p className="text-sm md:text-11px text-zinc-300 md:text-zinc-400 min-h-[32px]">{plan.desc}</p>
                   <div className="text-4xl md:text-3xl font-black text-white">{plan.price}</div>
@@ -234,7 +221,7 @@ export default function Home() {
                     ))}
                   </ul>
                 </div>
-                <Link href="/contact" className="w-full py-3 md:py-2 rounded-xl text-xs font-bold text-center transition-all purple-gradient text-white shadow-lg">
+                <Link href="/contact" className="w-full py-3 md:py-2 rounded-xl text-xs font-bold text-center transition-all purple-gradient text-white shadow-lg relative z-10">
                   Select Framework Plan
                 </Link>
               </motion.div>
@@ -255,16 +242,18 @@ export default function Home() {
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">Why Choose Elevate Search</h3>
           </motion.div>
           
-          {/* 🛠️ PROPORTIONALLY UPSCALED STRATEGIC BLOCKS */}
           <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {valueProps.map((vp, idx) => (
-              <motion.div key={idx} variants={cascadeUp} className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-sm border border-white/5 p-6 py-10 md:p-5 rounded-xl space-y-3 shadow-lg flex flex-col justify-between min-h-[260px] md:min-h-[170px]">
-                <div className="space-y-3 md:space-y-2">
+              <motion.div key={idx} variants={cascadeUp} className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-sm border border-white/5 p-5 py-10 md:p-5 rounded-xl space-y-3 shadow-lg flex flex-col justify-between min-h-[260px] md:min-h-[170px] group overflow-hidden">
+                {/* 🖼️ Strategic Vector Image Mask */}
+                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-[0.02] group-hover:opacity-[0.05] transition-opacity duration-500 pointer-events-none" />
+                
+                <div className="space-y-3 md:space-y-2 relative z-10">
                   <div className="flex items-center gap-2">
                     <div className="w-1.5 h-5 purple-gradient rounded-full" />
                     <h4 className="text-base md:text-sm font-bold text-white">{vp.title}</h4>
                   </div>
-                  <p className="text-sm md:text-xs text-zinc-300 md:text-[#A1A1AA] leading-relaxed">{vp.desc}</p>
+                  <p className="text-sm md:text-xs text-zinc-300 md:text-zinc-400 leading-relaxed">{vp.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -284,17 +273,19 @@ export default function Home() {
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">How We Work</h3>
           </motion.div>
           
-          {/* 🛠️ PROPORTIONALLY UPSCALED PIPELINE DECK */}
           <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 relative pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {steps.map((st, idx) => (
-              <motion.div key={idx} variants={cascadeUp} className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-6 py-10 md:p-5 relative overflow-hidden group shadow-xl min-h-[300px] md:min-h-[240px] flex flex-col justify-between">
-                <div className="space-y-3 md:space-y-2">
+              <motion.div key={idx} variants={cascadeUp} className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-5 py-10 md:p-5 relative overflow-hidden group shadow-xl min-h-[300px] md:min-h-[240px] flex flex-col justify-between">
+                {/* 🖼️ Blueprint Matrix Image Mask */}
+                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-[0.02] group-hover:opacity-[0.04] transition-opacity duration-500 pointer-events-none" />
+                
+                <div className="space-y-3 md:space-y-2 relative z-10">
                   <span className="absolute -top-3 -right-1 text-6xl font-black text-white/5 select-none tracking-tighter">{st.step}</span>
                   <span className="text-[10px] md:text-[9px] font-bold text-[#8B5CF6] block mb-1">{st.step} // Phase</span>
                   <h4 className="text-lg md:text-sm font-bold text-white">{st.name}</h4>
-                  <p className="text-sm md:text-11px text-zinc-300 md:text-[#A1A1AA] leading-relaxed">{st.desc}</p>
+                  <p className="text-sm md:text-11px text-zinc-300 md:text-zinc-400 leading-relaxed">{st.desc}</p>
                 </div>
-                <div className="border-t border-white/5 pt-3 space-y-1.5 md:space-y-1">
+                <div className="border-t border-white/5 pt-3 space-y-1.5 md:space-y-1 relative z-10">
                   {st.subTasks.map((task, tIdx) => (
                     <div key={tIdx} className="text-xs md:text-[10px] text-purple-400 flex items-center gap-2 font-medium">
                       <div className="w-1.5 h-1.5 md:w-1 md:h-1 rounded-full bg-indigo-400 shrink-0" />
@@ -333,7 +324,7 @@ export default function Home() {
                     <ChevronDown className={`w-4 h-4 text-[#A1A1AA] transition-transform duration-300 shrink-0 ${isSelected ? 'transform rotate-180 text-white' : ''}`} />
                   </button>
                   <motion.div initial={false} animate={{ height: isSelected ? "auto" : 0, opacity: isSelected ? 1 : 0 }} transition={{ duration: 0.2 }} className="overflow-hidden">
-                    <p className="p-4.5 text-sm md:text-xs text-zinc-300 md:text-[#A1A1AA] leading-relaxed border-t border-white/5 bg-black/20">{faq.a}</p>
+                    <p className="p-4.5 text-sm md:text-xs text-zinc-300 md:text-zinc-400 leading-relaxed border-t border-white/5 bg-black/20">{faq.a}</p>
                   </motion.div>
                 </div>
               );
@@ -353,15 +344,17 @@ export default function Home() {
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">Latest Insights</h3>
           </div>
           
-          {/* 🛠️ PROPORTIONALLY UPSCALED INSIGHT CARDS */}
           <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {insights.map((ins, idx) => (
-              <motion.div key={idx} variants={cascadeUp} className="shrink-0 w-[92vw] sm:w-[65vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-6 py-10 md:p-5 flex flex-col justify-between group shadow-xl min-h-[220px] md:min-h-[170px]">
-                <div className="space-y-3">
+              <motion.div key={idx} variants={cascadeUp} className="shrink-0 w-[92vw] sm:w-[65vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-6 py-10 md:p-5 flex flex-col justify-between group shadow-xl min-h-[220px] md:min-h-[170px] overflow-hidden">
+                {/* 🖼️ Intel Block Background Overlay */}
+                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1504639725590-34d0984388bd?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-[0.02] group-hover:opacity-[0.05] transition-opacity duration-500 pointer-events-none" />
+                
+                <div className="space-y-3 relative z-10">
                   <span className="inline-block text-[10px] md:text-[9px] font-bold uppercase tracking-wider text-[#A855F7] bg-[#A855F7]/10 px-2.5 py-0.5 rounded-full">{ins.cat}</span>
                   <h4 className="text-base sm:text-sm lg:text-base font-bold text-white leading-snug group-hover:text-[#8B5CF6] transition-colors">{ins.title}</h4>
                 </div>
-                <div className="flex items-center justify-between text-xs md:text-[10px] text-zinc-400 pt-3 mt-3 border-t border-white/5">
+                <div className="flex items-center justify-between text-xs md:text-[10px] text-zinc-400 pt-3 mt-3 border-t border-white/5 relative z-10">
                   <span>{ins.date}</span>
                   <span>{ins.readTime}</span>
                 </div>
