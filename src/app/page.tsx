@@ -112,6 +112,14 @@ export default function Home() {
     visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
   };
 
+  // Reusable Micro-Swipe Hint Layout Block
+  const MobileSwipeHint = () => (
+    <div className="flex md:hidden items-center justify-center gap-1.5 text-[9px] font-mono tracking-[0.2em] text-purple-400/40 uppercase select-none pt-2 animate-pulse">
+      <span>Swipe to view more</span>
+      <span className="text-xs">➔</span>
+    </div>
+  );
+
   return (
     <div className="w-full min-h-screen md:h-screen overflow-y-auto md:snap-y md:snap-mandatory scroll-smooth bg-[#050505] text-white selection:bg-purple-500/30 overflow-x-hidden">
       <SchemaMarkup type="FAQPage" data={faqSchemaData} />
@@ -171,8 +179,7 @@ export default function Home() {
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">{t('sec3Title')}</h3>
           </motion.div>
           
-          {/* 🛠️ STEP 3 MODIFICATION: Converts the 6 platform cards into a horizontal swipe track on mobile */}
-          <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 pb-4 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+          <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {futureCards.map((card, idx) => {
               const IconComp = card.icon;
               return (
@@ -190,6 +197,7 @@ export default function Home() {
               );
             })}
           </div>
+          <MobileSwipeHint />
         </div>
       </motion.section>
 
@@ -204,8 +212,7 @@ export default function Home() {
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">{t('sec4Title')}</h3>
           </motion.div>
           
-          {/* 🛠️ STEP 4 MODIFICATION: Converts the pricing deck into a horizontal swipe track on mobile */}
-          <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 items-start pb-4 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+          <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 items-start pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {plans.map((plan, idx) => (
               <motion.div key={idx} variants={cascadeUp} className={`shrink-0 w-[85vw] sm:w-[65vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-xl border rounded-xl p-5 lg:p-6 relative flex flex-col justify-between transition-all duration-500 ${plan.recommended ? 'border-[#8B5CF6] bg-zinc-900/50 lg:scale-105 z-10 shadow-2xl' : 'border-white/10'}`}>
                 <div>
@@ -225,6 +232,7 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+          <MobileSwipeHint />
         </div>
       </motion.section>
 
@@ -239,8 +247,7 @@ export default function Home() {
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">Why Choose Elevate Search</h3>
           </motion.div>
           
-          {/* 🛠️ STEP 4 MODIFICATION (PART 2): Converts the Why Choose grid into a horizontal swipe track on mobile */}
-          <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 pb-4 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+          <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {valueProps.map((vp, idx) => (
               <motion.div key={idx} variants={cascadeUp} className="shrink-0 w-[85vw] sm:w-[65vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-sm border border-white/5 p-4 rounded-xl space-y-1.5 shadow-lg flex flex-col justify-between min-h-[140px]">
                 <div>
@@ -253,6 +260,7 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+          <MobileSwipeHint />
         </div>
       </motion.section>
 
@@ -267,8 +275,7 @@ export default function Home() {
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">How We Work</h3>
           </motion.div>
           
-          {/* 🛠️ STEP 4 MODIFICATION (PART 3): Converts workflow track elements into a horizontal swipe deck on mobile */}
-          <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 relative pb-4 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+          <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 relative pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {steps.map((st, idx) => (
               <motion.div key={idx} variants={cascadeUp} className="shrink-0 w-[85vw] sm:w-[65vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-4 sm:p-5 relative overflow-hidden group shadow-xl min-h-[210px] flex flex-col justify-between">
                 <div className="space-y-2">
@@ -288,6 +295,7 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+          <MobileSwipeHint />
         </div>
       </motion.section>
 
@@ -302,7 +310,6 @@ export default function Home() {
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">Frequently Asked Questions</h3>
           </motion.div>
           
-          {/* 🛠️ STEP 5 MODIFICATION: Enforces a hidden scroll system responsive across mobile and desktop folds */}
           <motion.div 
             variants={cascadeUp} 
             className="space-y-2 max-h-[60vh] md:max-h-[55vh] overflow-y-auto pr-1 select-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
@@ -335,7 +342,7 @@ export default function Home() {
             <span className="text-xs font-bold uppercase tracking-widest text-[#8B5CF6] block">Intel & Research</span>
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">Latest Insights</h3>
           </div>
-          <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 pb-4 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+          <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {insights.map((ins, idx) => (
               <motion.div key={idx} variants={cascadeUp} className="shrink-0 w-[85vw] sm:w-[65vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-4 sm:p-5 flex flex-col justify-between group shadow-xl">
                 <div className="space-y-2">
@@ -349,6 +356,7 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+          <MobileSwipeHint />
         </div>
       </motion.section>
 

@@ -45,14 +45,10 @@ export default function FuturisticHero() {
           </motion.p>
         </div>
 
-        {/* 
-          🛠️ UPGRADED MOBILE HORIZONTAL SWIPE CONTAINER:
-          Converts the bento matrix into a responsive touch layout on mobile while strictly enforcing 
-          your original grid configurations on desktop viewports.
-        */}
+        {/* Mobile Horizontal Swipe Container */}
         <motion.div 
           variants={itemVariants} 
-          className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 gap-4 w-full text-left mt-4 lg:mt-6 px-2 md:px-0 pb-4 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+          className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 gap-4 w-full text-left mt-4 lg:mt-6 px-2 md:px-0 pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
         >
           
           {/* Card 1 */}
@@ -100,6 +96,13 @@ export default function FuturisticHero() {
           </div>
 
         </motion.div>
+
+        {/* 🛠️ ADDED: Elegant Swipe Indicator for Mobile Views */}
+        <div className="flex md:hidden items-center justify-center gap-1.5 text-[10px] font-mono tracking-[0.2em] text-purple-400/50 uppercase select-none pt-1 animate-pulse">
+          <span>Swipe to view more</span>
+          <span className="text-xs">➔</span>
+        </div>
+
       </motion.div>
 
       {/* Audit Form Modal popup wrapper */}
