@@ -45,64 +45,77 @@ export default function FuturisticHero() {
           </motion.p>
         </div>
 
-        {/* Mobile Horizontal Swipe Container */}
+        {/* Mobile Horizontal Swipe Container / Desktop Bento Grid */}
         <motion.div 
           variants={itemVariants} 
           className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 gap-4 w-full text-left mt-4 lg:mt-6 px-2 md:px-0 pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
         >
           
-          {/* Card 1 - Completely upscaled text sizes, padded margins, and icon metrics */}
+          {/* Card 1 - Website Optimization (SEO Core) */}
           <div className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto md:col-span-2 snap-center snap-always group relative p-7 py-12 md:p-6 bg-zinc-950/40 backdrop-blur-md border border-white/[0.05] hover:border-purple-500/30 rounded-2xl transition-all duration-500 flex flex-col justify-between overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.5)] min-h-[340px] md:min-h-[190px]">
-            <div className="space-y-4 md:space-y-2.5">
+            {/* 🖼️ Premium Theme Image Mask Layer */}
+            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-[0.04] mix-blend-luminosity group-hover:opacity-[0.07] transition-opacity duration-500 pointer-events-none" />
+            
+            <div className="space-y-4 md:space-y-2.5 relative z-10">
               <div className="w-12 h-12 md:w-8 md:h-8 rounded-xl md:rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400">
                 <Search className="w-5 h-5 md:w-4 md:h-4" />
               </div>
               <h3 className="text-lg md:text-base font-bold text-white group-hover:text-purple-400 transition-colors">{t('card1Title')}</h3>
               <p className="text-sm md:text-xs text-zinc-300 md:text-zinc-400 leading-relaxed max-w-xl">{t('card1Desc')}</p>
             </div>
-            <div className="text-[10px] md:text-[9px] text-purple-400/80 tracking-wider font-mono uppercase">{t('card1Tag')}</div>
+            <div className="text-[10px] md:text-[9px] text-purple-400/80 tracking-wider font-mono uppercase relative z-10">{t('card1Tag')}</div>
           </div>
 
-          {/* Card 2 */}
+          {/* Card 2 - Google Maps Matrix */}
           <div className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always group relative p-7 py-12 md:p-6 bg-zinc-950/40 backdrop-blur-md border border-white/[0.05] hover:border-indigo-500/30 rounded-2xl transition-all duration-500 flex flex-col justify-between overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.5)] min-h-[340px] md:min-h-[190px]">
-            <div className="space-y-4 md:space-y-2.5">
+            {/* 🖼️ Premium Theme Image Mask Layer */}
+            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-[0.03] mix-blend-screen group-hover:opacity-[0.06] transition-opacity duration-500 pointer-events-none" />
+            
+            <div className="space-y-4 md:space-y-2.5 relative z-10">
               <div className="w-12 h-12 md:w-8 md:h-8 rounded-xl md:rounded-lg bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
                 <MapPin className="w-5 h-5 md:w-4 md:h-4" />
               </div>
               <h3 className="text-lg md:text-base font-bold text-white group-hover:text-indigo-400 transition-colors">{t('card2Title')}</h3>
               <p className="text-sm md:text-xs text-zinc-300 md:text-zinc-400 leading-relaxed">{t('card2Desc')}</p>
             </div>
-            <div className="text-[10px] md:text-[9px] text-indigo-400/80 tracking-wider font-mono uppercase">{t('card2Tag')}</div>
+            <div className="text-[10px] md:text-[9px] text-indigo-400/80 tracking-wider font-mono uppercase relative z-10">{t('card2Tag')}</div>
           </div>
 
-          {/* Card 3 */}
+          {/* Card 3 - AI Overview (AEO Engine) */}
           <div className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always group relative p-7 py-12 md:p-6 bg-zinc-950/40 backdrop-blur-md border border-white/[0.05] hover:border-emerald-500/30 rounded-2xl transition-all duration-500 flex flex-col justify-between overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.5)] min-h-[340px] md:min-h-[190px]">
-            <div className="space-y-4 md:space-y-2.5">
+            {/* 🖼️ Premium Theme Image Mask Layer */}
+            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-[0.04] mix-blend-overlay group-hover:opacity-[0.07] transition-opacity duration-500 pointer-events-none" />
+            
+            <div className="space-y-4 md:space-y-2.5 relative z-10">
               <div className="w-12 h-12 md:w-8 md:h-8 rounded-xl md:rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
                 <Cpu className="w-5 h-5 md:w-4 md:h-4" />
               </div>
               <h3 className="text-lg md:text-base font-bold text-white group-hover:text-emerald-400 transition-colors">{t('card3Title')}</h3>
               <p className="text-sm md:text-xs text-zinc-300 md:text-zinc-400 leading-relaxed">{t('card3Desc')}</p>
             </div>
-            <div className="text-[10px] md:text-[9px] text-emerald-400/80 tracking-wider font-mono uppercase">{t('card3Tag')}</div>
+            <div className="text-[10px] md:text-[9px] text-emerald-400/80 tracking-wider font-mono uppercase relative z-10">{t('card3Tag')}</div>
           </div>
 
-          {/* Card 4 Trigger */}
+          {/* Card 4 - Audit Trigger Callout */}
           <div 
             onClick={() => setIsModalOpen(true)} 
-            className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto md:col-span-2 snap-center snap-always group relative p-7 py-10 md:p-6 bg-gradient-to-r from-purple-950/30 to-indigo-900/30 backdrop-blur-md border border-purple-500/40 hover:border-purple-400 rounded-2xl transition-all duration-500 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5 overflow-hidden shadow-[0_4px_30px_rgba(124,58,237,0.15)] cursor-pointer hover:scale-[1.01] min-h-[200px] md:min-h-auto"
+            className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto md:col-span-2 snap-center snap-always group relative p-7 py-10 md:p-6 bg-gradient-to-r from-purple-950/20 to-indigo-950/20 backdrop-blur-md border border-purple-500/30 hover:border-purple-400 rounded-2xl transition-all duration-500 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5 overflow-hidden shadow-[0_4px_30px_rgba(124,58,237,0.1)] cursor-pointer hover:scale-[1.01] min-h-[200px] md:min-h-auto"
           >
+            {/* Subtle overlay image */}
+            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-[0.02] pointer-events-none" />
+            
             <div className="space-y-2 relative z-10">
               <h3 className="text-base sm:text-base font-bold text-white group-hover:text-purple-300 transition-colors">{t('card4Title')}</h3>
               <p className="text-sm sm:text-xs text-zinc-300 md:text-zinc-400 max-w-sm">{t('card4Desc')}</p>
             </div>
-            <div className="inline-flex items-center gap-2 text-xs font-bold text-purple-400 group-hover:text-white transition-all px-5 py-3 rounded-xl bg-purple-500/10 border border-purple-500/20 group-hover:bg-purple-600 shrink-0 text-center justify-center">
+            <div className="inline-flex items-center gap-2 text-xs font-bold text-purple-400 group-hover:text-white transition-all px-5 py-3 rounded-xl bg-purple-500/10 border border-purple-500/20 group-hover:bg-purple-600 shrink-0 text-center justify-center relative z-10">
               {t('card4Btn')}
             </div>
           </div>
 
         </motion.div>
 
+        {/* Mobile Swipe Hint Bar */}
         <div className="flex md:hidden items-center justify-center gap-1.5 text-[10px] font-mono tracking-[0.2em] text-purple-400/50 uppercase select-none pt-1 animate-pulse">
           <span>Swipe to view more</span>
           <span className="text-xs">➔</span>
@@ -110,7 +123,7 @@ export default function FuturisticHero() {
 
       </motion.div>
 
-      {/* Audit Form Modal */}
+      {/* Audit System Diagnosis Popup Modal */}
       <AnimatePresence>
         {isModalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
