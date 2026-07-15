@@ -53,8 +53,8 @@ export default function FuturisticHero() {
           
           {/* Card 1 */}
           <div className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto md:col-span-2 snap-center snap-always group relative p-7 py-12 md:p-6 bg-zinc-950/40 backdrop-blur-md border border-white/[0.05] hover:border-purple-500/30 rounded-2xl transition-all duration-500 flex flex-col justify-between overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.5)] min-h-[340px] md:min-h-[190px]">
-            {/* 🖼️ Increased Opacity Base from 0.04 -> 0.09 */}
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-[0.09] mix-blend-luminosity group-hover:opacity-[0.14] transition-opacity duration-500 pointer-events-none" />
+            {/* 🛠️ Calibrated Opacity down to 6% (0.06) */}
+            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-[0.06] mix-blend-luminosity group-hover:opacity-[0.10] transition-opacity duration-500 pointer-events-none" />
             
             <div className="space-y-4 md:space-y-2.5 relative z-10">
               <div className="w-12 h-12 md:w-8 md:h-8 rounded-xl md:rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400">
@@ -68,8 +68,8 @@ export default function FuturisticHero() {
 
           {/* Card 2 */}
           <div className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always group relative p-7 py-12 md:p-6 bg-zinc-950/40 backdrop-blur-md border border-white/[0.05] hover:border-indigo-500/30 rounded-2xl transition-all duration-500 flex flex-col justify-between overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.5)] min-h-[340px] md:min-h-[190px]">
-            {/* 🖼️ Increased Opacity Base from 0.03 -> 0.08 */}
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-[0.08] mix-blend-screen group-hover:opacity-[0.13] transition-opacity duration-500 pointer-events-none" />
+            {/* 🛠️ Calibrated Opacity down to 6% (0.06) */}
+            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-[0.06] mix-blend-screen group-hover:opacity-[0.10] transition-opacity duration-500 pointer-events-none" />
             
             <div className="space-y-4 md:space-y-2.5 relative z-10">
               <div className="w-12 h-12 md:w-8 md:h-8 rounded-xl md:rounded-lg bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
@@ -83,8 +83,8 @@ export default function FuturisticHero() {
 
           {/* Card 3 */}
           <div className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always group relative p-7 py-12 md:p-6 bg-zinc-950/40 backdrop-blur-md border border-white/[0.05] hover:border-emerald-500/30 rounded-2xl transition-all duration-500 flex flex-col justify-between overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.5)] min-h-[340px] md:min-h-[190px]">
-            {/* 🖼️ Increased Opacity Base from 0.04 -> 0.09 */}
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-[0.09] mix-blend-overlay group-hover:opacity-[0.14] transition-opacity duration-500 pointer-events-none" />
+            {/* 🛠️ Calibrated Opacity down to 6% (0.06) */}
+            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-[0.06] mix-blend-overlay group-hover:opacity-[0.10] transition-opacity duration-500 pointer-events-none" />
             
             <div className="space-y-4 md:space-y-2.5 relative z-10">
               <div className="w-12 h-12 md:w-8 md:h-8 rounded-xl md:rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
@@ -101,8 +101,8 @@ export default function FuturisticHero() {
             onClick={() => setIsModalOpen(true)} 
             className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto md:col-span-2 snap-center snap-always group relative p-7 py-10 md:p-6 bg-gradient-to-r from-purple-950/20 to-indigo-950/20 backdrop-blur-md border border-purple-500/30 hover:border-purple-400 rounded-2xl transition-all duration-500 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5 overflow-hidden shadow-[0_4px_30px_rgba(124,58,237,0.1)] cursor-pointer hover:scale-[1.01] min-h-[200px] md:min-h-auto"
           >
-            {/* Increased Opacity Base from 0.02 -> 0.06 */}
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-[0.06] group-hover:opacity-[0.11] transition-opacity duration-500 pointer-events-none" />
+            {/* 🛠️ Calibrated Opacity down to 6% (0.06) */}
+            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-[0.06] group-hover:opacity-[0.10] transition-opacity duration-500 pointer-events-none" />
             
             <div className="space-y-2 relative z-10">
               <h3 className="text-base sm:text-base font-bold text-white group-hover:text-purple-300 transition-colors">{t('card4Title')}</h3>
