@@ -45,15 +45,19 @@ export default function FuturisticHero() {
           </motion.p>
         </div>
 
-        {/* Mobile Horizontal Swipe Container */}
+        {/* 
+          🛠️ MAXIMIZED MOBILE LAYOUT REAL ESTATE:
+          Cards width scaled to w-[92vw] and given matching vertical padding extensions 
+          to fully occupy the mobile layout fold without blank tracking fields.
+        */}
         <motion.div 
           variants={itemVariants} 
           className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 gap-4 w-full text-left mt-4 lg:mt-6 px-2 md:px-0 pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
         >
           
           {/* Card 1 */}
-          <div className="shrink-0 w-[85vw] sm:w-[65vw] md:w-auto md:col-span-2 snap-center snap-always group relative p-5 bg-zinc-950/40 backdrop-blur-md border border-white/[0.05] hover:border-purple-500/30 rounded-2xl transition-all duration-500 flex flex-col justify-between overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
-            <div className="space-y-2">
+          <div className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto md:col-span-2 snap-center snap-always group relative p-6 bg-zinc-950/40 backdrop-blur-md border border-white/[0.05] hover:border-purple-500/30 rounded-2xl transition-all duration-500 flex flex-col justify-between overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.5)] min-h-[190px]">
+            <div className="space-y-2.5">
               <div className="w-8 h-8 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400"><Search className="w-4 h-4" /></div>
               <h3 className="text-base font-bold text-white group-hover:text-purple-400 transition-colors">{t('card1Title')}</h3>
               <p className="text-xs text-zinc-400 leading-relaxed max-w-xl">{t('card1Desc')}</p>
@@ -62,8 +66,8 @@ export default function FuturisticHero() {
           </div>
 
           {/* Card 2 */}
-          <div className="shrink-0 w-[85vw] sm:w-[65vw] md:w-auto snap-center snap-always group relative p-5 bg-zinc-950/40 backdrop-blur-md border border-white/[0.05] hover:border-indigo-500/30 rounded-2xl transition-all duration-500 flex flex-col justify-between overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
-            <div className="space-y-2">
+          <div className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always group relative p-6 bg-zinc-950/40 backdrop-blur-md border border-white/[0.05] hover:border-indigo-500/30 rounded-2xl transition-all duration-500 flex flex-col justify-between overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.5)] min-h-[190px]">
+            <div className="space-y-2.5">
               <div className="w-8 h-8 rounded-lg bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400"><MapPin className="w-4 h-4" /></div>
               <h3 className="text-base font-bold text-white group-hover:text-indigo-400 transition-colors">{t('card2Title')}</h3>
               <p className="text-xs text-zinc-400 leading-relaxed">{t('card2Desc')}</p>
@@ -72,8 +76,8 @@ export default function FuturisticHero() {
           </div>
 
           {/* Card 3 */}
-          <div className="shrink-0 w-[85vw] sm:w-[65vw] md:w-auto snap-center snap-always group relative p-5 bg-zinc-950/40 backdrop-blur-md border border-white/[0.05] hover:border-emerald-500/30 rounded-2xl transition-all duration-500 flex flex-col justify-between overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
-            <div className="space-y-2">
+          <div className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always group relative p-6 bg-zinc-950/40 backdrop-blur-md border border-white/[0.05] hover:border-emerald-500/30 rounded-2xl transition-all duration-500 flex flex-col justify-between overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.5)] min-h-[190px]">
+            <div className="space-y-2.5">
               <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400"><Cpu className="w-4 h-4" /></div>
               <h3 className="text-base font-bold text-white group-hover:text-emerald-400 transition-colors">{t('card3Title')}</h3>
               <p className="text-xs text-zinc-400 leading-relaxed">{t('card3Desc')}</p>
@@ -84,20 +88,19 @@ export default function FuturisticHero() {
           {/* Card 4 Trigger */}
           <div 
             onClick={() => setIsModalOpen(true)} 
-            className="shrink-0 w-[85vw] sm:w-[65vw] md:w-auto md:col-span-2 snap-center snap-always group relative p-5 bg-gradient-to-r from-purple-950/30 to-indigo-900/30 backdrop-blur-md border border-purple-500/40 hover:border-purple-400 rounded-2xl transition-all duration-500 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 overflow-hidden shadow-[0_4px_30px_rgba(124,58,237,0.15)] cursor-pointer hover:scale-[1.01]"
+            className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto md:col-span-2 snap-center snap-always group relative p-6 bg-gradient-to-r from-purple-950/30 to-indigo-900/30 backdrop-blur-md border border-purple-500/40 hover:border-purple-400 rounded-2xl transition-all duration-500 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 overflow-hidden shadow-[0_4px_30px_rgba(124,58,237,0.15)] cursor-pointer hover:scale-[1.01]"
           >
-            <div className="space-y-1 relative z-10">
+            <div className="space-y-1.5 relative z-10">
               <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-purple-300 transition-colors">{t('card4Title')}</h3>
               <p className="text-xs text-zinc-400 max-w-sm">{t('card4Desc')}</p>
             </div>
-            <div className="inline-flex items-center gap-2 text-[11px] font-bold text-purple-400 group-hover:text-white transition-all px-4 py-2 rounded-xl bg-purple-500/10 border border-purple-500/20 group-hover:bg-purple-600 shrink-0 text-center justify-center">
+            <div className="inline-flex items-center gap-2 text-[11px] font-bold text-purple-400 group-hover:text-white transition-all px-4 py-2.5 rounded-xl bg-purple-500/10 border border-purple-500/20 group-hover:bg-purple-600 shrink-0 text-center justify-center">
               {t('card4Btn')}
             </div>
           </div>
 
         </motion.div>
 
-        {/* 🛠️ ADDED: Elegant Swipe Indicator for Mobile Views */}
         <div className="flex md:hidden items-center justify-center gap-1.5 text-[10px] font-mono tracking-[0.2em] text-purple-400/50 uppercase select-none pt-1 animate-pulse">
           <span>Swipe to view more</span>
           <span className="text-xs">➔</span>

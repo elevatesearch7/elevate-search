@@ -112,7 +112,6 @@ export default function Home() {
     visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
   };
 
-  // Reusable Micro-Swipe Hint Layout Block
   const MobileSwipeHint = () => (
     <div className="flex md:hidden items-center justify-center gap-1.5 text-[9px] font-mono tracking-[0.2em] text-purple-400/40 uppercase select-none pt-2 animate-pulse">
       <span>Swipe to view more</span>
@@ -179,13 +178,14 @@ export default function Home() {
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">{t('sec3Title')}</h3>
           </motion.div>
           
+          {/* 🛠️ UPGRADED TO w-[92vw] & ADDED min-h-[200px] */}
           <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {futureCards.map((card, idx) => {
               const IconComp = card.icon;
               return (
                 <motion.div 
                   key={idx} variants={cascadeUp}
-                  className="shrink-0 w-[85vw] sm:w-[65vw] md:w-auto snap-center snap-always bg-zinc-950/50 backdrop-blur-md border border-white/10 rounded-xl p-5 transition-all duration-500 hover:border-purple-500/40 hover:bg-zinc-900/40 group relative overflow-hidden shadow-xl"
+                  className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always bg-zinc-950/50 backdrop-blur-md border border-white/10 rounded-xl p-6 transition-all duration-500 hover:border-purple-500/40 hover:bg-zinc-900/40 group relative overflow-hidden shadow-xl min-h-[200px] flex flex-col justify-between"
                 >
                   <div className="flex items-center justify-between mb-3">
                     <div className="p-2 rounded-lg bg-black/60 border border-white/10 text-[#8B5CF6] group-hover:text-purple-400 transition-colors"><IconComp className="w-4 h-4" /></div>
@@ -212,9 +212,10 @@ export default function Home() {
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">{t('sec4Title')}</h3>
           </motion.div>
           
+          {/* 🛠️ UPGRADED TO w-[92vw] */}
           <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 items-start pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {plans.map((plan, idx) => (
-              <motion.div key={idx} variants={cascadeUp} className={`shrink-0 w-[85vw] sm:w-[65vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-xl border rounded-xl p-5 lg:p-6 relative flex flex-col justify-between transition-all duration-500 ${plan.recommended ? 'border-[#8B5CF6] bg-zinc-900/50 lg:scale-105 z-10 shadow-2xl' : 'border-white/10'}`}>
+              <motion.div key={idx} variants={cascadeUp} className={`shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-xl border rounded-xl p-6 relative flex flex-col justify-between transition-all duration-500 ${plan.recommended ? 'border-[#8B5CF6] bg-zinc-900/50 lg:scale-105 z-10 shadow-2xl' : 'border-white/10'}`}>
                 <div>
                   <h4 className="text-base sm:text-lg font-bold text-white mb-1">{plan.name}</h4>
                   <p className="text-[11px] text-[#A1A1AA] mb-3 min-h-[32px]">{plan.desc}</p>
@@ -247,9 +248,10 @@ export default function Home() {
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">Why Choose Elevate Search</h3>
           </motion.div>
           
+          {/* 🛠️ UPGRADED TO w-[92vw] & INCREASED min-h-[170px] */}
           <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {valueProps.map((vp, idx) => (
-              <motion.div key={idx} variants={cascadeUp} className="shrink-0 w-[85vw] sm:w-[65vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-sm border border-white/5 p-4 rounded-xl space-y-1.5 shadow-lg flex flex-col justify-between min-h-[140px]">
+              <motion.div key={idx} variants={cascadeUp} className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-sm border border-white/5 p-5 rounded-xl space-y-2 shadow-lg flex flex-col justify-between min-h-[170px]">
                 <div>
                   <div className="flex items-center gap-2 mb-1.5">
                     <div className="w-1 h-4 purple-gradient rounded-full" />
@@ -275,9 +277,10 @@ export default function Home() {
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">How We Work</h3>
           </motion.div>
           
+          {/* 🛠️ UPGRADED TO w-[92vw] & INCREASED min-h-[240px] */}
           <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 relative pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {steps.map((st, idx) => (
-              <motion.div key={idx} variants={cascadeUp} className="shrink-0 w-[85vw] sm:w-[65vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-4 sm:p-5 relative overflow-hidden group shadow-xl min-h-[210px] flex flex-col justify-between">
+              <motion.div key={idx} variants={cascadeUp} className="shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-5 relative overflow-hidden group shadow-xl min-h-[240px] flex flex-col justify-between">
                 <div className="space-y-2">
                   <span className="absolute -top-3 -right-1 text-5xl font-black text-white/5 select-none tracking-tighter">{st.step}</span>
                   <span className="text-[9px] font-bold text-[#8B5CF6] block mb-1">{st.step} // Phase</span>
@@ -342,9 +345,11 @@ export default function Home() {
             <span className="text-xs font-bold uppercase tracking-widest text-[#8B5CF6] block">Intel & Research</span>
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">Latest Insights</h3>
           </div>
+          
+          {/* 🛠️ UPGRADED TO w-[92vw] & ADDED min-h-[170px] */}
           <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {insights.map((ins, idx) => (
-              <motion.div key={idx} variants={cascadeUp} className="shrink-0 w-[85vw] sm:w-[65vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-4 sm:p-5 flex flex-col justify-between group shadow-xl">
+              <motion.div key={idx} variants={cascadeUp} className="shrink-0 w-[92vw] sm:w-[65vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-sm border border-white/10 rounded-xl p-5 flex flex-col justify-between group shadow-xl min-h-[170px]">
                 <div className="space-y-2">
                   <span className="inline-block text-[9px] font-bold uppercase tracking-wider text-[#A855F7] bg-[#A855F7]/10 px-2.5 py-0.5 rounded-full">{ins.cat}</span>
                   <h4 className="text-xs sm:text-sm lg:text-base font-bold text-white leading-snug group-hover:text-[#8B5CF6] transition-colors">{ins.title}</h4>
