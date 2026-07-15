@@ -188,38 +188,79 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* SLIDE 4: SOLUTIONS & PRICING ENGINE */}
+      {/* 🛠️ SLIDE 4: SOLUTIONS & PRICING ENGINE OVERHAULED */}
       <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} variants={sectionParent}
         className="w-full min-h-screen md:snap-start md:snap-always flex flex-col justify-start pt-28 pb-16 md:pb-12 px-4 sm:px-6 lg:px-8 bg-black/40 backdrop-blur-md border-t border-white/[0.02]"
       >
-        <div className="max-w-7xl w-full mx-auto space-y-6 lg:space-y-8 md:my-auto">
-          <motion.div variants={cascadeUp} className="text-center max-w-2xl mx-auto space-y-1">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#8B5CF6] block">{t('sec4Badge')}</span>
-            <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">{t('sec4Title')}</h3>
+        <div className="max-w-7xl w-full mx-auto space-y-6 lg:space-y-10 md:my-auto">
+          <motion.div variants={cascadeUp} className="text-center max-w-2xl mx-auto space-y-2 select-none">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md border border-purple-500/20 bg-purple-500/5 text-purple-400 text-[10px] font-mono tracking-widest uppercase mx-auto">
+              <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-ping" /> Deployment Tiers Configuration
+            </div>
+            <h3 className="text-3xl sm:text-4xl font-black text-white tracking-tight">{t('sec4Title')}</h3>
           </motion.div>
           
           <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 items-start pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {plans.map((plan, idx) => (
-              <motion.div key={idx} variants={cascadeUp} className={`shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always bg-zinc-950/40 backdrop-blur-xl border rounded-xl p-7 py-12 md:p-6 relative flex flex-col justify-between transition-all duration-500 ${plan.recommended ? 'border-[#8B5CF6] bg-zinc-900/50 lg:scale-105 z-10 shadow-2xl' : 'border-white/10'} min-h-[500px] md:min-h-auto group overflow-hidden`}>
+              <motion.div 
+                key={idx} variants={cascadeUp} 
+                className={`shrink-0 w-[92vw] sm:w-[70vw] md:w-auto snap-center snap-always bg-[#09090b]/90 backdrop-blur-xl border rounded-lg p-7 py-12 md:p-6 relative flex flex-col justify-between transition-all duration-500 min-h-[520px] md:min-h-[480px] group overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)] ${
+                  plan.recommended ? 'border-[#8B5CF6]/70 shadow-purple-500/5 lg:scale-105 z-10' : 'border-zinc-800/80 hover:border-zinc-700/60'
+                }`}
+              >
+                {/* HUD Corner Tech Markers */}
+                <span className="absolute top-1 left-2 text-[8px] font-mono text-zinc-700 select-none">+</span >
+                <span className="absolute top-1 right-2 text-[8px] font-mono text-zinc-700 select-none">+</span >
+                
                 <div style={{ backgroundImage: `url(${plan.img})` }} className="absolute inset-0 bg-cover bg-center opacity-[0.06] group-hover:opacity-[0.10] transition-opacity duration-500 pointer-events-none" />
                 
-                <div className="space-y-4 md:space-y-0 relative z-10">
-                  <h4 className="text-lg md:text-base font-bold text-white">{plan.name}</h4>
-                  <p className="text-sm md:text-11px text-zinc-300 md:text-zinc-400 min-h-[32px]">{plan.desc}</p>
-                  <div className="text-4xl md:text-3xl font-black text-white">{plan.price}</div>
-                  <div className="h-[1px] bg-white/10" />
-                  <ul className="space-y-2.5 md:space-y-1.5 pb-4">
+                <div className="space-y-5 relative z-10">
+                  <div className="flex items-center justify-between text-[9px] font-mono text-zinc-500 select-none">
+                    <span>SYS_CONFIG // REG_0{idx + 1}</span>
+                    {plan.recommended ? (
+                      <span className="text-[#8B5CF6] font-black bg-[#8B5CF6]/10 px-2 py-0.5 rounded border border-[#8B5CF6]/20 animate-pulse text-[8px]">
+                        ALGORITHMIC_PREFERENCE
+                      </span>
+                    ) : (
+                      <span>TIER // STANDARD</span>
+                    )}
+                  </div>
+
+                  <div className="space-y-1">
+                    <h4 className="text-xl font-black text-white tracking-tight">{plan.name}</h4>
+                    <p className="text-xs text-zinc-400 min-h-[36px] leading-relaxed">{plan.desc}</p>
+                  </div>
+
+                  <div className="space-y-1 pt-2">
+                    <span className="text-[9px] font-mono tracking-widest text-zinc-500 block uppercase">Estimated Operational Cost</span>
+                    <div className="text-4xl font-black bg-gradient-to-b from-white to-zinc-400 bg-clip-text text-transparent flex items-baseline gap-1">
+                      {plan.price}<span className="text-xs text-zinc-500 font-mono">/mo</span>
+                    </div>
+                  </div>
+
+                  {/* Laser-Etched Futuristic Line */}
+                  <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-purple-500/40 to-transparent my-1" />
+
+                  <ul className="space-y-3 pb-2">
                     {plan.features.map((feat, fIdx) => (
-                      <li key={fIdx} className="flex items-center gap-2 text-sm md:text-xs text-zinc-300 md:text-zinc-400">
-                        <CheckCircle2 className="w-4 h-4 md:w-3.5 md:h-3.5 text-[#8B5CF6] flex-shrink-0" />
-                        {feat}
+                      <li key={fIdx} className="flex items-start gap-2.5 text-xs text-zinc-300 font-medium">
+                        <span className="text-purple-400 font-mono text-[11px] select-none shrink-0 pt-0.5">[✓]</span>
+                        <span className="leading-snug">{feat}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
-                <Link href="/contact" className="w-full py-3 md:py-2 rounded-xl text-xs font-bold text-center transition-all purple-gradient text-white shadow-lg relative z-10">
-                  Select Framework Plan
+
+                <Link 
+                  href="/contact" 
+                  className={`w-full py-3.5 rounded-md text-xs font-mono tracking-widest uppercase text-center transition-all relative z-10 ${
+                    plan.recommended 
+                      ? 'purple-gradient text-white shadow-lg border border-purple-400/20 hover:scale-[1.01]' 
+                      : 'bg-zinc-900/60 text-zinc-300 border border-zinc-800 hover:bg-zinc-900 hover:text-white hover:border-zinc-700'
+                  }`}
+                >
+                  Initialize Protocol
                 </Link>
               </motion.div>
             ))}
@@ -323,7 +364,7 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* 🛠️ SLIDE 7: RE-ENGINEERED CYBERNETIC KNOWLEDGE RECOVERY PROTOCOL (FAQ HUB) */}
+      {/* SLIDE 7: FAQ KNOWLEDGE HUB */}
       <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} variants={sectionParent}
         className="w-full min-h-screen md:snap-start md:snap-always flex flex-col justify-start pt-28 pb-16 md:pb-12 px-4 sm:px-6 lg:px-8 bg-transparent border-t border-white/[0.02]"
@@ -355,13 +396,11 @@ export default function Home() {
                     onClick={() => setActiveFaq(isSelected ? null : idx)} 
                     className="w-full text-left p-4.5 sm:p-5 flex items-center justify-between text-white focus:outline-none transition-colors group relative"
                   >
-                    {/* Futuristic active left accent line tag */}
                     <div className={`absolute left-0 top-0 h-full w-[2px] bg-gradient-to-b from-purple-400 to-indigo-500 transition-transform duration-300 ${
                       isSelected ? 'scale-y-100' : 'scale-y-0'
                     }`} />
 
                     <div className="flex flex-col gap-1 pr-4">
-                      {/* Monospace decryption token tag */}
                       <span className="text-[9px] font-mono tracking-widest text-zinc-500 uppercase select-none">
                         CORE_INDEX // 0{idx + 1}
                       </span>
@@ -383,13 +422,11 @@ export default function Home() {
                     transition={{ duration: 0.25, ease: "easeInOut" }} 
                     className="overflow-hidden relative"
                   >
-                    {/* Themed image grid overlay mask */}
                     <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-[0.04] mix-blend-screen pointer-events-none" />
                     
                     <div className="p-4.5 sm:p-5 pt-1 text-xs sm:text-xs text-zinc-300 leading-relaxed border-t border-zinc-900 bg-black/40 relative z-10 space-y-3">
                       <p className="max-w-2xl">{faq.a}</p>
                       
-                      {/* Monospace protocol footer parameters inside answer fold */}
                       <div className="flex items-center gap-4 text-[9px] font-mono text-zinc-600 select-none pt-2 border-t border-white/[0.02]">
                         <span className="flex items-center gap-1">
                           <span className="w-1 h-1 rounded-full bg-emerald-500 inline-block" /> STATUS // DECRYPTED_OK
